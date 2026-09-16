@@ -22,7 +22,7 @@ export function Solutions() {
           {solutions.map((s) => (
             <StaggerItem key={s.id}>
               <article className="group flex h-full flex-col rounded-[1.4rem] border border-[#0b0e0d]/10 bg-[#fafaf9] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-[#0b0e0d]/20 hover:bg-white hover:card-shadow md:p-7">
-                <span className="grid h-11 w-11 place-items-center rounded-2xl bg-[#0b0e0d] text-white transition-colors duration-300 group-hover:bg-[#0e7c5b]">
+                <span className="grid h-11 w-11 place-items-center rounded-2xl bg-[#0b0e0d] text-white transition-colors duration-300 group-hover:bg-[#2563eb]">
                   <s.icon className="h-5 w-5" strokeWidth={1.75} aria-hidden />
                 </span>
                 <h3 className="mt-5 text-[18px] font-semibold tracking-tight">{s.title}</h3>
@@ -35,7 +35,7 @@ export function Solutions() {
                     </li>
                   ))}
                 </ul>
-                <a href="#demo" className="mt-5 inline-flex items-center gap-1 text-[14px] font-semibold text-[#0e7c5b]">
+                <a href="#demo" className="mt-5 inline-flex items-center gap-1 text-[14px] font-semibold text-[#2563eb]">
                   <span className="underline-offset-4 group-hover:underline">See it in the demo</span>
                   <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden />
                 </a>

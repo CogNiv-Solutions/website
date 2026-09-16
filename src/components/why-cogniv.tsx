@@ -43,7 +43,7 @@ export function WhyCogniv() {
           {points.map((p, i) => (
             <StaggerItem key={p.title} className={i === 0 ? "lg:col-span-2" : undefined}>
               <article className="flex h-full gap-4 rounded-[1.4rem] border border-[#0b0e0d]/10 bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:card-shadow">
-                <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-[#e6f4ee] text-[#0a5c44]">
+                <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-[#eff6ff] text-[#1d4ed8]">
                   <p.icon className="h-5 w-5" strokeWidth={1.75} aria-hidden />
                 </span>
                 <span>

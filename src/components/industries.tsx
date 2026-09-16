@@ -69,16 +69,16 @@ export function Industries() {
                   <ol className="mt-4 space-y-2.5">
                     {current.automate.map((m) => (
                       <li key={m} className="flex items-start gap-2.5 text-[14.5px] text-white/85">
-                        <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-emerald-400/20">
-                          <Check className="h-3 w-3 text-emerald-300" aria-hidden />
+                        <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-blue-400/20">
+                          <Check className="h-3 w-3 text-blue-300" aria-hidden />
                         </span>
                         {m}
                       </li>
                     ))}
                   </ol>
                 </div>
-                <div className="bg-[#f2faf6] p-6 md:p-8">
-                  <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-[#0a5c44]/60">Operational benefit</p>
+                <div className="bg-[#f0f7ff] p-6 md:p-8">
+                  <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-[#1d4ed8]/60">Operational benefit</p>
                   <p className="mt-4 text-[17px] font-medium leading-snug text-[#0b0e0d]">{current.benefit}</p>
                   <a href="#contact" className="btn-press mt-6 inline-flex items-center gap-2 rounded-full bg-[#0b0e0d] px-5 py-3 text-[14px] font-medium text-white hover:bg-[#1a201e]">
                     Audit my {current.name.split(" ")[0]} workflow <ArrowRight className="h-4 w-4" aria-hidden />

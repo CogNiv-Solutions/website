@@ -54,18 +54,18 @@ export function WhatsAppFloat() {
           <div className="flex items-center justify-between border-b border-[#0b0e0d]/8 bg-[#0b0e0d] px-4 py-3.5 text-white">
             <div className="flex items-center gap-3">
               <div className="relative">
-                <span className="grid h-9 w-9 place-items-center rounded-xl bg-white/15 text-emerald-400">
+                <span className="grid h-9 w-9 place-items-center rounded-xl bg-white/15 text-blue-400">
                   <Sparkles className="h-4.5 w-4.5" aria-hidden />
                 </span>
                 <span
-                  className="absolute -bottom-0.5 -right-0.5 h-2.5 w-2.5 rounded-full border-2 border-[#0b0e0d] bg-emerald-400"
+                  className="absolute -bottom-0.5 -right-0.5 h-2.5 w-2.5 rounded-full border-2 border-[#0b0e0d] bg-blue-400"
                   aria-hidden
                 />
               </div>
               <div>
                 <p className="text-[14px] font-semibold tracking-tight">{SITE.name}</p>
                 <p className="flex items-center gap-1.5 text-[11px] text-white/70">
-                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                  <span className="h-1.5 w-1.5 rounded-full bg-blue-400 animate-pulse" />
                   Online · Replies in &lt;15m
                 </p>
               </div>
@@ -94,10 +94,10 @@ export function WhatsAppFloat() {
                   href={getWhatsAppUrl(prompt.text)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex items-center justify-between rounded-xl border border-[#0b0e0d]/8 bg-white px-3 py-2 text-[12.5px] font-medium text-[#0b0e0d]/80 transition-all hover:border-emerald-500/40 hover:bg-emerald-50/40 hover:text-emerald-950"
+                  className="group flex items-center justify-between rounded-xl border border-[#0b0e0d]/8 bg-white px-3 py-2 text-[12.5px] font-medium text-[#0b0e0d]/80 transition-all hover:border-blue-500/40 hover:bg-blue-50/40 hover:text-blue-950"
                 >
                   <span>{prompt.label}</span>
-                  <ArrowUpRight className="h-3.5 w-3.5 text-[#0b0e0d]/40 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-emerald-600" />
+                  <ArrowUpRight className="h-3.5 w-3.5 text-[#0b0e0d]/40 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-blue-600" />
                 </a>
               ))}
             </div>
@@ -130,7 +130,7 @@ export function WhatsAppFloat() {
         <span className="relative grid h-8 w-8 place-items-center rounded-full bg-[#25D366] text-white">
           <MessageCircle className="h-4.5 w-4.5" strokeWidth={2.2} aria-hidden />
           <span
-            className="absolute -right-0.5 -top-0.5 h-2.5 w-2.5 rounded-full border-2 border-[#0b0e0d] bg-emerald-400 animate-pulse"
+            className="absolute -right-0.5 -top-0.5 h-2.5 w-2.5 rounded-full border-2 border-[#0b0e0d] bg-blue-400 animate-pulse"
             aria-hidden
           />
         </span>

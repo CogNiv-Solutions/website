@@ -50,10 +50,10 @@ export function WorkflowVisual() {
           <span
             className={cn(
               "inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 font-mono text-[11px]",
-              transformed ? "bg-[#e6f4ee] text-[#0a5c44]" : "bg-[#0b0e0d]/5 text-[#0b0e0d]/60"
+              transformed ? "bg-[#eff6ff] text-[#1d4ed8]" : "bg-[#0b0e0d]/5 text-[#0b0e0d]/60"
             )}
           >
-            <span className={cn("h-1.5 w-1.5 rounded-full", transformed ? "bg-[#0e7c5b] animate-pulse-dot" : "bg-[#b45309] animate-pulse-dot")} />
+            <span className={cn("h-1.5 w-1.5 rounded-full", transformed ? "bg-[#2563eb] animate-pulse-dot" : "bg-[#b45309] animate-pulse-dot")} />
             {transformed ? "live" : "fragile"}
           </span>
         </div>
@@ -70,7 +70,7 @@ export function WorkflowVisual() {
                 className={cn(
                   "flex items-center gap-3 rounded-2xl border px-3.5 py-3 transition-colors duration-500",
                   transformed
-                    ? "border-[#0e7c5b]/20 bg-[#f2faf6]"
+                    ? "border-[#2563eb]/20 bg-[#f0f7ff]"
                     : isActive
                       ? "border-[#b45309]/30 bg-[#fff8ed]"
                       : "border-[#0b0e0d]/8 bg-[#fafaf9]"
@@ -79,7 +79,7 @@ export function WorkflowVisual() {
                 <span
                   className={cn(
                     "grid h-9 w-9 shrink-0 place-items-center rounded-xl",
-                    transformed ? "bg-[#0e7c5b] text-white" : "bg-[#0b0e0d] text-white"
+                    transformed ? "bg-[#2563eb] text-white" : "bg-[#0b0e0d] text-white"
                   )}
                 >
                   <Icon className="h-4 w-4" aria-hidden />
@@ -97,7 +97,7 @@ export function WorkflowVisual() {
                   </motion.span>
                 )}
                 {transformed && (
-                  <span className="ml-auto h-1.5 w-1.5 shrink-0 rounded-full bg-[#0e7c5b] animate-pulse-dot" aria-hidden />
+                  <span className="ml-auto h-1.5 w-1.5 shrink-0 rounded-full bg-[#2563eb] animate-pulse-dot" aria-hidden />
                 )}
               </motion.div>
             );
@@ -113,7 +113,7 @@ export function WorkflowVisual() {
           </div>
           <div className="flex gap-1" aria-hidden>
             {Array.from({ length: manual.length + 2 }).map((_, i) => (
-              <span key={i} className={cn("h-1.5 rounded-full transition-all duration-500", i <= step ? "w-5 bg-emerald-400" : "w-1.5 bg-white/20")} />
+              <span key={i} className={cn("h-1.5 rounded-full transition-all duration-500", i <= step ? "w-5 bg-blue-400" : "w-1.5 bg-white/20")} />
             ))}
           </div>
         </div>

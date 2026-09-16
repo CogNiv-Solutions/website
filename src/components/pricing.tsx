@@ -147,13 +147,13 @@ const compareRows: { label: string; values: string[] }[] = [
 function CompareCell({ value, dark = false }: { value: string; dark?: boolean }) {
   if (value === "yes")
     return (
-      <span className="inline-grid h-6 w-6 place-items-center rounded-full bg-[#e6f4ee]">
-        <Check className="h-3.5 w-3.5 text-[#0a5c44]" aria-label="Included" />
+      <span className="inline-grid h-6 w-6 place-items-center rounded-full bg-[#eff6ff]">
+        <Check className="h-3.5 w-3.5 text-[#1d4ed8]" aria-label="Included" />
       </span>
     );
   if (value === "no") return <Minus className={cn("mx-auto h-4 w-4", dark ? "text-white/30" : "text-[#0b0e0d]/25")} aria-label="Not included" />;
   return (
-    <span className={cn("text-[13px] font-semibold", dark ? "text-emerald-300" : "text-[#0a5c44]")}>{value}</span>
+    <span className={cn("text-[13px] font-semibold", dark ? "text-blue-300" : "text-[#1d4ed8]")}>{value}</span>
   );
 }
 
@@ -167,19 +167,19 @@ function PlanCard({ plan, mode }: { plan: Plan; mode: Mode }) {
         "relative flex h-full flex-col rounded-[1.4rem] border p-6 transition-all duration-300 hover:-translate-y-1 md:p-7",
         dark && "border-white/10 bg-[#0b0e0d] text-white card-shadow-dark hover:border-white/25",
         !dark && !plan.featured && "border-[#0b0e0d]/10 bg-white hover:border-[#0b0e0d]/25 hover:card-shadow",
-        !dark && plan.id === "ai" && "border-[#0e7c5b]/25 bg-[#f2faf6] hover:border-[#0e7c5b]/45 hover:card-shadow",
+        !dark && plan.id === "ai" && "border-[#2563eb]/25 bg-[#f0f7ff] hover:border-[#2563eb]/45 hover:card-shadow",
         plan.featured &&
-          "border-[#0e7c5b]/45 bg-white card-shadow hover:border-[#0e7c5b]/70 lg:scale-[1.03]"
+          "border-[#2563eb]/45 bg-white card-shadow hover:border-[#2563eb]/70 lg:scale-[1.03]"
       )}
     >
       {plan.featured && (
-        <p className="absolute -top-3.5 left-1/2 inline-flex -translate-x-1/2 items-center gap-1.5 whitespace-nowrap rounded-full bg-[#0e7c5b] px-3.5 py-1.5 font-mono text-[10.5px] font-bold uppercase tracking-[0.16em] text-white">
+        <p className="absolute -top-3.5 left-1/2 inline-flex -translate-x-1/2 items-center gap-1.5 whitespace-nowrap rounded-full bg-[#2563eb] px-3.5 py-1.5 font-mono text-[10.5px] font-bold uppercase tracking-[0.16em] text-white">
           <span className="h-1.5 w-1.5 rounded-full bg-white animate-pulse-dot" aria-hidden />
           Most popular
         </p>
       )}
       <h3 className="mt-1 text-[18px] font-semibold tracking-tight">{plan.name}</h3>
-      <p className={cn("mt-1 font-mono text-[11px] uppercase tracking-[0.16em]", dark ? "text-emerald-300" : "text-[#0e7c5b]")}>
+      <p className={cn("mt-1 font-mono text-[11px] uppercase tracking-[0.16em]", dark ? "text-blue-300" : "text-[#2563eb]")}>
         {plan.label}
       </p>
       <p className={cn("mt-2.5 text-[14px] leading-relaxed", dark ? "text-white/60" : "text-[#0b0e0d]/60")}>{plan.blurb}</p>
@@ -192,8 +192,8 @@ function PlanCard({ plan, mode }: { plan: Plan; mode: Mode }) {
       <ul className={cn("mt-5 space-y-2.5 border-t pt-5", dark ? "border-white/10" : "border-[#0b0e0d]/8")}>
         {features.map((f) => (
           <li key={f} className={cn("flex items-start gap-2.5 text-[14px]", dark ? "text-white/80" : "text-[#0b0e0d]/75")}>
-            <span className={cn("mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full", dark ? "bg-emerald-400/15" : "bg-[#e6f4ee]")}>
-              <Check className={cn("h-3 w-3", dark ? "text-emerald-300" : "text-[#0a5c44]")} aria-hidden />
+            <span className={cn("mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full", dark ? "bg-blue-400/15" : "bg-[#eff6ff]")}>
+              <Check className={cn("h-3 w-3", dark ? "text-blue-300" : "text-[#1d4ed8]")} aria-hidden />
             </span>
             {f}
           </li>
@@ -204,7 +204,7 @@ function PlanCard({ plan, mode }: { plan: Plan; mode: Mode }) {
         className={cn(
           "btn-press group mt-6 inline-flex items-center justify-center gap-2 rounded-full py-3 pl-6 pr-3 text-[14.5px] font-semibold",
           dark || plan.featured
-            ? "bg-[#0e7c5b] text-white hover:bg-[#0a5c44]"
+            ? "bg-[#2563eb] text-white hover:bg-[#1d4ed8]"
             : "border border-[#0b0e0d]/15 text-[#0b0e0d] hover:border-[#0b0e0d] hover:bg-[#0b0e0d] hover:text-white"
         )}
       >
@@ -255,25 +255,25 @@ function Calculator() {
           <span className="flex items-baseline justify-between text-[14px] font-medium">
             Employees involved <span className="font-mono font-semibold">{employees}</span>
           </span>
-          <input type="range" min={1} max={200} value={employees} onChange={(e) => setEmployees(Number(e.target.value))} className="mt-2.5 w-full accent-[#0e7c5b]" aria-label="Number of employees involved" />
+          <input type="range" min={1} max={200} value={employees} onChange={(e) => setEmployees(Number(e.target.value))} className="mt-2.5 w-full accent-[#2563eb]" aria-label="Number of employees involved" />
         </label>
         <label className="mt-5 block">
           <span className="flex items-baseline justify-between text-[14px] font-medium">
             Repetitive hours per week <span className="font-mono font-semibold">{hours}h</span>
           </span>
-          <input type="range" min={1} max={80} value={hours} onChange={(e) => setHours(Number(e.target.value))} className="mt-2.5 w-full accent-[#0e7c5b]" aria-label="Hours spent on repetitive work per week" />
+          <input type="range" min={1} max={80} value={hours} onChange={(e) => setHours(Number(e.target.value))} className="mt-2.5 w-full accent-[#2563eb]" aria-label="Hours spent on repetitive work per week" />
         </label>
         <label className="mt-5 block">
           <span className="flex items-baseline justify-between text-[14px] font-medium">
             Monthly workflow volume <span className="font-mono text-[13px] font-semibold">{volumes[volume]}</span>
           </span>
-          <input type="range" min={0} max={3} value={volume} onChange={(e) => setVolume(Number(e.target.value))} className="mt-2.5 w-full accent-[#0e7c5b]" aria-label="Approximate monthly workflow volume" />
+          <input type="range" min={0} max={3} value={volume} onChange={(e) => setVolume(Number(e.target.value))} className="mt-2.5 w-full accent-[#2563eb]" aria-label="Approximate monthly workflow volume" />
         </label>
         <label className="mt-5 block">
           <span className="flex items-baseline justify-between text-[14px] font-medium">
             Number of workflows <span className="font-mono font-semibold">{workflows}</span>
           </span>
-          <input type="range" min={1} max={10} value={workflows} onChange={(e) => setWorkflows(Number(e.target.value))} className="mt-2.5 w-full accent-[#0e7c5b]" aria-label="Number of workflows" />
+          <input type="range" min={1} max={10} value={workflows} onChange={(e) => setWorkflows(Number(e.target.value))} className="mt-2.5 w-full accent-[#2563eb]" aria-label="Number of workflows" />
         </label>
         <div className="mt-6 grid gap-2.5 sm:grid-cols-3">
           {(
@@ -291,7 +291,7 @@ function Calculator() {
               onClick={() => set(!val)}
               className={cn(
                 "btn-press rounded-2xl border px-4 py-3 text-left text-[13.5px] font-medium transition-colors",
-                val ? "border-[#0e7c5b]/50 bg-[#f2faf6] text-[#0a5c44]" : "border-[#0b0e0d]/12 bg-white text-[#0b0e0d]/60 hover:border-[#0b0e0d]/30"
+                val ? "border-[#2563eb]/50 bg-[#f0f7ff] text-[#1d4ed8]" : "border-[#0b0e0d]/12 bg-white text-[#0b0e0d]/60 hover:border-[#0b0e0d]/30"
               )}
             >
               <span className="block font-mono text-[11px] uppercase tracking-[0.14em] opacity-70">{label}</span>
@@ -303,8 +303,8 @@ function Calculator() {
 
       <div className="flex flex-col rounded-[1.4rem] bg-[#0b0e0d] p-6 text-white card-shadow-dark md:p-8" role="status" aria-live="polite">
         <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-white/50">Indicative starting range</p>
-        <p className="mt-3 inline-flex w-fit items-center gap-2 rounded-full bg-white/10 px-3.5 py-1.5 text-[13.5px] font-semibold text-emerald-200">
-          <span className="h-1.5 w-1.5 rounded-full bg-emerald-300 animate-pulse-dot" aria-hidden />
+        <p className="mt-3 inline-flex w-fit items-center gap-2 rounded-full bg-white/10 px-3.5 py-1.5 text-[13.5px] font-semibold text-blue-200">
+          <span className="h-1.5 w-1.5 rounded-full bg-blue-300 animate-pulse-dot" aria-hidden />
           {result.level} complexity
         </p>
         <p className="mt-4 font-mono text-5xl font-bold tracking-tight">{result.range}</p>
@@ -314,7 +314,7 @@ function Calculator() {
         </p>
         <a
           href="#contact"
-          className="btn-press group mt-6 inline-flex items-center justify-center gap-2 rounded-full bg-white py-2.5 pl-6 pr-2.5 text-[15px] font-semibold text-[#0b0e0d] hover:bg-emerald-100"
+          className="btn-press group mt-6 inline-flex items-center justify-center gap-2 rounded-full bg-white py-2.5 pl-6 pr-2.5 text-[15px] font-semibold text-[#0b0e0d] hover:bg-blue-100"
         >
           Get My Automation Estimate
           <span className="grid h-9 w-9 place-items-center rounded-full bg-[#0b0e0d] text-white transition-transform duration-300 group-hover:translate-x-1">
@@ -409,13 +409,13 @@ export function Pricing() {
           <Stagger className="mt-8 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
             {plans.map((p) => (
               <StaggerItem key={p.id} className="h-full">
-                <div className="flex h-full flex-col rounded-[1.4rem] border border-[#0b0e0d]/10 bg-white p-5 transition-all duration-300 hover:-translate-y-1 hover:border-[#0e7c5b]/35 hover:card-shadow">
+                <div className="flex h-full flex-col rounded-[1.4rem] border border-[#0b0e0d]/10 bg-white p-5 transition-all duration-300 hover:-translate-y-1 hover:border-[#2563eb]/35 hover:card-shadow">
                   <p className="text-[14.5px] font-semibold">{p.name.replace(" Automation", "")}</p>
                   <p className="mt-1.5 font-mono text-xl font-bold">{p.managedPrice}</p>
                   <ul className="mt-3 space-y-1.5">
                     {p.managedFeatures.map((f) => (
                       <li key={f} className="flex items-start gap-2 text-[13px] text-[#0b0e0d]/65">
-                        <Check className="mt-0.5 h-3.5 w-3.5 shrink-0 text-[#0e7c5b]" aria-hidden /> {f}
+                        <Check className="mt-0.5 h-3.5 w-3.5 shrink-0 text-[#2563eb]" aria-hidden /> {f}
                       </li>
                     ))}
                   </ul>
@@ -431,8 +431,8 @@ export function Pricing() {
             <div className="texture-dots pointer-events-none absolute inset-0 opacity-20" aria-hidden />
             <div className="relative flex flex-col items-start gap-6 lg:flex-row lg:items-center lg:justify-between">
               <div className="max-w-2xl">
-                <p className="inline-flex items-center gap-2 rounded-full border border-emerald-300/25 bg-emerald-400/10 px-3.5 py-1.5 font-mono text-[11px] font-bold uppercase tracking-[0.2em] text-emerald-200">
-                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-300 animate-pulse-dot" aria-hidden />
+                <p className="inline-flex items-center gap-2 rounded-full border border-blue-300/25 bg-blue-400/10 px-3.5 py-1.5 font-mono text-[11px] font-bold uppercase tracking-[0.2em] text-blue-200">
+                  <span className="h-1.5 w-1.5 rounded-full bg-blue-300 animate-pulse-dot" aria-hidden />
                   Cogniv launch offer
                 </p>
                 <h3 className="mt-4 text-2xl font-semibold tracking-tight md:text-4xl">Special pricing for our first 10 businesses.</h3>
@@ -442,7 +442,7 @@ export function Pricing() {
               </div>
               <a
                 href="#contact"
-                className="btn-press group inline-flex shrink-0 items-center gap-2 rounded-full bg-white py-2.5 pl-6 pr-2.5 text-[15px] font-semibold text-[#0b0e0d] hover:bg-emerald-100"
+                className="btn-press group inline-flex shrink-0 items-center gap-2 rounded-full bg-white py-2.5 pl-6 pr-2.5 text-[15px] font-semibold text-[#0b0e0d] hover:bg-blue-100"
               >
                 Claim Launch Pricing
                 <span className="grid h-9 w-9 place-items-center rounded-full bg-[#0b0e0d] text-white transition-transform duration-300 group-hover:translate-x-1">
@@ -487,7 +487,7 @@ export function Pricing() {
                           {plans.map((p) => (
                             <th key={p.id} scope="col" className="px-4 py-4 text-center">
                               <span className="block text-[14.5px] font-semibold">{p.name}</span>
-                              <span className="mt-0.5 block font-mono text-[12px] font-medium text-[#0e7c5b]">{p.implPrice}</span>
+                              <span className="mt-0.5 block font-mono text-[12px] font-medium text-[#2563eb]">{p.implPrice}</span>
                             </th>
                           ))}
                         </tr>
@@ -519,7 +519,7 @@ export function Pricing() {
                         >
                           <span>
                             <span className="block text-[15px] font-semibold">{p.name}</span>
-                            <span className="font-mono text-[12.5px] text-[#0e7c5b]">{p.implPrice} · from</span>
+                            <span className="font-mono text-[12.5px] text-[#2563eb]">{p.implPrice} · from</span>
                           </span>
                           <span className={cn("grid h-9 w-9 shrink-0 place-items-center rounded-full bg-[#0b0e0d]/5 transition-transform duration-300", open && "rotate-180")}>
                             <ChevronDown className="h-4.5 w-4.5" aria-hidden />
@@ -590,7 +590,7 @@ export function Pricing() {
             <div className="mt-7 flex flex-col justify-center gap-3 sm:flex-row">
               <a
                 href="#contact"
-                className="btn-press group inline-flex items-center justify-center gap-2 rounded-full bg-white py-2.5 pl-6 pr-2.5 text-[15px] font-semibold text-[#0b0e0d] hover:bg-emerald-100"
+                className="btn-press group inline-flex items-center justify-center gap-2 rounded-full bg-white py-2.5 pl-6 pr-2.5 text-[15px] font-semibold text-[#0b0e0d] hover:bg-blue-100"
               >
                 Book a Free Automation Audit
                 <span className="grid h-9 w-9 place-items-center rounded-full bg-[#0b0e0d] text-white transition-transform duration-300 group-hover:translate-x-1">

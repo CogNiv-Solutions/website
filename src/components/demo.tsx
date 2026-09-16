@@ -42,8 +42,8 @@ const stages: Stage[] = [
           ["Budget", "₹60 L"],
           ["Areas", "Baner, Wakad"],
         ].map(([k, v]) => (
-          <div key={k} className="rounded-2xl border border-[#0e7c5b]/20 bg-[#f2faf6] px-4 py-3">
-            <dt className="font-mono text-[11px] uppercase tracking-[0.16em] text-[#0a5c44]/60">{k}</dt>
+          <div key={k} className="rounded-2xl border border-[#2563eb]/20 bg-[#f0f7ff] px-4 py-3">
+            <dt className="font-mono text-[11px] uppercase tracking-[0.16em] text-[#1d4ed8]/60">{k}</dt>
             <dd className="mt-1 text-[15px] font-semibold">{v}</dd>
           </div>
         ))}
@@ -85,7 +85,7 @@ const stages: Stage[] = [
               <span className="block text-[14px] font-semibold">{t}</span>
               <span className="block text-[12.5px] text-[#0b0e0d]/55">{s}</span>
             </span>
-            <span className="shrink-0 rounded-full bg-[#e6f4ee] px-2.5 py-1 font-mono text-[11px] font-medium text-[#0a5c44]">match</span>
+            <span className="shrink-0 rounded-full bg-[#eff6ff] px-2.5 py-1 font-mono text-[11px] font-medium text-[#1d4ed8]">match</span>
           </li>
         ))}
       </ul>
@@ -169,8 +169,8 @@ export function Demo() {
           <Reveal>
             <div className="rounded-[1.75rem] border border-white/10 bg-white/[0.04] p-6 card-shadow-dark md:p-7">
               <div className="flex items-center gap-3">
-                <span className="grid h-10 w-10 place-items-center rounded-2xl bg-emerald-400/15">
-                  <MessageSquareText className="h-5 w-5 text-emerald-300" aria-hidden />
+                <span className="grid h-10 w-10 place-items-center rounded-2xl bg-blue-400/15">
+                  <MessageSquareText className="h-5 w-5 text-blue-300" aria-hidden />
                 </span>
                 <div>
                   <p className="text-[15px] font-semibold">AI Lead Automation</p>
@@ -186,7 +186,7 @@ export function Demo() {
                       <span
                         className={cn(
                           "mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full font-mono text-[11px]",
-                          state === "done" && "bg-emerald-400 text-[#0b0e0d]",
+                          state === "done" && "bg-blue-400 text-[#0b0e0d]",
                           state === "active" && "bg-white/15 text-white",
                           state === "idle" && "bg-white/8 text-white/40"
                         )}
@@ -195,7 +195,7 @@ export function Demo() {
                         {state === "done" ? <CheckCheck className="h-3.5 w-3.5" /> : state === "active" ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : i + 1}
                       </span>
                       <span>
-                        <span className={cn("block font-mono text-[11px] uppercase tracking-[0.18em]", state === "idle" ? "text-white/35" : "text-emerald-300")}>{s.label}</span>
+                        <span className={cn("block font-mono text-[11px] uppercase tracking-[0.18em]", state === "idle" ? "text-white/35" : "text-blue-300")}>{s.label}</span>
                         <span className={cn("block text-[14.5px] font-medium", state === "idle" ? "text-white/45" : "text-white")}>{s.title}</span>
                       </span>
                     </li>
@@ -208,13 +208,13 @@ export function Demo() {
                   <button
                     onClick={run}
                     disabled={running}
-                    className="btn-press inline-flex flex-1 items-center justify-center gap-2 rounded-full bg-white px-6 py-3.5 text-[15px] font-semibold text-[#0b0e0d] hover:bg-emerald-100 disabled:opacity-70"
+                    className="btn-press inline-flex flex-1 items-center justify-center gap-2 rounded-full bg-white px-6 py-3.5 text-[15px] font-semibold text-[#0b0e0d] hover:bg-blue-100 disabled:opacity-70"
                   >
                     {running ? <Loader2 className="h-4 w-4 animate-spin" aria-hidden /> : <Play className="h-4 w-4" aria-hidden />}
                     {running ? "Running…" : visible > 0 ? "Continue demo" : "Run Demo"}
                   </button>
                 ) : (
-                  <p className="inline-flex flex-1 items-center justify-center gap-2 rounded-full bg-emerald-400/15 px-6 py-3.5 text-[15px] font-semibold text-emerald-200" role="status">
+                  <p className="inline-flex flex-1 items-center justify-center gap-2 rounded-full bg-blue-400/15 px-6 py-3.5 text-[15px] font-semibold text-blue-200" role="status">
                     <LottieAnimation name="pulse" loop className="h-7 w-7" /> Demo complete
                   </p>
                 )}
@@ -254,14 +254,14 @@ export function Demo() {
                   transition={{ duration: 0.5, ease: [0.32, 0.72, 0, 1] }}
                   className="mb-4 last:mb-0"
                 >
-                  <p className="mb-2 font-mono text-[11px] uppercase tracking-[0.2em] text-[#0e7c5b]">{s.label}</p>
+                  <p className="mb-2 font-mono text-[11px] uppercase tracking-[0.2em] text-[#2563eb]">{s.label}</p>
                   {s.body}
                 </motion.div>
               ))}
             </AnimatePresence>
             {running && (
               <div className="relative mt-2 h-1 overflow-hidden rounded-full bg-[#0b0e0d]/8" aria-hidden>
-                <div className="absolute inset-y-0 w-1/2 bg-[#0e7c5b] animate-shimmer" />
+                <div className="absolute inset-y-0 w-1/2 bg-[#2563eb] animate-shimmer" />
               </div>
             )}
           </div>

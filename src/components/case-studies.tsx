@@ -172,7 +172,7 @@ export function CaseStudies() {
           <div className="overflow-hidden rounded-[1.75rem] border border-[#0b0e0d]/10 bg-white card-shadow">
             {/* Context Header */}
             <div className="border-b border-[#0b0e0d]/8 bg-white px-6 py-5 md:px-8">
-              <span className="font-mono text-[11px] uppercase tracking-wider text-[#0e7c5b]">
+              <span className="font-mono text-[11px] uppercase tracking-wider text-[#2563eb]">
                 {currentCase.location}
               </span>
               <h3 className="mt-1 text-xl font-semibold tracking-tight text-[#0b0e0d] md:text-2xl">
@@ -213,15 +213,15 @@ export function CaseStudies() {
               </div>
 
               {/* The Cogniv System (After) */}
-              <div className="bg-emerald-50/25 p-6 md:p-8">
+              <div className="bg-blue-50/25 p-6 md:p-8">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <CheckCircle2 className="h-5 w-5 text-[#0e7c5b]" aria-hidden />
-                    <span className="text-[14px] font-semibold text-emerald-950 uppercase tracking-wider">
+                    <CheckCircle2 className="h-5 w-5 text-[#2563eb]" aria-hidden />
+                    <span className="text-[14px] font-semibold text-blue-950 uppercase tracking-wider">
                       The Cogniv Automated Pipeline
                     </span>
                   </div>
-                  <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-300 bg-emerald-100/60 px-2.5 py-1 text-[11.5px] font-medium text-[#0e7c5b]">
+                  <span className="inline-flex items-center gap-1.5 rounded-full border border-blue-300 bg-blue-100/60 px-2.5 py-1 text-[11.5px] font-medium text-[#2563eb]">
                     <Zap className="h-3.5 w-3.5" aria-hidden /> {currentCase.after.timeSaved}
                   </span>
                 </div>
@@ -229,7 +229,7 @@ export function CaseStudies() {
                 <ul className="mt-6 space-y-3.5">
                   {currentCase.after.process.map((step, idx) => (
                     <li key={step} className="flex items-start gap-3 text-[14px] leading-relaxed text-[#0b0e0d]/85">
-                      <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-emerald-100 text-[11px] font-semibold text-[#0e7c5b]">
+                      <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-blue-100 text-[11px] font-semibold text-[#2563eb]">
                         {idx + 1}
                       </span>
                       <span>{step}</span>
@@ -237,7 +237,7 @@ export function CaseStudies() {
                   ))}
                 </ul>
 
-                <div className="mt-6 rounded-xl border border-emerald-300/60 bg-white p-3.5 text-[13px] text-emerald-950 font-medium">
+                <div className="mt-6 rounded-xl border border-blue-300/60 bg-white p-3.5 text-[13px] text-blue-950 font-medium">
                   ✅ <strong>The Solution:</strong> {currentCase.after.solution}
                 </div>
               </div>
@@ -248,7 +248,7 @@ export function CaseStudies() {
               <div className="grid grid-cols-2 gap-6 md:grid-cols-4 md:items-center">
                 {currentCase.metrics.map((m) => (
                   <div key={m.label}>
-                    <p className="text-2xl font-bold tracking-tight text-emerald-400 md:text-3xl">
+                    <p className="text-2xl font-bold tracking-tight text-blue-400 md:text-3xl">
                       {m.value}
                     </p>
                     <p className="mt-1 text-[12.5px] text-white/70">{m.label}</p>
@@ -257,7 +257,7 @@ export function CaseStudies() {
                 <div className="col-span-2 md:col-span-1 md:text-right">
                   <a
                     href="#contact"
-                    className="btn-press inline-flex items-center gap-1.5 rounded-full bg-white px-4 py-2.5 text-[13.5px] font-semibold text-[#0b0e0d] hover:bg-emerald-100"
+                    className="btn-press inline-flex items-center gap-1.5 rounded-full bg-white px-4 py-2.5 text-[13.5px] font-semibold text-[#0b0e0d] hover:bg-blue-100"
                   >
                     Automate This Workflow <ArrowRight className="h-3.5 w-3.5" aria-hidden />
                   </a>

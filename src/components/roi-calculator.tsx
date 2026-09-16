@@ -25,7 +25,7 @@ export function RoiCalculator() {
             <ul className="mt-6 space-y-2.5 text-[14.5px] text-[#0b0e0d]/70">
               {["Repetitive employee hours", "Response delays", "Manual data entry", "Missed follow-ups", "Operational errors"].map((t) => (
                 <li key={t} className="flex items-center gap-2.5">
-                  <span className="h-1.5 w-1.5 rounded-full bg-[#0e7c5b]" aria-hidden /> {t}
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#2563eb]" aria-hidden /> {t}
                 </li>
               ))}
             </ul>
@@ -42,7 +42,7 @@ export function RoiCalculator() {
                 <input
                   type="range" min={10} max={600} step={10} value={hours}
                   onChange={(e) => setHours(Number(e.target.value))}
-                  className="mt-2.5 w-full accent-[#0e7c5b]" aria-label="Monthly repetitive hours"
+                  className="mt-2.5 w-full accent-[#2563eb]" aria-label="Monthly repetitive hours"
                 />
               </label>
 
@@ -53,7 +53,7 @@ export function RoiCalculator() {
                 <input
                   type="range" min={10} max={90} step={5} value={auto}
                   onChange={(e) => setAuto(Number(e.target.value))}
-                  className="mt-2.5 w-full accent-[#0e7c5b]" aria-label="Share automatable"
+                  className="mt-2.5 w-full accent-[#2563eb]" aria-label="Share automatable"
                 />
               </label>
 
@@ -64,7 +64,7 @@ export function RoiCalculator() {
                 <input
                   type="range" min={150} max={1500} step={50} value={cost}
                   onChange={(e) => setCost(Number(e.target.value))}
-                  className="mt-2.5 w-full accent-[#0e7c5b]" aria-label="Cost per hour"
+                  className="mt-2.5 w-full accent-[#2563eb]" aria-label="Cost per hour"
                 />
               </label>
 
@@ -73,9 +73,9 @@ export function RoiCalculator() {
                   <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-white/50">Hours freed</p>
                   <p className="mt-1 font-mono text-3xl font-bold">{saved}<span className="text-base font-medium text-white/60">/mo</span></p>
                 </div>
-                <div className="rounded-2xl bg-[#e6f4ee] p-5">
-                  <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-[#0a5c44]/60">Capacity value</p>
-                  <p className="mt-1 font-mono text-2xl font-bold text-[#0a5c44] md:text-3xl">₹{value.toLocaleString("en-IN")}</p>
+                <div className="rounded-2xl bg-[#eff6ff] p-5">
+                  <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-[#1d4ed8]/60">Capacity value</p>
+                  <p className="mt-1 font-mono text-2xl font-bold text-[#1d4ed8] md:text-3xl">₹{value.toLocaleString("en-IN")}</p>
                 </div>
               </div>
               <p className="mt-4 text-[12.5px] leading-relaxed text-[#0b0e0d]/50">

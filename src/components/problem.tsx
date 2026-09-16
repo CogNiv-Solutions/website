@@ -62,13 +62,13 @@ export function Problem() {
                         transition={{ delay: i * 0.07, duration: 0.4, ease: [0.32, 0.72, 0, 1] }}
                         className={cn(
                           "grid h-9 w-9 shrink-0 place-items-center rounded-full font-mono text-[12px] font-semibold",
-                          mode === "before" ? "bg-[#0b0e0d]/8 text-[#0b0e0d]/70" : "bg-[#0e7c5b] text-white"
+                          mode === "before" ? "bg-[#0b0e0d]/8 text-[#0b0e0d]/70" : "bg-[#2563eb] text-white"
                         )}
                       >
                         {i + 1}
                       </motion.span>
                       {i < steps.length - 1 && (
-                        <span className={cn("w-px flex-1 md:h-px md:w-full md:flex-none", mode === "before" ? "bg-[#0b0e0d]/10" : "bg-[#0e7c5b]/30")} aria-hidden />
+                        <span className={cn("w-px flex-1 md:h-px md:w-full md:flex-none", mode === "before" ? "bg-[#0b0e0d]/10" : "bg-[#2563eb]/30")} aria-hidden />
                       )}
                     </div>
                     <div className="pb-5 md:pb-0 md:pt-3 md:text-center">
@@ -86,7 +86,7 @@ export function Problem() {
               <div
                 className={cn(
                   "mt-4 rounded-2xl border px-4 py-3.5 text-[14px] leading-relaxed",
-                  mode === "before" ? "border-[#b45309]/25 bg-[#fff8ed] text-[#7c3f0c]" : "border-[#0e7c5b]/25 bg-[#f2faf6] text-[#0a5c44]"
+                  mode === "before" ? "border-[#b45309]/25 bg-[#fff8ed] text-[#7c3f0c]" : "border-[#2563eb]/25 bg-[#f0f7ff] text-[#1d4ed8]"
                 )}
                 role="status"
               >

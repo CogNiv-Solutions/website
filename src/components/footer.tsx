@@ -47,7 +47,7 @@ export function Footer() {
             </p>
             <a
               href="#contact"
-              className="btn-press group mt-6 inline-flex items-center gap-2 rounded-full bg-white py-2 pl-5 pr-2 text-[14px] font-semibold text-[#0b0e0d] hover:bg-emerald-100"
+              className="btn-press group mt-6 inline-flex items-center gap-2 rounded-full bg-white py-2 pl-5 pr-2 text-[14px] font-semibold text-[#0b0e0d] hover:bg-blue-100"
             >
               Book Automation Audit
               <span className="grid h-8 w-8 place-items-center rounded-full bg-[#0b0e0d] text-white transition-transform duration-300 group-hover:translate-x-0.5">

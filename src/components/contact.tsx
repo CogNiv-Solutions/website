@@ -42,7 +42,7 @@ function Field({
 const inputCls = (bad?: string) =>
   cn(
     "w-full rounded-xl border bg-white px-4 py-3 text-[14.5px] text-[#0b0e0d] placeholder:text-[#0b0e0d]/35 transition-colors",
-    bad ? "border-red-500" : "border-[#0b0e0d]/15 hover:border-[#0b0e0d]/30 focus:border-[#0e7c5b]"
+    bad ? "border-red-500" : "border-[#0b0e0d]/15 hover:border-[#0b0e0d]/30 focus:border-[#2563eb]"
   );
 
 export function Contact() {
@@ -108,7 +108,7 @@ export function Contact() {
                 href={getWhatsAppUrl("Hi Cogniv, I'd like to schedule an Automation Audit for my business.")}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-semibold text-emerald-700 underline underline-offset-4 hover:text-emerald-800"
+                className="font-semibold text-blue-600 underline underline-offset-4 hover:text-blue-700"
               >
                 Chat on WhatsApp
               </a>
@@ -119,7 +119,7 @@ export function Contact() {
                 href={SITE.calendarUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-semibold text-[#0b0e0d] underline underline-offset-4 hover:text-[#0e7c5b]"
+                className="font-semibold text-[#0b0e0d] underline underline-offset-4 hover:text-[#2563eb]"
               >
                 Book 20-min Call
               </a>

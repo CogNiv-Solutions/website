@@ -30,7 +30,7 @@ type ToolItem = {
 const AVAILABLE_TOOLS: ToolItem[] = [
   { id: "whatsapp", name: "WhatsApp Business", category: "Chat & Orders", icon: MessageCircle, color: "text-[#25D366]" },
   { id: "tally", name: "Tally Prime / ERP", category: "Accounting & Tax", icon: FileSpreadsheet, color: "text-blue-600" },
-  { id: "excel", name: "Excel & Sheets", category: "Spreadsheets", icon: Table, color: "text-emerald-600" },
+  { id: "excel", name: "Excel & Sheets", category: "Spreadsheets", icon: Table, color: "text-blue-600" },
   { id: "zoho", name: "Zoho CRM / Books", category: "Lead & CRM", icon: Users, color: "text-amber-600" },
   { id: "razorpay", name: "Razorpay / Gateway", category: "Payments", icon: CreditCard, color: "text-indigo-600" },
   { id: "email", name: "Gmail & Outlook", category: "Email Inboxes", icon: Mail, color: "text-red-500" },
@@ -147,7 +147,7 @@ export function StackChecker() {
                 </p>
               </div>
               <div className="flex items-center gap-2">
-                <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-100 px-3 py-1 text-[12px] font-semibold text-[#0e7c5b]">
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-blue-100 px-3 py-1 text-[12px] font-semibold text-[#2563eb]">
                   <CheckCircle2 className="h-3.5 w-3.5" aria-hidden />
                   {selectedTools.length >= 2 ? "100% Automatable" : "Select at least 2 tools"}
                 </span>
@@ -185,7 +185,7 @@ export function StackChecker() {
                         className={cn(
                           "h-5 w-5 rounded-full border grid place-items-center text-[10px]",
                           isSelected
-                            ? "border-emerald-600 bg-emerald-600 text-white"
+                            ? "border-blue-600 bg-blue-600 text-white"
                             : "border-[#0b0e0d]/15 bg-transparent"
                         )}
                       >
@@ -206,7 +206,7 @@ export function StackChecker() {
             {/* Live Generated Pipelines Output */}
             <div className="mt-8 rounded-2xl border border-[#0b0e0d]/10 bg-white p-6">
               <div className="flex items-center gap-2 text-[14px] font-semibold text-[#0b0e0d]">
-                <Zap className="h-4.5 w-4.5 text-[#0e7c5b]" aria-hidden />
+                <Zap className="h-4.5 w-4.5 text-[#2563eb]" aria-hidden />
                 <span>
                   {activePipelines.length > 0
                     ? `${activePipelines.length} Available Automation Pipelines for Your Stack:`
@@ -219,10 +219,10 @@ export function StackChecker() {
                   {activePipelines.map((pipe) => (
                     <div
                       key={pipe.title}
-                      className="flex flex-col justify-between rounded-xl border border-emerald-500/20 bg-emerald-50/20 p-4 transition-all hover:border-emerald-500/40 hover:bg-emerald-50/40"
+                      className="flex flex-col justify-between rounded-xl border border-blue-500/20 bg-blue-50/20 p-4 transition-all hover:border-blue-500/40 hover:bg-blue-50/40"
                     >
                       <div>
-                        <span className="inline-block rounded-md bg-emerald-100/80 px-2 py-0.5 font-mono text-[10.5px] font-semibold text-[#0e7c5b]">
+                        <span className="inline-block rounded-md bg-blue-100/80 px-2 py-0.5 font-mono text-[10.5px] font-semibold text-[#2563eb]">
                           {pipe.tag}
                         </span>
                         <h4 className="mt-2 text-[14.5px] font-semibold text-[#0b0e0d]">
@@ -253,9 +253,9 @@ export function StackChecker() {
                     )}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn-press inline-flex items-center gap-2 rounded-full border border-emerald-600/30 bg-emerald-50 px-4 py-2 text-[13px] font-medium text-emerald-950 hover:bg-emerald-100"
+                    className="btn-press inline-flex items-center gap-2 rounded-full border border-blue-600/30 bg-blue-50 px-4 py-2 text-[13px] font-medium text-blue-950 hover:bg-blue-100"
                   >
-                    <MessageCircle className="h-3.5 w-3.5 text-emerald-600" aria-hidden />
+                    <MessageCircle className="h-3.5 w-3.5 text-blue-600" aria-hidden />
                     Chat on WhatsApp
                   </a>
                   <button
@@ -289,7 +289,7 @@ export function StackChecker() {
                     key={proto}
                     className="inline-flex items-center gap-1 rounded-lg border border-[#0b0e0d]/10 bg-white px-2.5 py-1 text-[11.5px] font-medium text-[#0b0e0d]/70"
                   >
-                    <Sparkles className="h-3 w-3 text-[#0e7c5b]" aria-hidden />
+                    <Sparkles className="h-3 w-3 text-[#2563eb]" aria-hidden />
                     {proto}
                   </span>
                 ))}

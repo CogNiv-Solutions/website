@@ -71,12 +71,12 @@ export function Faq() {
                     <button
                       type="button"
                       onClick={() => toggle(index)}
-                      className="group flex w-full items-start justify-between gap-4 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0e7c5b] focus-visible:ring-offset-2 rounded-lg py-1"
+                      className="group flex w-full items-start justify-between gap-4 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563eb] focus-visible:ring-offset-2 rounded-lg py-1"
                       aria-expanded={isOpen}
                       aria-controls={`faq-answer-${index}`}
                       id={`faq-question-${index}`}
                     >
-                      <span className="text-[16.5px] font-semibold tracking-tight text-[#0b0e0d] transition-colors group-hover:text-[#0e7c5b] md:text-[17.5px]">
+                      <span className="text-[16.5px] font-semibold tracking-tight text-[#0b0e0d] transition-colors group-hover:text-[#2563eb] md:text-[17.5px]">
                         {faq.question}
                       </span>
                       <span

@@ -8,9 +8,9 @@
   --color-ink: #0b0e0d;
   --color-ink-soft: #1a201e;
   --color-line: #e7e5e4;
-  --color-accent: #0e7c5b;
-  --color-accent-deep: #0a5c44;
-  --color-accent-soft: #e6f4ee;
+  --color-accent: #2563eb;
+  --color-accent-deep: #1d4ed8;
+  --color-accent-soft: #eff6ff;
   --color-amber-warm: #b45309;
 
   --animate-pulse-dot: pulse-dot 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
@@ -62,12 +62,12 @@ body {
 }
 
 ::selection {
-  background: #0e7c5b;
+  background: #2563eb;
   color: #fff;
 }
 
 :focus-visible {
-  outline: 2px solid #0e7c5b;
+  outline: 2px solid #2563eb;
   outline-offset: 3px;
   border-radius: 4px;
 }
