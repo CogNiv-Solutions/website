@@ -8,6 +8,7 @@ const cols = [
       ["Solutions", "#solutions"],
       ["How It Works", "#how-it-works"],
       ["Industries", "#industries"],
+      ["Stack Checker", "#stack-checker"],
       ["Demo", "#demo"],
       ["Pricing", "#pricing"],
       ["About", "#about"],
@@ -18,6 +19,7 @@ const cols = [
     h: "Start",
     links: [
       ["Book Automation Audit", "#contact"],
+      ["Check Stack Compatibility", "#stack-checker"],
       ["Try the Demo", "#demo"],
       ["Estimate Value", "#contact"],
     ],
