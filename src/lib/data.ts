@@ -11,66 +11,50 @@ import {
 export type Solution = {
   id: string;
   icon: LucideIcon;
+  number: string;
   title: string;
   short: string;
-  detail: string;
+  flow: string[];
   points: string[];
+  detail?: string;
 };
 
 export const solutions: Solution[] = [
   {
-    id: "workflow",
-    icon: Workflow,
-    title: "AI Workflow Automation",
-    short: "Automate repetitive decisions and handoffs between tools.",
-    detail:
-      "We map the workflow as it actually runs, then connect AI, rules, APIs and your existing tools so work moves without manual chasing.",
-    points: ["Approvals & routing", "Status updates", "Exception handling"],
+    id: "lead-crm",
+    icon: Users,
+    number: "01",
+    title: "Lead & CRM Automation",
+    short: "Capture, qualify, assign and follow up automatically without spreadsheet leakage.",
+    flow: ["WhatsApp / Website", "Lead Qualification", "CRM Entry", "Follow-up"],
+    points: ["Instant enquiry capture", "Auto-qualification & scoring", "Timed follow-up reminders"],
   },
   {
     id: "whatsapp",
     icon: MessageCircle,
-    title: "WhatsApp Business Automation",
-    short: "Turn incoming chats into structured, trackable work.",
-    detail:
-      "Enquiries get understood, categorised and logged automatically — with instant replies for common questions and clean handoff when a human is needed.",
-    points: ["Auto-replies", "Enquiry capture", "Human handoff"],
-  },
-  {
-    id: "crm",
-    icon: Users,
-    title: "Lead & CRM Automation",
-    short: "Capture, qualify, assign and follow up automatically.",
-    detail:
-      "Every lead is created once, scored, routed to the right person, and followed up on time — no spreadsheet, no missed call.",
-    points: ["Capture & dedupe", "Qualify & score", "Assign & remind"],
+    number: "02",
+    title: "WhatsApp Automation",
+    short: "Turn incoming customer conversations into structured work with smart human handoff.",
+    flow: ["Customer Message", "AI Response", "Lead Capture", "Human Handoff"],
+    points: ["24/7 instant replies", "Order & enquiry triage", "Clean team routing"],
   },
   {
     id: "documents",
     icon: FileStack,
+    number: "03",
     title: "Document & Data Automation",
-    short: "Pull data out of documents and into your systems.",
-    detail:
-      "Quotations, invoices, forms and site reports get read once and moved where they belong — searchable, linked, and auditable.",
-    points: ["Extraction", "Validation", "System sync"],
+    short: "Extract data from quotations, invoices and sheets directly into your core database.",
+    flow: ["Document / PO", "Data Extraction", "Validation", "Database / Tally"],
+    points: ["Zero manual re-typing", "Format standardization", "Direct ERP / Sheet sync"],
   },
   {
-    id: "software",
-    icon: Blocks,
-    title: "Custom Business Software",
-    short: "Internal tools built around how you actually work.",
-    detail:
-      "Where automation alone isn't enough, we build focused software — dashboards, portals, trackers — around the real workflow.",
-    points: ["Internal tools", "Customer portals", "Operational dashboards"],
-  },
-  {
-    id: "agents",
-    icon: Bot,
-    title: "AI Agents",
-    short: "Defined tasks, done reliably, with oversight.",
-    detail:
-      "Scoped agents that perform specific business tasks — drafting follow-ups, summarising threads, preparing reports — with logs and limits.",
-    points: ["Scoped tasks", "Review steps", "Full audit trail"],
+    id: "internal-ops",
+    icon: Workflow,
+    number: "04",
+    title: "Internal Operations Automation",
+    short: "Connect assignments, status tracking and daily reporting so nothing drops.",
+    flow: ["Task Trigger", "Assignment", "Tracking", "Reminder", "Reporting"],
+    points: ["Automated task routing", "Cross-tool sync", "Scheduled progress summaries"],
   },
 ];
 
@@ -158,43 +142,42 @@ export const discoverSteps = [
 export const engagementSteps = [
   {
     n: "01",
-    title: "Automation Audit",
-    text: "A focused review of your tools, chats, sheets and daily routines to find automation candidates.",
-    time: "Week 0",
+    title: "Audit",
+    text: "Understand the business and identify repetitive processes.",
+    time: "Phase 1",
   },
   {
     n: "02",
     title: "Workflow Mapping",
-    text: "We document the current flow and the target flow — what changes, who approves, what connects.",
-    time: "Week 1",
+    text: "Identify where automation can be introduced.",
+    time: "Phase 2",
   },
   {
     n: "03",
     title: "Prototype",
-    text: "One workflow, working end-to-end with your real data, so you can feel the difference early.",
-    time: "Week 2–3",
+    text: "Design and test the proposed workflow.",
+    time: "Phase 3",
   },
   {
     n: "04",
     title: "Implementation",
-    text: "Rollout, integrations, access control and team training — without breaking daily operations.",
-    time: "Week 4+",
+    text: "Integrate the workflow into the business.",
+    time: "Phase 4",
   },
   {
     n: "05",
     title: "Optimization",
-    text: "We monitor, tighten edge cases and extend to the next workflow once the first one holds.",
-    time: "Ongoing",
+    text: "Measure performance and improve the system.",
+    time: "Phase 5",
   },
 ];
 
 export const navLinks = [
-  { label: "Solutions", href: "#solutions" },
-  { label: "How It Works", href: "#how-it-works" },
-  { label: "Industries", href: "#industries" },
-  { label: "Demo", href: "#demo" },
-  { label: "Pricing", href: "#pricing" },
-  { label: "About", href: "#about" },
-  { label: "FAQ", href: "#faq" },
+  { label: "Solutions", href: "/#solutions" },
+  { label: "Interactive Demos", href: "/demo" },
+  { label: "How It Works", href: "/#how-it-works" },
+  { label: "Pricing & ROI", href: "/#pricing" },
+  { label: "Why Cogniv", href: "/#why-cogniv" },
+  { label: "Industries", href: "/#industries" },
 ];
 

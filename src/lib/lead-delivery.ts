@@ -37,11 +37,12 @@ Name: ${lead.name}
 Business: ${lead.businessName}
 Email: ${lead.email}
 Phone: ${lead.phone}
-Industry: ${lead.industry}
-Company Size: ${lead.companySize}
+Automation Area: ${lead.automationType ? (Array.isArray(lead.automationType) ? lead.automationType.join(", ") : lead.automationType) : "Not specified"}
+Industry: ${lead.industry || "Not specified"}
+Company Size: ${lead.companySize || "Not specified"}
 
 Process to Automate:
-${lead.process}
+${lead.process || (lead.automationType ? (Array.isArray(lead.automationType) ? lead.automationType.join(", ") : lead.automationType) : "General audit")}
 
 Current Tools:
 ${lead.tools || "None specified"}

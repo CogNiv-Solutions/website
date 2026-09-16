@@ -20,7 +20,8 @@ export function Navbar() {
   }, []);
 
   useEffect(() => {
-    const ids = navLinks.map((l) => l.href.slice(1));
+    const hashLinks = navLinks.filter((l) => l.href.startsWith("#") || l.href.startsWith("/#"));
+    const ids = hashLinks.map((l) => l.href.replace(/^\/?#/, ""));
     const obs = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => {

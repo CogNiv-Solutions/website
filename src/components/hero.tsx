@@ -18,27 +18,26 @@ export function Hero() {
             </h1>
           </Reveal>
           <Reveal delay={0.16}>
-            <p className="mt-5 max-w-[58ch] text-base leading-relaxed text-[#0b0e0d]/65 md:text-lg">
-              We find where your business is losing time, identify what can be automated, and build
-              the systems that make it run smarter — starting with the work your team repeats every day.
+            <p className="mt-5 max-w-[58ch] text-base leading-relaxed text-[#0b0e0d]/70 md:text-lg">
+              Cogniv finds the repetitive work slowing your business down and builds automated workflows around the tools you already use.
             </p>
           </Reveal>
           <Reveal delay={0.24}>
             <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
               <a
                 href="#contact"
-                className="btn-press group inline-flex items-center justify-center gap-2 rounded-full bg-[#0b0e0d] px-2.5 py-2.5 pl-6 text-[15px] font-medium text-white hover:bg-[#1a201e]"
+                className="btn-press group inline-flex items-center justify-center gap-2 rounded-xl bg-[#2563eb] px-2.5 py-2.5 pl-6 text-[15px] font-semibold text-white shadow-sm hover:bg-[#1d4ed8]"
               >
                 Book a Free Automation Audit
-                <span className="grid h-9 w-9 place-items-center rounded-full bg-white/15 transition-transform duration-300 group-hover:translate-x-1">
+                <span className="grid h-9 w-9 place-items-center rounded-lg bg-white/20 transition-transform duration-300 group-hover:translate-x-1">
                   <ArrowRight className="h-4 w-4" aria-hidden />
                 </span>
               </a>
               <a
-                href="#demo"
-                className="btn-press inline-flex items-center justify-center gap-2 rounded-full border border-[#0b0e0d]/15 bg-white px-6 py-3.5 text-[15px] font-medium text-[#0b0e0d] hover:border-[#0b0e0d]/30"
+                href="/demo"
+                className="btn-press inline-flex items-center justify-center gap-2 rounded-xl border border-[#0b0e0d]/15 bg-white px-6 py-3.5 text-[15px] font-medium text-[#0b0e0d] hover:border-[#0b0e0d]/30"
               >
-                <PlayCircle className="h-4.5 w-4.5" aria-hidden /> Explore Our Demo
+                <PlayCircle className="h-4.5 w-4.5" aria-hidden /> See Interactive Demos
               </a>
             </div>
           </Reveal>

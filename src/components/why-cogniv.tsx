@@ -1,64 +1,63 @@
-import { Crosshair, Puzzle, Cpu, Gauge, Package } from "lucide-react";
+import { Target, Puzzle, Sparkles, BarChart3 } from "lucide-react";
 import { SectionHeading } from "./section-heading";
 import { Stagger, StaggerItem } from "./reveal";
 
 const points = [
   {
-    icon: Crosshair,
-    title: "Problem-first",
-    text: "We start with the workflow, not the technology. If a checklist fixes it, we say so.",
+    icon: Target,
+    tag: "01 — Workflow First",
+    title: "Problem First",
+    text: "We identify the workflow before recommending technology. If a simple rule or standard tool fixes it, we implement that.",
   },
   {
     icon: Puzzle,
-    title: "Built around your business",
-    text: "No bloated suites. The system fits how your team already works.",
+    tag: "02 — Non-Disruptive",
+    title: "Built Around Your Business",
+    text: "We work with the tools and processes your team already uses — WhatsApp, sheets, CRMs, email — rather than forcing you to switch.",
   },
   {
-    icon: Cpu,
-    title: "AI where it helps",
-    text: "AI for judgement-like steps; plain automation where rules are enough — and cheaper.",
+    icon: Sparkles,
+    tag: "03 — Practical Tech",
+    title: "AI Where It Helps",
+    text: "We use AI where it provides real business value rather than forcing complex AI into every routine workflow.",
   },
   {
-    icon: Gauge,
-    title: "Measurable outcomes",
-    text: "Response time, hours saved, errors avoided — tracked in plain numbers.",
-  },
-  {
-    icon: Package,
-    title: "Product mindset",
-    text: "Reusable systems with logs and owners — not temporary scripts tied to one person.",
+    icon: BarChart3,
+    tag: "04 — Clear ROI",
+    title: "Measurable Outcomes",
+    text: "We focus on measurable improvements such as hours saved, faster response time, and reduced manual copy-paste errors.",
   },
 ];
 
 export function WhyCogniv() {
   return (
-    <section aria-labelledby="why-h" className="border-t border-[#0b0e0d]/8">
+    <section id="why-cogniv" aria-labelledby="why-h" className="scroll-mt-20 border-t border-[#0b0e0d]/8">
       <div className="mx-auto max-w-7xl px-4 py-20 md:px-8 md:py-28">
         <SectionHeading
           eyebrow="Why Cogniv"
-          title={<span id="why-h">Operators first. Technologists second.</span>}
-          copy="Anyone can demo AI. Fewer teams will sit with your staff, learn the messy reality, and stay until the numbers move."
+          title={<span id="why-h">We start with the work, not the technology.</span>}
+          copy="Cogniv acts as your automation partner. We eliminate repetitive friction without unnecessary tech jargon or forced complexity."
         />
-        <Stagger className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {points.map((p, i) => (
-            <StaggerItem key={p.title} className={i === 0 ? "lg:col-span-2" : undefined}>
-              <article className="flex h-full gap-4 rounded-[1.4rem] border border-[#0b0e0d]/10 bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:card-shadow">
-                <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-[#eff6ff] text-[#1d4ed8]">
-                  <p.icon className="h-5 w-5" strokeWidth={1.75} aria-hidden />
-                </span>
-                <span>
-                  <h3 className="text-[16.5px] font-semibold tracking-tight">{p.title}</h3>
-                  <p className="mt-1.5 text-[14px] leading-relaxed text-[#0b0e0d]/60">{p.text}</p>
-                </span>
+
+        <Stagger className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {points.map((p) => (
+            <StaggerItem key={p.title} className="h-full">
+              <article className="flex h-full flex-col justify-between rounded-[1.4rem] border border-[#0b0e0d]/10 bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-[#2563eb]/40 hover:card-shadow">
+                <div>
+                  <div className="flex items-center justify-between">
+                    <span className="grid h-11 w-11 place-items-center rounded-xl bg-[#eff6ff] text-[#2563eb]">
+                      <p.icon className="h-5 w-5" strokeWidth={1.75} aria-hidden />
+                    </span>
+                    <span className="font-mono text-[10.5px] uppercase tracking-[0.16em] text-[#0b0e0d]/40">
+                      {p.tag}
+                    </span>
+                  </div>
+                  <h3 className="mt-5 text-[17px] font-semibold tracking-tight text-[#0b0e0d]">{p.title}</h3>
+                  <p className="mt-2 text-[13.5px] leading-relaxed text-[#0b0e0d]/65">{p.text}</p>
+                </div>
               </article>
             </StaggerItem>
           ))}
-          <StaggerItem>
-            <div className="flex h-full flex-col justify-between rounded-[1.4rem] bg-[#0b0e0d] p-6 text-white">
-              <p className="text-[17px] font-medium leading-snug">“These people understand business operations, not just AI.”</p>
-              <p className="mt-4 font-mono text-[12px] text-white/50">— what we want every audit to leave behind</p>
-            </div>
-          </StaggerItem>
         </Stagger>
       </div>
     </section>

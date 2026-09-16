@@ -1,95 +1,164 @@
 "use client";
 
 import { useState } from "react";
-import { AnimatePresence, motion } from "motion/react";
-import { ArrowRight, Check } from "lucide-react";
-import { cn } from "@/lib/utils";
-import { industries } from "@/lib/data";
+import { ArrowRight, Building2, GraduationCap, Factory, Truck, Briefcase, Boxes, MessageSquare } from "lucide-react";
 import { SectionHeading } from "./section-heading";
-import { Reveal } from "./reveal";
+import { Stagger, StaggerItem } from "./reveal";
+import { WorkflowAuditModal, type IndustryWorkflow } from "./workflow-audit-modal";
+import { getWhatsAppUrl } from "@/lib/utils";
+
+const industryList: (IndustryWorkflow & { icon: typeof Boxes })[] = [
+  {
+    id: "distributors",
+    icon: Boxes,
+    name: "Distributors & Wholesalers",
+    example: "Order intake → stock check → invoice draft → dispatch alert",
+    desc: "Eliminate order errors and speed up dispatch without adding manual data entry staff.",
+    types: ["Data Entry", "Documents", "Internal Operations"],
+  },
+  {
+    id: "real-estate",
+    icon: Building2,
+    name: "Real Estate",
+    example: "WhatsApp enquiry → lead qualification → property match → site-visit follow-up",
+    desc: "Automate enquiry qualification, property matching, and scheduled follow-ups so zero leads go cold.",
+    types: ["Lead Management", "WhatsApp", "Follow-ups"],
+  },
+  {
+    id: "education",
+    icon: GraduationCap,
+    name: "Coaching & Education",
+    example: "Admission enquiry → counsellor triage → batch alerts → fee reminders",
+    desc: "Free counsellors to close admissions rather than copying responses across WhatsApp and registers.",
+    types: ["Lead Management", "WhatsApp", "Follow-ups"],
+  },
+  {
+    id: "manufacturing",
+    icon: Factory,
+    name: "Manufacturing",
+    example: "Job card intake → material QC checklist → supervisor tracking → daily report",
+    desc: "Keep shop-floor and inventory status transparent without constantly calling plant managers.",
+    types: ["Data Entry", "Internal Operations", "Documents"],
+  },
+  {
+    id: "logistics",
+    icon: Truck,
+    name: "Logistics",
+    example: "Booking request → driver dispatch → WhatsApp POD upload → billing sync",
+    desc: "Cut 'where-is-my-truck' status queries and reconcile vendor billing without delays.",
+    types: ["WhatsApp", "Documents", "Internal Operations"],
+  },
+  {
+    id: "services",
+    icon: Briefcase,
+    name: "Professional Services",
+    example: "Client intake → task creation → milestone reminder → invoice trigger",
+    desc: "Keep project deliverables, team timesheets, and milestone billing synchronized from day one.",
+    types: ["Documents", "Internal Operations", "Follow-ups"],
+  },
+];
 
 export function Industries() {
-  const [id, setId] = useState(industries[1].id);
-  const current = industries.find((i) => i.id === id)!;
+  const [selectedIndustry, setSelectedIndustry] = useState<IndustryWorkflow | null>(null);
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const handleAuditClick = (ind: IndustryWorkflow) => {
+    setSelectedIndustry(ind);
+    setModalOpen(true);
+    // Also dispatch event so contact form on page is prefilled if navigated
+    if (typeof window !== "undefined") {
+      window.dispatchEvent(new CustomEvent("cogniv:audit-workflow", { detail: ind }));
+    }
+  };
+
+  const handleJumpToFullForm = (ind: IndustryWorkflow) => {
+    if (typeof window !== "undefined") {
+      window.dispatchEvent(new CustomEvent("cogniv:audit-workflow", { detail: ind }));
+      const contactEl = document.getElementById("contact");
+      if (contactEl) {
+        contactEl.scrollIntoView({ behavior: "smooth", block: "start" });
+        setTimeout(() => {
+          const nameInput = document.getElementById("f-name");
+          nameInput?.focus();
+        }, 450);
+      }
+    }
+  };
 
   return (
     <section id="industries" aria-labelledby="ind-h" className="scroll-mt-20 border-t border-[#0b0e0d]/8">
       <div className="mx-auto max-w-7xl px-4 py-20 md:px-8 md:py-28">
         <SectionHeading
           eyebrow="Industries"
-          title={<span id="ind-h">Start where the manual work hurts most.</span>}
-          copy="Every industry repeats different work. Select one to see a typical flow and where automation fits — mapped during an audit, not assumed."
+          title={<span id="ind-h">Built for businesses with repetitive work.</span>}
+          copy="Every industry has specific manual bottlenecks. Cogniv implements battle-tested workflow automations tailored to your operational rhythm."
         />
 
-        <Reveal delay={0.08}>
-          <div className="mt-8 flex gap-2 overflow-x-auto pb-2 no-scrollbar" role="tablist" aria-label="Industries">
-            {industries.map((ind) => (
-              <button
-                key={ind.id}
-                role="tab"
-                aria-selected={id === ind.id}
-                onClick={() => setId(ind.id)}
-                className={cn(
-                  "shrink-0 rounded-full border px-4 py-2.5 text-[14px] font-medium transition-all",
-                  id === ind.id
-                    ? "border-[#0b0e0d] bg-[#0b0e0d] text-white"
-                    : "border-[#0b0e0d]/12 bg-white text-[#0b0e0d]/65 hover:border-[#0b0e0d]/30 hover:text-[#0b0e0d]"
-                )}
-              >
-                {ind.name}
-              </button>
-            ))}
-          </div>
-        </Reveal>
+        <Stagger className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {industryList.map((ind) => (
+            <StaggerItem key={ind.id} className="h-full">
+              <article className="flex h-full flex-col justify-between rounded-[1.4rem] border border-[#0b0e0d]/10 bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-[#2563eb]/40 hover:card-shadow">
+                <div>
+                  <div className="flex items-center gap-3">
+                    <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-[#eff6ff] text-[#2563eb]">
+                      <ind.icon className="h-5 w-5" aria-hidden />
+                    </span>
+                    <h3 className="text-[17px] font-semibold tracking-tight text-[#0b0e0d]">
+                      {ind.name}
+                    </h3>
+                  </div>
 
-        <Reveal delay={0.12}>
-          <div className="mt-4 overflow-hidden rounded-[1.75rem] border border-[#0b0e0d]/10 bg-white card-shadow">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={current.id}
-                initial={{ opacity: 0, y: 14 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.35, ease: [0.32, 0.72, 0, 1] }}
-                className="grid gap-0 lg:grid-cols-[1fr_1fr_1fr]"
-              >
-                <div className="border-b border-[#0b0e0d]/8 p-6 md:p-8 lg:border-b-0 lg:border-r">
-                  <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-[#0b0e0d]/45">Common manual workflow</p>
-                  <ol className="mt-4 space-y-2.5">
-                    {current.manual.map((m, i) => (
-                      <li key={m} className="flex items-start gap-2.5 text-[14.5px] text-[#0b0e0d]/75">
-                        <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-[#0b0e0d]/8 font-mono text-[10.5px] font-semibold">{i + 1}</span>
-                        {m}
-                      </li>
-                    ))}
-                  </ol>
+                  <div className="mt-4 rounded-xl bg-[#fafaf9] border border-[#0b0e0d]/6 p-3">
+                    <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-[#0b0e0d]/45">
+                      Example Workflow
+                    </p>
+                    <p className="mt-1 font-mono text-[12px] font-medium text-[#2563eb] leading-relaxed">
+                      {ind.example}
+                    </p>
+                  </div>
+
+                  <p className="mt-3 text-[13.5px] leading-relaxed text-[#0b0e0d]/65">
+                    {ind.desc}
+                  </p>
                 </div>
-                <div className="border-b border-[#0b0e0d]/8 bg-[#0b0e0d] p-6 text-white md:p-8 lg:border-b-0 lg:border-r lg:border-white/10">
-                  <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-white/50">Automation opportunity</p>
-                  <ol className="mt-4 space-y-2.5">
-                    {current.automate.map((m) => (
-                      <li key={m} className="flex items-start gap-2.5 text-[14.5px] text-white/85">
-                        <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-blue-400/20">
-                          <Check className="h-3 w-3 text-blue-300" aria-hidden />
-                        </span>
-                        {m}
-                      </li>
-                    ))}
-                  </ol>
+
+                <div className="mt-5 border-t border-[#0b0e0d]/6 pt-4 space-y-2.5">
+                  <button
+                    type="button"
+                    onClick={() => handleAuditClick(ind)}
+                    className="btn-press group inline-flex w-full items-center justify-between rounded-xl border border-[#2563eb]/20 bg-[#eff6ff] px-4 py-2.5 text-[13px] font-semibold text-[#1d4ed8] transition-all hover:border-[#2563eb] hover:bg-[#2563eb] hover:text-white"
+                  >
+                    <span>Audit this workflow</span>
+                    <ArrowRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-1" aria-hidden />
+                  </button>
+
+                  <div className="flex items-center justify-between text-[11.5px] text-[#0b0e0d]/50 px-1">
+                    <span>⚡ 30-min live review</span>
+                    <a
+                      href={getWhatsAppUrl(`Hi Cogniv, I want to audit our ${ind.name} workflow: "${ind.example}".`)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 font-medium text-[#2563eb] hover:underline"
+                    >
+                      <MessageSquare className="h-3 w-3" />
+                      Chat on WhatsApp
+                    </a>
+                  </div>
                 </div>
-                <div className="bg-[#f0f7ff] p-6 md:p-8">
-                  <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-[#1d4ed8]/60">Operational benefit</p>
-                  <p className="mt-4 text-[17px] font-medium leading-snug text-[#0b0e0d]">{current.benefit}</p>
-                  <a href="#contact" className="btn-press mt-6 inline-flex items-center gap-2 rounded-full bg-[#0b0e0d] px-5 py-3 text-[14px] font-medium text-white hover:bg-[#1a201e]">
-                    Audit my {current.name.split(" ")[0]} workflow <ArrowRight className="h-4 w-4" aria-hidden />
-                  </a>
-                  <p className="mt-3 font-mono text-[11.5px] text-[#0b0e0d]/45">Illustrative example — your audit maps your exact flow.</p>
-                </div>
-              </motion.div>
-            </AnimatePresence>
-          </div>
-        </Reveal>
+              </article>
+            </StaggerItem>
+          ))}
+        </Stagger>
       </div>
+
+      {/* Interactive Workflow Audit Dialog */}
+      <WorkflowAuditModal
+        isOpen={modalOpen}
+        onClose={() => setModalOpen(false)}
+        industry={selectedIndustry}
+        onJumpToFullForm={handleJumpToFullForm}
+      />
     </section>
   );
 }
+

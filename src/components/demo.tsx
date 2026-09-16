@@ -160,9 +160,9 @@ export function Demo() {
       <div className="mx-auto max-w-7xl px-4 py-20 md:px-8 md:py-28">
         <SectionHeading
           dark
-          eyebrow="Live demo — sample data"
-          title={<span id="demo-h">Watch an enquiry become a tracked lead.</span>}
-          copy="This is a simulated product walkthrough with sample content. Press run and watch each stage complete — the same pattern Cogniv applies to real WhatsApp, lead and follow-up flows."
+          eyebrow="Proof & Demonstration"
+          title={<span id="demo-h">See the work getting done.</span>}
+          copy="Watch a live simulation of real workflow automation: from an incoming WhatsApp customer enquiry to structured lead creation, CRM update, and scheduled follow-up."
         />
 
         <div className="mt-10 grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
@@ -214,9 +214,9 @@ export function Demo() {
                     {running ? "Running…" : visible > 0 ? "Continue demo" : "Run Demo"}
                   </button>
                 ) : (
-                  <p className="inline-flex flex-1 items-center justify-center gap-2 rounded-full bg-blue-400/15 px-6 py-3.5 text-[15px] font-semibold text-blue-200" role="status">
+                  <div className="inline-flex flex-1 items-center justify-center gap-2 rounded-full bg-blue-400/15 px-6 py-3.5 text-[15px] font-semibold text-blue-200" role="status">
                     <LottieAnimation name="pulse" loop className="h-7 w-7" /> Demo complete
-                  </p>
+                  </div>
                 )}
                 <button
                   onClick={reset}

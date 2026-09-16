@@ -8,9 +8,9 @@ export function ProcessTimeline() {
     <section id="how-it-works" aria-labelledby="how-h" className="scroll-mt-20 border-t border-[#0b0e0d]/8 bg-white">
       <div className="mx-auto max-w-7xl px-4 py-20 md:px-8 md:py-28">
         <SectionHeading
-          eyebrow="How we work"
-          title={<span id="how-h">From audit to operation, without disruption.</span>}
-          copy="A fixed sequence, so you always know what happens next — and what it costs before we build."
+          eyebrow="How It Works"
+          title={<span id="how-h">From manual process to working system.</span>}
+          copy="A transparent 5-step process — from identifying repetitive bottlenecks to integrating and optimizing an automated workflow."
         />
         <ol className="relative mt-12 space-y-0">
           <span className="absolute bottom-6 left-[27px] top-6 w-px bg-[#0b0e0d]/10 md:left-[31px]" aria-hidden />

@@ -17,6 +17,7 @@ export function Logo({ dark = false, compact = false }: { dark?: boolean; compac
           width={compact ? 32 : 36}
           height={compact ? 32 : 36}
           className="h-full w-full object-contain"
+          style={{ width: "auto", height: "auto" }}
           priority
         />
       </span>

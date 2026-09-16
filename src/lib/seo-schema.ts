@@ -105,7 +105,7 @@ export function generateSeoJsonLd() {
         "@type": "Service",
         "@id": `${SITE.url}/#service-${solution.id}`,
         name: solution.title,
-        description: `${solution.short} ${solution.detail}`,
+        description: solution.detail ? `${solution.short} ${solution.detail}` : `${solution.short} - ${solution.points.join(". ")}`,
         provider: {
           "@id": `${SITE.url}/#organization`,
         },

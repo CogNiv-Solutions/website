@@ -21,30 +21,33 @@ export const contactSchema = z.object({
     .trim()
     .min(6, "Enter a valid phone number")
     .max(30, "Phone number is too long (max 30 characters)"),
+  automationType: z
+    .union([z.string(), z.array(z.string())])
+    .optional(),
   industry: z
     .string()
     .trim()
-    .min(1, "Select an industry")
-    .max(100, "Industry is too long (max 100 characters)"),
+    .max(100, "Industry is too long")
+    .optional(),
   companySize: z
     .string()
     .trim()
-    .min(1, "Select company size")
-    .max(50, "Company size is too long (max 50 characters)"),
+    .max(50, "Company size is too long")
+    .optional(),
   process: z
     .string()
     .trim()
-    .min(10, "Describe the process in a few words (min 10 characters)")
-    .max(3000, "Process description is too long (max 3000 characters)"),
+    .max(3000, "Process description is too long")
+    .optional(),
   tools: z
     .string()
     .trim()
-    .max(500, "Tools field is too long (max 500 characters)")
+    .max(500, "Tools field is too long")
     .optional(),
   message: z
     .string()
     .trim()
-    .max(3000, "Message is too long (max 3000 characters)")
+    .max(3000, "Message is too long")
     .optional(),
   _hp: z
     .string()

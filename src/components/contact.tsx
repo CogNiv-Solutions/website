@@ -1,10 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import dynamic from "next/dynamic";
-import { Loader2, TriangleAlert, ArrowRight } from "lucide-react";
+import { Loader2, TriangleAlert, ArrowRight, CheckCircle2, MessageSquare, Calendar, Mail, Phone, Sparkles } from "lucide-react";
 import { contactSchema, submitAuditRequest, type ContactInput } from "@/lib/validation";
 import { SectionHeading } from "./section-heading";
 import { Reveal } from "./reveal";
@@ -12,8 +12,15 @@ import { cn, SITE, getWhatsAppUrl } from "@/lib/utils";
 
 const LottieAnimation = dynamic(() => import("./lottie-animation"), { ssr: false });
 
-const industries = ["Distributors & Wholesalers", "Real Estate", "Coaching & Education", "Manufacturing", "Logistics", "Professional Services", "Other"];
-const sizes = ["1–10", "11–50", "51–200", "200+"];
+const automationOptions = [
+  "Lead Management",
+  "WhatsApp",
+  "Data Entry",
+  "Documents",
+  "Follow-ups",
+  "Internal Operations",
+  "Other",
+];
 
 function Field({
   label,
@@ -28,12 +35,12 @@ function Field({
 }) {
   return (
     <div className="flex flex-col gap-1.5">
-      <label htmlFor={htmlFor} className="text-[13.5px] font-medium text-[#0b0e0d]">
+      <label htmlFor={htmlFor} className="text-[13px] font-medium text-[#0b0e0d]">
         {label}
       </label>
       {children}
       {error ? (
-        <p className="text-[12.5px] font-medium text-red-700" role="alert">{error}</p>
+        <p className="text-[12px] font-medium text-red-600" role="alert">{error}</p>
       ) : null}
     </div>
   );
@@ -48,19 +55,67 @@ const inputCls = (bad?: string) =>
 export function Contact() {
   const [status, setStatus] = useState<"idle" | "sending" | "ok" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState<string>("");
+  const [selectedTypes, setSelectedTypes] = useState<string[]>(["Lead Management"]);
+  const [activeWorkflow, setActiveWorkflow] = useState<{ name: string; example: string } | null>(null);
+  const [highlighted, setHighlighted] = useState(false);
 
   const {
     register,
     handleSubmit,
     reset,
+    setValue,
     formState: { errors },
-  } = useForm<ContactInput>({ resolver: zodResolver(contactSchema) });
+  } = useForm<ContactInput>({
+    resolver: zodResolver(contactSchema),
+    defaultValues: {
+      automationType: ["Lead Management"],
+    },
+  });
+
+  useEffect(() => {
+    const handleCustomAudit = (e: Event) => {
+      const detail = (e as CustomEvent).detail;
+      if (!detail) return;
+      setActiveWorkflow({ name: detail.name, example: detail.example });
+      if (Array.isArray(detail.types) && detail.types.length > 0) {
+        setSelectedTypes(detail.types);
+        setValue("automationType", detail.types);
+      }
+      setValue("industry", detail.name);
+      setValue("process", `[${detail.name} Workflow Audit] ${detail.example}`);
+      setHighlighted(true);
+      setTimeout(() => setHighlighted(false), 2400);
+    };
+
+    window.addEventListener("cogniv:audit-workflow", handleCustomAudit);
+    return () => window.removeEventListener("cogniv:audit-workflow", handleCustomAudit);
+  }, [setValue]);
+
+  const toggleType = (opt: string) => {
+    let next: string[];
+    if (selectedTypes.includes(opt)) {
+      next = selectedTypes.filter((t) => t !== opt);
+      if (next.length === 0) next = [opt]; // Keep at least one
+    } else {
+      next = [...selectedTypes, opt];
+    }
+    setSelectedTypes(next);
+    setValue("automationType", next);
+  };
 
   const onSubmit = async (data: ContactInput) => {
     setStatus("sending");
     setErrorMessage("");
     try {
-      const res = await submitAuditRequest(data);
+      const payload: ContactInput = {
+        ...data,
+        automationType: selectedTypes,
+        industry: activeWorkflow?.name || data.industry || undefined,
+        process: activeWorkflow
+          ? `[${activeWorkflow.name} Workflow Audit] ${activeWorkflow.example} (Automate: ${selectedTypes.join(", ")})`
+          : `Automate: ${selectedTypes.join(", ")}`,
+      };
+      const res = await submitAuditRequest(payload);
       if (res.ok) {
         setStatus("ok");
         reset();
@@ -71,84 +126,135 @@ export function Contact() {
         } else if (res.status === 400) {
           setErrorMessage("Please check your information and try again.");
         } else {
-          setErrorMessage("Something went wrong. Please try again or email us directly.");
+          setErrorMessage("Something went wrong. Please try again or message us on WhatsApp.");
         }
       }
     } catch {
       setStatus("error");
-      setErrorMessage("Something went wrong. Please try again or email us directly.");
+      setErrorMessage("Something went wrong. Please try again or message us on WhatsApp.");
     }
   };
 
   return (
     <section id="contact" aria-labelledby="contact-h" className="scroll-mt-20 border-t border-[#0b0e0d]/8">
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-20 md:px-8 md:py-28 lg:grid-cols-[0.95fr_1.05fr] lg:gap-14">
+        {/* Final CTA Info (Page 11-12 in PDF) */}
         <div>
           <SectionHeading
-            eyebrow="Request audit"
-            title={<span id="contact-h">Tell us how your business works.</span>}
-            copy="A focused 30-minute review of one workflow. You leave with a map of what to automate first — whether or not we build it."
+            eyebrow="Take Action"
+            title={<span id="contact-h">What’s slowing your business down?</span>}
+            copy="Tell us what your team does manually every day. We’ll identify what can be automated — and what shouldn’t be."
           />
-          <ul className="mt-7 space-y-3">
-            {[
-              ["What you get", "One workflow mapped + automation candidates ranked by effort and return."],
-              ["What we need", "Access to one process owner and a look at the tools you use today."],
-              ["No pressure", "If nothing is worth automating yet, we tell you that plainly."],
-            ].map(([k, v]) => (
-              <li key={k} className="rounded-2xl border border-[#0b0e0d]/10 bg-white p-4">
-                <p className="text-[14px] font-semibold">{k}</p>
-                <p className="mt-1 text-[14px] text-[#0b0e0d]/60">{v}</p>
-              </li>
-            ))}
-          </ul>
-          <div className="mt-6 flex flex-col gap-2 rounded-2xl border border-[#0b0e0d]/10 bg-white p-4">
-            <p className="text-[13px] text-[#0b0e0d]/80 flex items-center justify-between">
-              <span>💬 Want to talk right now?</span>
+
+          <div className="mt-6 inline-flex items-center gap-2 rounded-full border border-[#2563eb]/20 bg-[#eff6ff] px-4 py-1.5 text-[13px] font-medium text-[#1d4ed8]">
+            <CheckCircle2 className="h-4 w-4 text-[#2563eb]" aria-hidden />
+            30-minute workflow review • No obligation
+          </div>
+
+          <div className="mt-8 space-y-3">
+            <div className="flex items-center justify-between rounded-2xl border border-[#0b0e0d]/10 bg-white p-4">
+              <span className="flex items-center gap-3 text-[14px] font-medium text-[#0b0e0d]">
+                <MessageSquare className="h-4 w-4 text-[#2563eb]" aria-hidden />
+                Prefer immediate chat?
+              </span>
               <a
-                href={getWhatsAppUrl("Hi Cogniv, I'd like to schedule an Automation Audit for my business.")}
+                href={getWhatsAppUrl("Hi Cogniv, I'd like to book a free Automation Audit for my business.")}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-semibold text-blue-600 underline underline-offset-4 hover:text-blue-700"
+                className="font-semibold text-[#2563eb] underline underline-offset-4 hover:text-[#1d4ed8]"
               >
                 Chat on WhatsApp
               </a>
-            </p>
-            <p className="text-[13px] text-[#0b0e0d]/80 flex items-center justify-between pt-2 border-t border-[#0b0e0d]/8">
-              <span>📅 Prefer a direct calendar slot?</span>
+            </div>
+
+            {SITE.calendarUrl ? (
+              <div className="flex items-center justify-between rounded-2xl border border-[#0b0e0d]/10 bg-white p-4">
+                <span className="flex items-center gap-3 text-[14px] font-medium text-[#0b0e0d]">
+                  <Calendar className="h-4 w-4 text-[#2563eb]" aria-hidden />
+                  Book directly on calendar?
+                </span>
+                <a
+                  href={SITE.calendarUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-semibold text-[#0b0e0d] underline underline-offset-4 hover:text-[#2563eb]"
+                >
+                  Book 20-min Slot
+                </a>
+              </div>
+            ) : (
+              <div className="flex items-center justify-between rounded-2xl border border-[#0b0e0d]/10 bg-white p-4">
+                <span className="flex items-center gap-3 text-[14px] font-medium text-[#0b0e0d]">
+                  <Phone className="h-4 w-4 text-[#2563eb]" aria-hidden />
+                  Call us directly
+                </span>
+                <a
+                  href={`tel:${SITE.phone.replace(/\s+/g, "")}`}
+                  className="font-mono text-[13.5px] font-semibold text-[#0b0e0d] hover:text-[#2563eb]"
+                >
+                  {SITE.phone}
+                </a>
+              </div>
+            )}
+
+            <div className="flex items-center justify-between rounded-2xl border border-[#0b0e0d]/10 bg-white p-4">
+              <span className="flex items-center gap-3 text-[14px] font-medium text-[#0b0e0d]">
+                <Mail className="h-4 w-4 text-[#0b0e0d]/50" aria-hidden />
+                Direct inquiry
+              </span>
               <a
-                href={SITE.calendarUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-semibold text-[#0b0e0d] underline underline-offset-4 hover:text-[#2563eb]"
+                href={`mailto:${SITE.email}`}
+                className="font-mono text-[13px] text-[#0b0e0d]/70 underline underline-offset-4 hover:text-[#2563eb]"
               >
-                Book 20-min Call
+                {SITE.email}
               </a>
-            </p>
-            <p className="font-mono text-[12px] text-[#0b0e0d]/50 pt-1">
-              Prefer email? <a className="underline underline-offset-4" href={`mailto:${SITE.email}`}>{SITE.email}</a>
-            </p>
+            </div>
           </div>
+
+          <p className="mt-8 text-[14px] text-[#0b0e0d]/60">
+            Want to see real workflows first?{" "}
+            <a href="/demo" className="font-semibold text-[#2563eb] underline underline-offset-4 hover:text-[#1d4ed8]">
+              See Live Workflow Demos
+            </a>
+          </p>
         </div>
 
+        {/* Audit Form (Page 12-13 in PDF) */}
         <Reveal delay={0.08}>
-          <div className="rounded-[1.75rem] border border-[#0b0e0d]/10 bg-white p-6 card-shadow md:p-8">
+          <div
+            className={cn(
+              "rounded-[1.75rem] border bg-white p-6 card-shadow md:p-8 transition-all duration-500",
+              highlighted ? "border-[#2563eb] ring-4 ring-[#2563eb]/20 shadow-xl" : "border-[#0b0e0d]/10"
+            )}
+          >
             {status === "ok" ? (
-              <div className="grid min-h-[480px] place-items-center text-center" role="status">
+              <div className="grid min-h-[420px] place-items-center text-center" role="status">
                 <div>
-                  <LottieAnimation name="success" className="mx-auto h-24 w-24" />
-                  <h3 className="mt-4 text-xl font-semibold">Request received.</h3>
-                  <p className="mx-auto mt-2 max-w-[42ch] text-[14.5px] text-[#0b0e0d]/60">
-                    Thanks — we’ll reply within one business day to schedule your automation audit.
+                  <LottieAnimation name="success" className="mx-auto h-20 w-20" />
+                  <h3 className="mt-4 text-2xl font-semibold tracking-tight">Audit request received.</h3>
+                  <p className="mx-auto mt-2 max-w-[38ch] text-[14.5px] leading-relaxed text-[#0b0e0d]/65">
+                    Thank you! We’ll review your business workflows and reach out within 1 business day to schedule your audit.
                   </p>
                   <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
-                    <a
-                      href={SITE.calendarUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn-press rounded-full bg-[#0b0e0d] px-6 py-3 text-[14px] font-medium text-white hover:bg-[#1a201e]"
-                    >
-                      📅 Pick a calendar slot now
-                    </a>
+                    {SITE.calendarUrl ? (
+                      <a
+                        href={SITE.calendarUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn-press rounded-full bg-[#2563eb] px-6 py-3 text-[14px] font-semibold text-white hover:bg-[#1d4ed8]"
+                      >
+                        Book immediate calendar slot
+                      </a>
+                    ) : (
+                      <a
+                        href={getWhatsAppUrl("Hi Cogniv, I just submitted an Automation Audit request on your website and would like to confirm.")}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn-press rounded-full bg-[#2563eb] px-6 py-3 text-[14px] font-semibold text-white hover:bg-[#1d4ed8]"
+                      >
+                        💬 Confirm on WhatsApp
+                      </a>
+                    )}
                     <button
                       type="button"
                       onClick={() => {
@@ -157,13 +263,13 @@ export function Contact() {
                       }}
                       className="btn-press rounded-full border border-[#0b0e0d]/15 px-6 py-3 text-[14px] font-medium hover:border-[#0b0e0d]/35"
                     >
-                      Send another request
+                      Submit another
                     </button>
                   </div>
                 </div>
               </div>
             ) : (
-              <form onSubmit={handleSubmit(onSubmit)} noValidate className="grid gap-4 sm:grid-cols-2">
+              <form onSubmit={handleSubmit(onSubmit)} noValidate className="space-y-5">
                 {/* Honeypot anti-spam field */}
                 <div style={{ position: "absolute", left: "-9999px", opacity: 0, pointerEvents: "none" }} aria-hidden="true">
                   <label htmlFor="f-hp">Leave this field blank</label>
@@ -176,72 +282,136 @@ export function Contact() {
                   />
                 </div>
 
-                <Field label="Name" error={errors.name?.message} htmlFor="f-name">
-                  <input id="f-name" autoComplete="name" placeholder="Aarav Sharma" className={inputCls(errors.name?.message)} {...register("name")} />
-                </Field>
-                <Field label="Business name" error={errors.businessName?.message} htmlFor="f-biz">
-                  <input id="f-biz" autoComplete="organization" placeholder="Sharma Estates" className={inputCls(errors.businessName?.message)} {...register("businessName")} />
-                </Field>
-                <Field label="Work email" error={errors.email?.message} htmlFor="f-email">
-                  <input id="f-email" type="email" autoComplete="email" placeholder="you@company.com" className={inputCls(errors.email?.message)} {...register("email")} />
-                </Field>
-                <Field label="Phone" error={errors.phone?.message} htmlFor="f-phone">
-                  <input id="f-phone" type="tel" autoComplete="tel" placeholder="+91 98765 43210" className={inputCls(errors.phone?.message)} {...register("phone")} />
-                </Field>
-                <Field label="Industry" error={errors.industry?.message} htmlFor="f-ind">
-                  <select id="f-ind" className={inputCls(errors.industry?.message)} defaultValue="" {...register("industry")}>
-                    <option value="" disabled>Select…</option>
-                    {industries.map((i) => <option key={i} value={i}>{i}</option>)}
-                  </select>
-                </Field>
-                <Field label="Company size" error={errors.companySize?.message} htmlFor="f-size">
-                  <select id="f-size" className={inputCls(errors.companySize?.message)} defaultValue="" {...register("companySize")}>
-                    <option value="" disabled>Select…</option>
-                    {sizes.map((s) => <option key={s} value={s}>{s}</option>)}
-                  </select>
-                </Field>
-                <div className="sm:col-span-2">
-                  <Field label="What process do you want to automate?" error={errors.process?.message} htmlFor="f-process">
-                    <textarea id="f-process" rows={3} placeholder="e.g. All site-visit enquiries come on WhatsApp and we lose track of follow-ups…" className={inputCls(errors.process?.message)} {...register("process")} />
+                {/* Active Workflow Banner */}
+                {activeWorkflow && (
+                  <div className="flex items-center justify-between rounded-2xl border border-[#2563eb]/30 bg-[#eff6ff] p-3.5 text-[13px] text-[#1d4ed8]">
+                    <div className="flex items-center gap-2.5">
+                      <span className="grid h-7 w-7 shrink-0 place-items-center rounded-xl bg-white text-[#2563eb] shadow-2xs font-bold text-[13px]">
+                        🎯
+                      </span>
+                      <div>
+                        <p className="font-semibold text-[#1d4ed8]">
+                          Auditing: {activeWorkflow.name} Workflow
+                        </p>
+                        <p className="font-mono text-[11px] text-[#2563eb]/80 leading-snug">
+                          {activeWorkflow.example}
+                        </p>
+                      </div>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setActiveWorkflow(null);
+                        setValue("industry", "");
+                        setValue("process", "");
+                      }}
+                      className="btn-press ml-2 shrink-0 rounded-lg px-2.5 py-1 text-[11.5px] font-semibold text-[#1d4ed8] hover:bg-white transition-colors"
+                    >
+                      Reset
+                    </button>
+                  </div>
+                )}
+
+                {/* Question 1: What would you like to automate? (Interactive chips) */}
+                <div>
+                  <label className="block text-[14px] font-semibold text-[#0b0e0d]">
+                    What would you like to automate?
+                  </label>
+                  <p className="mt-0.5 text-[12.5px] text-[#0b0e0d]/50">
+                    Select one or more areas you want to streamline:
+                  </p>
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    {automationOptions.map((opt) => {
+                      const active = selectedTypes.includes(opt);
+                      return (
+                        <button
+                          key={opt}
+                          type="button"
+                          onClick={() => toggleType(opt)}
+                          className={cn(
+                            "btn-press rounded-full px-3.5 py-2 text-[13px] font-medium transition-all",
+                            active
+                              ? "border border-[#2563eb] bg-[#eff6ff] text-[#1d4ed8] shadow-xs"
+                              : "border border-[#0b0e0d]/12 bg-white text-[#0b0e0d]/70 hover:border-[#0b0e0d]/30 hover:text-[#0b0e0d]"
+                          )}
+                        >
+                          {opt}
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                {/* 4 Low-Friction Details Fields (Page 13 in PDF) */}
+                <div className="grid gap-4 sm:grid-cols-2 pt-2">
+                  <Field label="Name" error={errors.name?.message} htmlFor="f-name">
+                    <input
+                      id="f-name"
+                      autoComplete="name"
+                      placeholder="e.g. Rahul Mehta"
+                      className={inputCls(errors.name?.message)}
+                      {...register("name")}
+                    />
+                  </Field>
+
+                  <Field label="Business Name" error={errors.businessName?.message} htmlFor="f-biz">
+                    <input
+                      id="f-biz"
+                      autoComplete="organization"
+                      placeholder="e.g. Apex Logistics"
+                      className={inputCls(errors.businessName?.message)}
+                      {...register("businessName")}
+                    />
+                  </Field>
+
+                  <Field label="Work Email" error={errors.email?.message} htmlFor="f-email">
+                    <input
+                      id="f-email"
+                      type="email"
+                      autoComplete="email"
+                      placeholder="you@company.com"
+                      className={inputCls(errors.email?.message)}
+                      {...register("email")}
+                    />
+                  </Field>
+
+                  <Field label="Phone Number" error={errors.phone?.message} htmlFor="f-phone">
+                    <input
+                      id="f-phone"
+                      type="tel"
+                      autoComplete="tel"
+                      placeholder="+91 98765 43210"
+                      className={inputCls(errors.phone?.message)}
+                      {...register("phone")}
+                    />
                   </Field>
                 </div>
-                <div className="sm:col-span-2">
-                  <Field label="Current tools (optional)" htmlFor="f-tools">
-                    <input id="f-tools" placeholder="e.g. WhatsApp, Excel, Tally" className={inputCls(undefined)} {...register("tools")} />
-                  </Field>
-                </div>
-                <div className="sm:col-span-2">
-                  <Field label="Anything else? (optional)" htmlFor="f-msg">
-                    <textarea id="f-msg" rows={2} placeholder="Timings, volumes, deadlines…" className={inputCls(undefined)} {...register("message")} />
-                  </Field>
-                </div>
+
                 {status === "error" && (
-                  <p className="flex items-center gap-2 rounded-xl bg-red-50 px-4 py-3 text-[13.5px] font-medium text-red-800 sm:col-span-2" role="alert">
+                  <p className="flex items-center gap-2 rounded-xl bg-red-50 px-4 py-3 text-[13.5px] font-medium text-red-800" role="alert">
                     <TriangleAlert className="h-4 w-4 shrink-0" aria-hidden />
-                    {errorMessage || "Something went wrong. Please try again or email us directly."}
+                    {errorMessage || "Something went wrong. Please try again or message us on WhatsApp."}
                   </p>
                 )}
+
                 <button
                   type="submit"
                   disabled={status === "sending"}
-                  className="btn-press group inline-flex items-center justify-center gap-2 rounded-full bg-[#0b0e0d] py-2.5 pl-6 pr-2.5 text-[15px] font-medium text-white hover:bg-[#1a201e] disabled:opacity-70 sm:col-span-2"
+                  className="btn-press group inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#2563eb] py-3.5 px-6 text-[15px] font-semibold text-white hover:bg-[#1d4ed8] disabled:opacity-70 shadow-sm"
                 >
                   {status === "sending" ? (
-                    <><Loader2 className="h-4 w-4 animate-spin" aria-hidden /> Sending…</>
+                    <><Loader2 className="h-4 w-4 animate-spin" aria-hidden /> Booking audit…</>
                   ) : (
-                    <>Request Automation Audit
-                      <span className="grid h-9 w-9 place-items-center rounded-full bg-white/15 transition-transform duration-300 group-hover:translate-x-1">
-                        <ArrowRight className="h-4 w-4" aria-hidden />
-                      </span>
+                    <>
+                      {activeWorkflow ? `Request Free ${activeWorkflow.name} Audit` : "Book a Free Automation Audit"}
+                      <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden />
                     </>
                   )}
                 </button>
-                <div className="flex flex-col items-center gap-1 sm:col-span-2">
-                  <p className="text-center font-mono text-[11.5px] text-[#0b0e0d]/55">
-                    🛡️ 100% Confidential · Strict NDA Guarantee · No sales spam
-                  </p>
-                  <p className="text-center font-mono text-[10.5px] text-[#0b0e0d]/40">
-                    Your details are used strictly to analyze and schedule your automation audit.
+
+                <div className="pt-1 text-center">
+                  <p className="font-mono text-[11px] text-[#0b0e0d]/50">
+                    🔒 Strict NDA & Privacy Guarantee · Zero sales spam · 30-min workflow mapping
                   </p>
                 </div>
               </form>

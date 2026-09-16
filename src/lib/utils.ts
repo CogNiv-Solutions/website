@@ -13,7 +13,7 @@ export const SITE = {
   email: "cognivsolutions@gmail.com",
   phone: "+91 97529 90241",
   whatsappNumber: "919752990241",
-  calendarUrl: process.env.NEXT_PUBLIC_CALENDAR_URL || "https://cal.com/cogniv/audit",
+  calendarUrl: process.env.NEXT_PUBLIC_CALENDAR_URL || "",
   description:
     "Cogniv Solutions helps businesses identify operational bottlenecks and turn repetitive work into intelligent, scalable automation.",
 } as const;
