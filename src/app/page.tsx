@@ -11,6 +11,7 @@ import { Pricing } from "@/components/pricing";
 import { ProcessTimeline } from "@/components/process-timeline";
 import { WhyCogniv } from "@/components/why-cogniv";
 import { About, FinalCta } from "@/components/about-cta";
+import { Faq } from "@/components/faq";
 import { Contact } from "@/components/contact";
 import { Footer } from "@/components/footer";
 
@@ -31,6 +32,7 @@ export default function Home() {
         <ProcessTimeline />
         <WhyCogniv />
         <About />
+        <Faq />
         <FinalCta />
         <Contact />
       </main>
@@ -38,3 +40,4 @@ export default function Home() {
     </>
   );
 }
+

@@ -11,6 +11,7 @@ const cols = [
       ["Demo", "#demo"],
       ["Pricing", "#pricing"],
       ["About", "#about"],
+      ["FAQ", "#faq"],
     ],
   },
   {
