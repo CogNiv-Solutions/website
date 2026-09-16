@@ -4,6 +4,7 @@ import "./globals.css";
 import { SmoothScroll } from "@/components/smooth-scroll";
 import { SITE } from "@/lib/utils";
 import { generateSeoJsonLd } from "@/lib/seo-schema";
+import { WhatsAppFloat } from "@/components/whatsapp-float";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
@@ -116,6 +117,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{ __html: safeJsonLd }}
         />
         <SmoothScroll>{children}</SmoothScroll>
+        <WhatsAppFloat />
       </body>
     </html>
   );

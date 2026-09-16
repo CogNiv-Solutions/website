@@ -4,6 +4,7 @@ import { Problem } from "@/components/problem";
 import { WhatWeDo } from "@/components/what-we-do";
 import { Solutions } from "@/components/solutions";
 import { Industries } from "@/components/industries";
+import { CaseStudies } from "@/components/case-studies";
 import { Demo } from "@/components/demo";
 import { Dashboard } from "@/components/dashboard";
 import { RoiCalculator } from "@/components/roi-calculator";
@@ -25,6 +26,7 @@ export default function Home() {
         <WhatWeDo />
         <Solutions />
         <Industries />
+        <CaseStudies />
         <Demo />
         <Dashboard />
         <RoiCalculator />
@@ -40,4 +42,5 @@ export default function Home() {
     </>
   );
 }
+
 

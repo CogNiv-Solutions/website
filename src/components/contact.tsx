@@ -8,7 +8,7 @@ import { Loader2, TriangleAlert, ArrowRight } from "lucide-react";
 import { contactSchema, submitAuditRequest, type ContactInput } from "@/lib/validation";
 import { SectionHeading } from "./section-heading";
 import { Reveal } from "./reveal";
-import { cn, SITE } from "@/lib/utils";
+import { cn, SITE, getWhatsAppUrl } from "@/lib/utils";
 
 const LottieAnimation = dynamic(() => import("./lottie-animation"), { ssr: false });
 
@@ -101,9 +101,33 @@ export function Contact() {
               </li>
             ))}
           </ul>
-          <p className="mt-4 font-mono text-[12.5px] text-[#0b0e0d]/50">
-            Prefer email? <a className="underline underline-offset-4" href={`mailto:${SITE.email}`}>{SITE.email}</a>
-          </p>
+          <div className="mt-6 flex flex-col gap-2 rounded-2xl border border-[#0b0e0d]/10 bg-white p-4">
+            <p className="text-[13px] text-[#0b0e0d]/80 flex items-center justify-between">
+              <span>💬 Want to talk right now?</span>
+              <a
+                href={getWhatsAppUrl("Hi Cogniv, I'd like to schedule an Automation Audit for my business.")}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-semibold text-emerald-700 underline underline-offset-4 hover:text-emerald-800"
+              >
+                Chat on WhatsApp
+              </a>
+            </p>
+            <p className="text-[13px] text-[#0b0e0d]/80 flex items-center justify-between pt-2 border-t border-[#0b0e0d]/8">
+              <span>📅 Prefer a direct calendar slot?</span>
+              <a
+                href={SITE.calendarUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-semibold text-[#0b0e0d] underline underline-offset-4 hover:text-[#0e7c5b]"
+              >
+                Book 20-min Call
+              </a>
+            </p>
+            <p className="font-mono text-[12px] text-[#0b0e0d]/50 pt-1">
+              Prefer email? <a className="underline underline-offset-4" href={`mailto:${SITE.email}`}>{SITE.email}</a>
+            </p>
+          </div>
         </div>
 
         <Reveal delay={0.08}>
@@ -116,16 +140,26 @@ export function Contact() {
                   <p className="mx-auto mt-2 max-w-[42ch] text-[14.5px] text-[#0b0e0d]/60">
                     Thanks — we’ll reply within one business day to schedule your automation audit.
                   </p>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setStatus("idle");
-                      setErrorMessage("");
-                    }}
-                    className="btn-press mt-6 rounded-full border border-[#0b0e0d]/15 px-6 py-3 text-[14px] font-medium hover:border-[#0b0e0d]/35"
-                  >
-                    Send another request
-                  </button>
+                  <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
+                    <a
+                      href={SITE.calendarUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-press rounded-full bg-[#0b0e0d] px-6 py-3 text-[14px] font-medium text-white hover:bg-[#1a201e]"
+                    >
+                      📅 Pick a calendar slot now
+                    </a>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setStatus("idle");
+                        setErrorMessage("");
+                      }}
+                      className="btn-press rounded-full border border-[#0b0e0d]/15 px-6 py-3 text-[14px] font-medium hover:border-[#0b0e0d]/35"
+                    >
+                      Send another request
+                    </button>
+                  </div>
                 </div>
               </div>
             ) : (
@@ -202,9 +236,14 @@ export function Contact() {
                     </>
                   )}
                 </button>
-                <p className="text-center font-mono text-[11.5px] text-[#0b0e0d]/45 sm:col-span-2">
-                  No spam. Your details are used only to schedule the audit.
-                </p>
+                <div className="flex flex-col items-center gap-1 sm:col-span-2">
+                  <p className="text-center font-mono text-[11.5px] text-[#0b0e0d]/55">
+                    🛡️ 100% Confidential · Strict NDA Guarantee · No sales spam
+                  </p>
+                  <p className="text-center font-mono text-[10.5px] text-[#0b0e0d]/40">
+                    Your details are used strictly to analyze and schedule your automation audit.
+                  </p>
+                </div>
               </form>
             )}
           </div>
