@@ -33,14 +33,14 @@ export function SectionHeading({
       <Eyebrow dark={dark}>{eyebrow}</Eyebrow>
       <h2
         className={cn(
-          "mt-5 text-3xl font-semibold leading-[1.08] tracking-tight md:text-5xl",
+          "mt-3 text-2xl font-semibold leading-[1.12] tracking-tight sm:text-3xl md:text-4xl",
           dark ? "text-white" : "text-[#0b0e0d]"
         )}
       >
         {title}
       </h2>
       {copy ? (
-        <p className={cn("mt-4 max-w-[62ch] text-base leading-relaxed md:text-lg", dark ? "text-white/65" : "text-[#0b0e0d]/65")}>
+        <p className={cn("mt-2 max-w-[62ch] text-[14.5px] leading-relaxed text-[#0b0e0d]/65 md:text-[15.5px]", dark ? "text-white/65" : "text-[#0b0e0d]/65")}>
           {copy}
         </p>
       ) : null}

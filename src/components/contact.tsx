@@ -137,7 +137,7 @@ export function Contact() {
 
   return (
     <section id="contact" aria-labelledby="contact-h" className="scroll-mt-20 border-t border-[#0b0e0d]/8">
-      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-20 md:px-8 md:py-28 lg:grid-cols-[0.95fr_1.05fr] lg:gap-14">
+      <div className="mx-auto grid max-w-7xl gap-8 px-4 py-10 md:px-8 md:py-14 lg:grid-cols-[0.95fr_1.05fr] lg:gap-10">
         {/* Final CTA Info (Page 11-12 in PDF) */}
         <div>
           <SectionHeading
@@ -146,14 +146,14 @@ export function Contact() {
             copy="Tell us what your team does manually every day. We’ll identify what can be automated — and what shouldn’t be."
           />
 
-          <div className="mt-6 inline-flex items-center gap-2 rounded-full border border-[#2563eb]/20 bg-[#eff6ff] px-4 py-1.5 text-[13px] font-medium text-[#1d4ed8]">
-            <CheckCircle2 className="h-4 w-4 text-[#2563eb]" aria-hidden />
+          <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-[#2563eb]/20 bg-[#eff6ff] px-3.5 py-1 text-[12.5px] font-medium text-[#1d4ed8]">
+            <CheckCircle2 className="h-3.5 w-3.5 text-[#2563eb]" aria-hidden />
             30-minute workflow review • No obligation
           </div>
 
-          <div className="mt-8 space-y-3">
-            <div className="flex items-center justify-between rounded-2xl border border-[#0b0e0d]/10 bg-white p-4">
-              <span className="flex items-center gap-3 text-[14px] font-medium text-[#0b0e0d]">
+          <div className="mt-5 space-y-2.5">
+            <div className="flex items-center justify-between rounded-xl border border-[#0b0e0d]/10 bg-white p-3.5">
+              <span className="flex items-center gap-2.5 text-[13.5px] font-medium text-[#0b0e0d]">
                 <MessageSquare className="h-4 w-4 text-[#2563eb]" aria-hidden />
                 Prefer immediate chat?
               </span>
@@ -161,15 +161,15 @@ export function Contact() {
                 href={getWhatsAppUrl("Hi Cogniv, I'd like to book a free Automation Audit for my business.")}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-semibold text-[#2563eb] underline underline-offset-4 hover:text-[#1d4ed8]"
+                className="font-semibold text-[#2563eb] underline underline-offset-4 hover:text-[#1d4ed8] text-[13.5px]"
               >
                 Chat on WhatsApp
               </a>
             </div>
 
             {SITE.calendarUrl ? (
-              <div className="flex items-center justify-between rounded-2xl border border-[#0b0e0d]/10 bg-white p-4">
-                <span className="flex items-center gap-3 text-[14px] font-medium text-[#0b0e0d]">
+              <div className="flex items-center justify-between rounded-xl border border-[#0b0e0d]/10 bg-white p-3.5">
+                <span className="flex items-center gap-2.5 text-[13.5px] font-medium text-[#0b0e0d]">
                   <Calendar className="h-4 w-4 text-[#2563eb]" aria-hidden />
                   Book directly on calendar?
                 </span>
@@ -177,41 +177,41 @@ export function Contact() {
                   href={SITE.calendarUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-semibold text-[#0b0e0d] underline underline-offset-4 hover:text-[#2563eb]"
+                  className="font-semibold text-[#0b0e0d] underline underline-offset-4 hover:text-[#2563eb] text-[13.5px]"
                 >
                   Book 20-min Slot
                 </a>
               </div>
             ) : (
-              <div className="flex items-center justify-between rounded-2xl border border-[#0b0e0d]/10 bg-white p-4">
-                <span className="flex items-center gap-3 text-[14px] font-medium text-[#0b0e0d]">
+              <div className="flex items-center justify-between rounded-xl border border-[#0b0e0d]/10 bg-white p-3.5">
+                <span className="flex items-center gap-2.5 text-[13.5px] font-medium text-[#0b0e0d]">
                   <Phone className="h-4 w-4 text-[#2563eb]" aria-hidden />
                   Call us directly
                 </span>
                 <a
                   href={`tel:${SITE.phone.replace(/\s+/g, "")}`}
-                  className="font-mono text-[13.5px] font-semibold text-[#0b0e0d] hover:text-[#2563eb]"
+                  className="font-mono text-[13px] font-semibold text-[#0b0e0d] hover:text-[#2563eb]"
                 >
                   {SITE.phone}
                 </a>
               </div>
             )}
 
-            <div className="flex items-center justify-between rounded-2xl border border-[#0b0e0d]/10 bg-white p-4">
-              <span className="flex items-center gap-3 text-[14px] font-medium text-[#0b0e0d]">
+            <div className="flex items-center justify-between rounded-xl border border-[#0b0e0d]/10 bg-white p-3.5">
+              <span className="flex items-center gap-2.5 text-[13.5px] font-medium text-[#0b0e0d]">
                 <Mail className="h-4 w-4 text-[#0b0e0d]/50" aria-hidden />
                 Direct inquiry
               </span>
               <a
                 href={`mailto:${SITE.email}`}
-                className="font-mono text-[13px] text-[#0b0e0d]/70 underline underline-offset-4 hover:text-[#2563eb]"
+                className="font-mono text-[12.5px] text-[#0b0e0d]/70 underline underline-offset-4 hover:text-[#2563eb]"
               >
                 {SITE.email}
               </a>
             </div>
           </div>
 
-          <p className="mt-8 text-[14px] text-[#0b0e0d]/60">
+          <p className="mt-5 text-[13.5px] text-[#0b0e0d]/60">
             Want to see real workflows first?{" "}
             <a href="/demo" className="font-semibold text-[#2563eb] underline underline-offset-4 hover:text-[#1d4ed8]">
               See Live Workflow Demos
@@ -223,7 +223,7 @@ export function Contact() {
         <Reveal delay={0.08}>
           <div
             className={cn(
-              "rounded-[1.75rem] border bg-white p-6 card-shadow md:p-8 transition-all duration-500",
+              "rounded-[1.5rem] border bg-white p-5 card-shadow md:p-7 transition-all duration-500",
               highlighted ? "border-[#2563eb] ring-4 ring-[#2563eb]/20 shadow-xl" : "border-[#0b0e0d]/10"
             )}
           >

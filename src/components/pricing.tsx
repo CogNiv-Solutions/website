@@ -121,7 +121,7 @@ export function Pricing() {
 
   return (
     <section id="pricing" aria-labelledby="pricing-h" className="scroll-mt-20 border-t border-[#0b0e0d]/8">
-      <div className="mx-auto max-w-7xl px-4 py-20 md:px-8 md:py-28">
+      <div className="mx-auto max-w-7xl px-4 py-10 md:px-8 md:py-14">
         {/* Main Section Header */}
         <SectionHeading
           eyebrow="Pricing & ROI"
@@ -130,7 +130,7 @@ export function Pricing() {
         />
 
         {/* 4 Pricing Cards */}
-        <div className="mt-12">
+        <div className="mt-7">
           <Stagger className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
             {plans.map((p) => {
               const dark = p.dark;
@@ -138,36 +138,36 @@ export function Pricing() {
                 <StaggerItem key={p.id} className="h-full">
                   <article
                     className={cn(
-                      "relative flex h-full flex-col justify-between rounded-[1.4rem] border p-6 transition-all duration-300 hover:-translate-y-1 md:p-7",
+                      "relative flex h-full flex-col justify-between rounded-[1.3rem] border p-5 transition-all duration-300 hover:-translate-y-1 md:p-6",
                       dark && "border-white/10 bg-[#0b0e0d] text-white card-shadow-dark hover:border-white/25",
                       !dark && !p.featured && "border-[#0b0e0d]/10 bg-white hover:border-[#0b0e0d]/25 hover:card-shadow",
-                      p.featured && "border-[#2563eb] bg-white card-shadow lg:scale-[1.02]"
+                      p.featured && "border-[#2563eb] bg-white card-shadow lg:scale-[1.01]"
                     )}
                   >
                     <div>
                       {p.featured && (
-                        <p className="absolute -top-3.5 left-1/2 inline-flex -translate-x-1/2 items-center gap-1.5 whitespace-nowrap rounded-full bg-[#2563eb] px-3.5 py-1 font-mono text-[10.5px] font-bold uppercase tracking-[0.16em] text-white">
+                        <p className="absolute -top-3 left-1/2 inline-flex -translate-x-1/2 items-center gap-1.5 whitespace-nowrap rounded-full bg-[#2563eb] px-3 py-0.5 font-mono text-[10px] font-bold uppercase tracking-[0.16em] text-white">
                           <span className="h-1.5 w-1.5 rounded-full bg-white animate-pulse-dot" aria-hidden />
                           Recommended
                         </p>
                       )}
                       <div className="flex items-baseline justify-between">
-                        <h3 className="text-[19px] font-semibold tracking-tight">{p.name}</h3>
+                        <h3 className="text-[18px] font-semibold tracking-tight">{p.name}</h3>
                         <span className={cn("font-mono text-[11px] uppercase tracking-[0.16em]", dark ? "text-blue-300" : "text-[#2563eb]")}>
                           {p.label}
                         </span>
                       </div>
-                      <p className={cn("mt-2 text-[13.5px] leading-relaxed", dark ? "text-white/60" : "text-[#0b0e0d]/60")}>
+                      <p className={cn("mt-1.5 text-[13px] leading-relaxed", dark ? "text-white/60" : "text-[#0b0e0d]/60")}>
                         {p.blurb}
                       </p>
-                      <div className="mt-5 border-t pt-5 border-current/10">
-                        <p className="font-mono text-[2.25rem] font-bold leading-none tracking-tight">{p.price}</p>
-                        <p className={cn("mt-1.5 font-mono text-[11px]", dark ? "text-white/45" : "text-[#0b0e0d]/45")}>
+                      <div className="mt-4 border-t pt-4 border-current/10">
+                        <p className="font-mono text-[2.1rem] font-bold leading-none tracking-tight">{p.price}</p>
+                        <p className={cn("mt-1 font-mono text-[10.5px]", dark ? "text-white/45" : "text-[#0b0e0d]/45")}>
                           Starting price · one-time implementation
                         </p>
                       </div>
 
-                      <ul className="mt-5 space-y-2.5">
+                      <ul className="mt-4 space-y-2">
                         {p.features.map((f) => (
                           <li key={f} className={cn("flex items-start gap-2.5 text-[13.5px]", dark ? "text-white/80" : "text-[#0b0e0d]/75")}>
                             <span className={cn("mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full", dark ? "bg-blue-400/15 text-blue-300" : "bg-[#eff6ff] text-[#1d4ed8]")}>
@@ -201,12 +201,12 @@ export function Pricing() {
         </div>
 
         {/* Collapsible Full Pricing Comparison */}
-        <div className="mt-8">
+        <div className="mt-5">
           <button
             type="button"
             onClick={() => setCompareOpen((v) => !v)}
             aria-expanded={compareOpen}
-            className="btn-press mx-auto flex items-center gap-2 rounded-full border border-[#0b0e0d]/15 bg-white px-5 py-2.5 text-[13.5px] font-medium text-[#0b0e0d] hover:border-[#0b0e0d]/35 card-shadow"
+            className="btn-press mx-auto flex items-center gap-2 rounded-full border border-[#0b0e0d]/15 bg-white px-4.5 py-2 text-[13px] font-medium text-[#0b0e0d] hover:border-[#0b0e0d]/35 card-shadow"
           >
             <span>{compareOpen ? "Hide detailed comparison" : "View Full Feature Breakdown"}</span>
             <ChevronDown className={cn("h-4 w-4 transition-transform duration-200", compareOpen && "rotate-180")} aria-hidden />
@@ -219,17 +219,17 @@ export function Pricing() {
                 animate={{ opacity: 1, height: "auto" }}
                 exit={reduce ? undefined : { opacity: 0, height: 0 }}
                 transition={{ duration: 0.3, ease: [0.32, 0.72, 0, 1] }}
-                className="overflow-hidden pt-6"
+                className="overflow-hidden pt-5"
               >
                 <div className="overflow-hidden rounded-[1.4rem] border border-[#0b0e0d]/10 bg-white card-shadow">
                   <table className="w-full text-left text-[14px]">
                     <thead>
                       <tr className="border-b border-[#0b0e0d]/10 bg-[#fafaf9]">
-                        <th scope="col" className="px-6 py-4 font-mono text-[11px] uppercase tracking-[0.16em] text-[#0b0e0d]/45">Workflow Capability</th>
+                        <th scope="col" className="px-6 py-3.5 font-mono text-[11px] uppercase tracking-[0.16em] text-[#0b0e0d]/45">Workflow Capability</th>
                         {plans.map((p) => (
-                          <th key={p.id} scope="col" className="px-4 py-4 text-center">
-                            <span className="block text-[14px] font-semibold">{p.name}</span>
-                            <span className="font-mono text-[12px] text-[#2563eb]">{p.price}</span>
+                          <th key={p.id} scope="col" className="px-4 py-3.5 text-center">
+                            <span className="block text-[13.5px] font-semibold">{p.name}</span>
+                            <span className="font-mono text-[11.5px] text-[#2563eb]">{p.price}</span>
                           </th>
                         ))}
                       </tr>
@@ -237,9 +237,9 @@ export function Pricing() {
                     <tbody className="divide-y divide-[#0b0e0d]/8">
                       {compareRows.map((r) => (
                         <tr key={r.label} className="transition-colors hover:bg-[#fafaf9]">
-                          <th scope="row" className="px-6 py-3.5 font-medium text-[#0b0e0d]/80">{r.label}</th>
+                          <th scope="row" className="px-6 py-3 font-medium text-[#0b0e0d]/80 text-[13px]">{r.label}</th>
                           {r.values.map((v, i) => (
-                            <td key={i} className="px-4 py-3.5 text-center">
+                            <td key={i} className="px-4 py-3 text-center">
                               <CompareCell value={v} />
                             </td>
                           ))}
@@ -254,15 +254,15 @@ export function Pricing() {
         </div>
 
         {/* Compact Integrated ROI Calculator (Page 8-9 in PDF) */}
-        <Reveal delay={0.08} className="mt-16">
-          <div className="rounded-[1.75rem] border border-[#0b0e0d]/10 bg-white p-6 card-shadow md:p-10">
-            <div className="grid gap-8 lg:grid-cols-[1fr_1.1fr] lg:items-center">
+        <Reveal delay={0.08} className="mt-9">
+          <div className="rounded-[1.5rem] border border-[#0b0e0d]/10 bg-white p-5 card-shadow md:p-8">
+            <div className="grid gap-6 lg:grid-cols-[1fr_1.1fr] lg:items-center">
               <div>
-                <span className="inline-flex items-center gap-1.5 font-mono text-[11.5px] uppercase tracking-[0.18em] text-[#2563eb]">
+                <span className="inline-flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-[0.18em] text-[#2563eb]">
                   <CalcIcon className="h-3.5 w-3.5" aria-hidden />
                   ROI Calculator
                 </span>
-                <h3 className="mt-2 text-2xl font-semibold tracking-tight text-[#0b0e0d] md:text-3xl">
+                <h3 className="mt-2 text-xl font-semibold tracking-tight text-[#0b0e0d] md:text-2xl">
                   What is repetitive work costing you?
                 </h3>
                 <p className="mt-3 text-[14.5px] leading-relaxed text-[#0b0e0d]/65">

@@ -516,21 +516,21 @@ function DemoContent() {
     <>
       <Navbar />
 
-      <main className="min-h-screen pt-24 pb-20 bg-[#fafaf9]">
+      <main className="min-h-screen pt-20 pb-12 bg-[#fafaf9]">
         {/* Header Hero */}
-        <section className="mx-auto max-w-7xl px-4 pt-10 pb-8 md:px-8 text-center">
-          <span className="inline-flex items-center gap-1.5 rounded-full border border-[#2563eb]/20 bg-[#eff6ff] px-4 py-1.5 font-mono text-[11.5px] font-bold uppercase tracking-[0.18em] text-[#1d4ed8]">
+        <section className="mx-auto max-w-7xl px-4 pt-6 pb-4 md:px-8 text-center">
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-[#2563eb]/20 bg-[#eff6ff] px-3.5 py-1 font-mono text-[11px] font-bold uppercase tracking-[0.18em] text-[#1d4ed8]">
             <Zap className="h-3.5 w-3.5 text-[#2563eb]" /> Interactive Workflow Lab
           </span>
-          <h1 className="mt-4 text-3xl font-semibold tracking-tight text-[#0b0e0d] md:text-5xl">
+          <h1 className="mt-2.5 text-2xl font-semibold tracking-tight text-[#0b0e0d] sm:text-3xl md:text-4xl">
             See Workflows Execute in Real Time
           </h1>
-          <p className="mx-auto mt-4 max-w-2xl text-[15.5px] leading-relaxed text-[#0b0e0d]/65">
+          <p className="mx-auto mt-2 max-w-2xl text-[14.5px] leading-relaxed text-[#0b0e0d]/65">
             Select any business task below and run the simulation to see how raw manual work turns into smooth, automated systems around your existing tools.
           </p>
 
           {/* Task Selectors */}
-          <div className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-4" role="tablist">
+          <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4" role="tablist">
             {Object.values(tasks).map((t) => {
               const selected = t.id === activeTaskId;
               return (
@@ -540,19 +540,19 @@ function DemoContent() {
                   role="tab"
                   aria-selected={selected}
                   className={cn(
-                    "btn-press flex flex-col items-start rounded-2xl border p-4 text-left transition-all",
+                    "btn-press flex flex-col items-start rounded-2xl border p-3.5 text-left transition-all",
                     selected
                       ? "border-[#2563eb] bg-white shadow-md ring-1 ring-[#2563eb]"
                       : "border-[#0b0e0d]/10 bg-white/70 hover:bg-white hover:border-[#0b0e0d]/25 card-shadow"
                   )}
                 >
-                  <span className={cn("font-mono text-[11px] font-bold uppercase tracking-[0.14em]", selected ? "text-[#2563eb]" : "text-[#0b0e0d]/45")}>
+                  <span className={cn("font-mono text-[10.5px] font-bold uppercase tracking-[0.14em]", selected ? "text-[#2563eb]" : "text-[#0b0e0d]/45")}>
                     {t.badge}
                   </span>
-                  <span className="mt-1 text-[15px] font-semibold text-[#0b0e0d]">
+                  <span className="mt-1 text-[14.5px] font-semibold text-[#0b0e0d]">
                     {t.name}
                   </span>
-                  <span className="mt-2 text-[12px] text-[#0b0e0d]/60 leading-snug">
+                  <span className="mt-1.5 text-[11.5px] text-[#0b0e0d]/60 leading-snug">
                     {t.tagline}
                   </span>
                 </button>
@@ -562,29 +562,29 @@ function DemoContent() {
         </section>
 
         {/* Live Interactive Simulation Sandbox */}
-        <section className="mx-auto max-w-7xl px-4 mt-6 md:px-8">
-          <div className="rounded-[1.75rem] border border-[#0b0e0d]/10 bg-white p-6 card-shadow md:p-10">
+        <section className="mx-auto max-w-7xl px-4 mt-5 md:px-8">
+          <div className="rounded-[1.5rem] border border-[#0b0e0d]/10 bg-white p-5 card-shadow md:p-8">
             {/* Task Banner */}
-            <div className="flex flex-col gap-4 border-b border-[#0b0e0d]/8 pb-6 md:flex-row md:items-center md:justify-between">
+            <div className="flex flex-col gap-3 border-b border-[#0b0e0d]/8 pb-4 md:flex-row md:items-center md:justify-between">
               <div>
-                <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-[#2563eb] font-semibold">
+                <span className="font-mono text-[10.5px] uppercase tracking-[0.16em] text-[#2563eb] font-semibold">
                   Active Workflow Simulation
                 </span>
-                <h2 className="mt-1 text-2xl font-bold tracking-tight text-[#0b0e0d]">
+                <h2 className="mt-0.5 text-xl font-bold tracking-tight text-[#0b0e0d] md:text-2xl">
                   {activeTask.name}
                 </h2>
-                <p className="mt-1 text-[14px] text-[#0b0e0d]/65">{activeTask.tagline}</p>
+                <p className="mt-0.5 text-[13.5px] text-[#0b0e0d]/65">{activeTask.tagline}</p>
               </div>
 
               <div className="flex flex-wrap items-center gap-2">
-                <span className="rounded-full bg-[#eff6ff] border border-[#2563eb]/20 px-3.5 py-1.5 font-mono text-[12px] font-semibold text-[#1d4ed8]">
+                <span className="rounded-full bg-[#eff6ff] border border-[#2563eb]/20 px-3 py-1 font-mono text-[11.5px] font-semibold text-[#1d4ed8]">
                   {activeTask.metric}
                 </span>
               </div>
             </div>
 
             {/* Simulation Body */}
-            <div className="mt-8 grid gap-8 lg:grid-cols-[1fr_1.2fr]">
+            <div className="mt-6 grid gap-6 lg:grid-cols-[1fr_1.2fr]">
               {/* Left Column: Pipeline Steps & Controls */}
               <div className="space-y-6">
                 <div>
