@@ -84,14 +84,14 @@ export function Solutions() {
           ))}
         </Stagger>
 
-        <div className="mt-7 flex flex-col items-center justify-between gap-4 rounded-2xl border border-[#0b0e0d]/8 bg-white p-4.5 card-shadow sm:flex-row sm:px-6">
+        <div className="mt-7 flex flex-col items-start justify-between gap-4 rounded-2xl border border-[#0b0e0d]/8 bg-white p-4.5 card-shadow sm:flex-row sm:items-center sm:px-6">
           <div>
             <p className="text-[14.5px] font-semibold text-[#0b0e0d]">Want to test these workflows yourself?</p>
             <p className="text-[12.5px] text-[#0b0e0d]/60">Explore realistic step-by-step simulations across WhatsApp, CRM, Documents, and Tasks.</p>
           </div>
           <a
             href="/demo"
-            className="btn-press inline-flex shrink-0 items-center gap-2 rounded-full bg-[#0b0e0d] px-4.5 py-2 text-[13px] font-medium text-white hover:bg-[#1a201e]"
+            className="btn-press inline-flex w-full shrink-0 items-center justify-center gap-2 rounded-full bg-[#0b0e0d] px-5 py-2.5 text-[13px] font-medium text-white hover:bg-[#1a201e] sm:w-auto"
           >
             Launch Demo Lab <ArrowRight className="h-3.5 w-3.5" aria-hidden />
           </a>

@@ -530,7 +530,7 @@ function DemoContent() {
           </p>
 
           {/* Task Selectors */}
-          <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4" role="tablist">
+          <div className="mt-6 grid grid-cols-2 gap-2.5 sm:grid-cols-2 sm:gap-3 lg:grid-cols-4" role="tablist">
             {Object.values(tasks).map((t) => {
               const selected = t.id === activeTaskId;
               return (
@@ -540,19 +540,19 @@ function DemoContent() {
                   role="tab"
                   aria-selected={selected}
                   className={cn(
-                    "btn-press flex flex-col items-start rounded-2xl border p-3.5 text-left transition-all",
+                    "btn-press flex flex-col items-start rounded-2xl border p-3 sm:p-3.5 text-left transition-all",
                     selected
                       ? "border-[#2563eb] bg-white shadow-md ring-1 ring-[#2563eb]"
                       : "border-[#0b0e0d]/10 bg-white/70 hover:bg-white hover:border-[#0b0e0d]/25 card-shadow"
                   )}
                 >
-                  <span className={cn("font-mono text-[10.5px] font-bold uppercase tracking-[0.14em]", selected ? "text-[#2563eb]" : "text-[#0b0e0d]/45")}>
+                  <span className={cn("font-mono text-[10px] sm:text-[10.5px] font-bold uppercase tracking-[0.14em]", selected ? "text-[#2563eb]" : "text-[#0b0e0d]/45")}>
                     {t.badge}
                   </span>
-                  <span className="mt-1 text-[14.5px] font-semibold text-[#0b0e0d]">
+                  <span className="mt-1 text-[13.5px] sm:text-[14.5px] font-semibold text-[#0b0e0d]">
                     {t.name}
                   </span>
-                  <span className="mt-1.5 text-[11.5px] text-[#0b0e0d]/60 leading-snug">
+                  <span className="mt-1 text-[11px] sm:text-[11.5px] text-[#0b0e0d]/60 leading-snug line-clamp-2">
                     {t.tagline}
                   </span>
                 </button>
@@ -639,18 +639,18 @@ function DemoContent() {
                 </div>
 
                 {/* Control Action Buttons */}
-                <div className="flex flex-wrap items-center gap-3 pt-2">
+                <div className="flex flex-col sm:flex-row sm:items-center gap-2.5 sm:gap-3 pt-2">
                   <button
                     onClick={startSimulation}
                     disabled={isRunning}
-                    className="btn-press inline-flex items-center gap-2 rounded-full bg-[#2563eb] px-6 py-3 text-[14px] font-semibold text-white hover:bg-[#1d4ed8] disabled:opacity-60 shadow-sm"
+                    className="btn-press inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-[#2563eb] px-6 py-3.5 text-[14px] font-semibold text-white hover:bg-[#1d4ed8] disabled:opacity-60 shadow-sm sm:py-3"
                   >
                     <Play className="h-4 w-4" />
                     {isRunning ? "Simulating Workflow…" : currentStep > 0 ? "Replay Simulation" : "Run Workflow Demo"}
                   </button>
                   <button
                     onClick={resetSimulation}
-                    className="btn-press inline-flex items-center gap-2 rounded-full border border-[#0b0e0d]/15 bg-white px-5 py-3 text-[14px] font-medium text-[#0b0e0d] hover:border-[#0b0e0d]/35"
+                    className="btn-press inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full border border-[#0b0e0d]/15 bg-white px-5 py-3 text-[14px] font-medium text-[#0b0e0d] hover:border-[#0b0e0d]/35"
                   >
                     <RotateCcw className="h-4 w-4" /> Reset
                   </button>
@@ -694,7 +694,7 @@ function DemoContent() {
 
         {/* Bottom CTA to Convert */}
         <section className="mx-auto max-w-7xl px-4 mt-16 md:px-8">
-          <div className="overflow-hidden rounded-[1.75rem] bg-[#0b0e0d] p-8 text-white card-shadow-dark md:p-12">
+          <div className="overflow-hidden rounded-[1.75rem] bg-[#0b0e0d] p-6 text-white card-shadow-dark sm:p-8 md:p-12">
             <div className="flex flex-col items-start justify-between gap-6 lg:flex-row lg:items-center">
               <div>
                 <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-blue-300">
@@ -708,10 +708,10 @@ function DemoContent() {
                 </p>
               </div>
 
-              <div className="flex flex-col gap-3 sm:flex-row shrink-0">
+              <div className="flex flex-col gap-2.5 w-full sm:w-auto sm:flex-row shrink-0">
                 <a
                   href="/#contact"
-                  className="btn-press group inline-flex items-center justify-center gap-2 rounded-full bg-[#2563eb] px-6 py-3 text-[14.5px] font-semibold text-white hover:bg-[#1d4ed8]"
+                  className="btn-press group inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-[#2563eb] px-6 py-3.5 text-[14.5px] font-semibold text-white hover:bg-[#1d4ed8] sm:py-3"
                 >
                   Book Free Automation Audit
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -720,7 +720,7 @@ function DemoContent() {
                   href={getWhatsAppUrl("Hi Cogniv, I explored your demo lab and want to automate my workflows.")}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-press inline-flex items-center justify-center rounded-full border border-white/20 px-5 py-3 text-[14px] font-medium text-white hover:bg-white/10"
+                  className="btn-press inline-flex w-full sm:w-auto items-center justify-center rounded-full border border-white/20 px-5 py-3 text-[14px] font-medium text-white hover:bg-white/10"
                 >
                   💬 Chat on WhatsApp
                 </a>

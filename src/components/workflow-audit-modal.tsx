@@ -134,16 +134,16 @@ export function WorkflowAuditModal({
             role="dialog"
             aria-modal="true"
             aria-labelledby="audit-modal-title"
-            className="relative z-10 w-full max-w-xl rounded-2xl sm:rounded-3xl border border-[#0b0e0d]/10 bg-white p-5 sm:p-7 shadow-2xl my-auto max-h-[92vh] overflow-y-auto"
+            className="relative z-10 w-full max-w-xl rounded-2xl sm:rounded-3xl border border-[#0b0e0d]/10 bg-white p-4 sm:p-7 shadow-2xl my-auto max-h-[92vh] overflow-y-auto"
           >
             {/* Close Button */}
             <button
               type="button"
               onClick={onClose}
               aria-label="Close audit dialog"
-              className="absolute right-4 top-4 grid h-8 w-8 place-items-center rounded-full border border-[#0b0e0d]/10 bg-[#fafaf9] text-[#0b0e0d]/70 hover:bg-[#0b0e0d] hover:text-white transition-colors"
+              className="absolute right-3.5 top-3.5 sm:right-4 sm:top-4 grid h-9 w-9 place-items-center rounded-full border border-[#0b0e0d]/10 bg-[#fafaf9] text-[#0b0e0d]/70 hover:bg-[#0b0e0d] hover:text-white transition-colors"
             >
-              <X className="h-4 w-4" />
+              <X className="h-4.5 w-4.5 sm:h-4 sm:w-4" />
             </button>
 
             {status === "ok" ? (
@@ -233,7 +233,7 @@ export function WorkflowAuditModal({
                         id="w-name"
                         placeholder="Rahul Mehta"
                         className={cn(
-                          "mt-1 w-full rounded-xl border bg-white px-3.5 py-2.5 text-[13.5px] text-[#0b0e0d] placeholder:text-[#0b0e0d]/35 transition-colors",
+                          "mt-1 w-full rounded-xl border bg-white px-3.5 py-2.5 text-[16px] md:text-[13.5px] text-[#0b0e0d] placeholder:text-[#0b0e0d]/35 transition-colors",
                           errors.name ? "border-red-500" : "border-[#0b0e0d]/15 focus:border-[#2563eb]"
                         )}
                         {...register("name")}
@@ -251,7 +251,7 @@ export function WorkflowAuditModal({
                         id="w-biz"
                         placeholder="e.g. Apex Enterprises"
                         className={cn(
-                          "mt-1 w-full rounded-xl border bg-white px-3.5 py-2.5 text-[13.5px] text-[#0b0e0d] placeholder:text-[#0b0e0d]/35 transition-colors",
+                          "mt-1 w-full rounded-xl border bg-white px-3.5 py-2.5 text-[16px] md:text-[13.5px] text-[#0b0e0d] placeholder:text-[#0b0e0d]/35 transition-colors",
                           errors.businessName ? "border-red-500" : "border-[#0b0e0d]/15 focus:border-[#2563eb]"
                         )}
                         {...register("businessName")}
@@ -272,7 +272,7 @@ export function WorkflowAuditModal({
                         type="tel"
                         placeholder="+91 98765 43210"
                         className={cn(
-                          "mt-1 w-full rounded-xl border bg-white px-3.5 py-2.5 text-[13.5px] text-[#0b0e0d] placeholder:text-[#0b0e0d]/35 transition-colors",
+                          "mt-1 w-full rounded-xl border bg-white px-3.5 py-2.5 text-[16px] md:text-[13.5px] text-[#0b0e0d] placeholder:text-[#0b0e0d]/35 transition-colors",
                           errors.phone ? "border-red-500" : "border-[#0b0e0d]/15 focus:border-[#2563eb]"
                         )}
                         {...register("phone")}
@@ -291,7 +291,7 @@ export function WorkflowAuditModal({
                         type="email"
                         placeholder="rahul@apex.com"
                         className={cn(
-                          "mt-1 w-full rounded-xl border bg-white px-3.5 py-2.5 text-[13.5px] text-[#0b0e0d] placeholder:text-[#0b0e0d]/35 transition-colors",
+                          "mt-1 w-full rounded-xl border bg-white px-3.5 py-2.5 text-[16px] md:text-[13.5px] text-[#0b0e0d] placeholder:text-[#0b0e0d]/35 transition-colors",
                           errors.email ? "border-red-500" : "border-[#0b0e0d]/15 focus:border-[#2563eb]"
                         )}
                         {...register("email")}

@@ -33,8 +33,8 @@ export function ProcessTimeline() {
           ))}
         </ol>
         <Reveal delay={0.1}>
-          <a href="#contact" className="btn-press group mt-6 inline-flex items-center gap-2 rounded-full bg-[#0b0e0d] py-2 pl-5 pr-2 text-[14px] font-medium text-white hover:bg-[#1a201e]">
-            Find What You Can Automate
+          <a href="#contact" className="btn-press group mt-6 inline-flex w-full sm:w-auto items-center justify-between sm:justify-start gap-2 rounded-full bg-[#0b0e0d] py-2.5 pl-5 pr-2.5 text-[14px] font-medium text-white hover:bg-[#1a201e]">
+            <span>Find What You Can Automate</span>
             <span className="grid h-8 w-8 place-items-center rounded-full bg-white/15 transition-transform duration-300 group-hover:translate-x-1">
               <ArrowRight className="h-4 w-4" aria-hidden />
             </span>

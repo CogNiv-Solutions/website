@@ -1,35 +1,34 @@
 import { ArrowUpRight } from "lucide-react";
 import { Logo } from "./logo";
+import { getWhatsAppUrl } from "@/lib/utils";
 
 const cols = [
   {
-    h: "Company",
+    h: "Explore",
     links: [
-      ["Solutions", "#solutions"],
-      ["How It Works", "#how-it-works"],
-      ["Industries", "#industries"],
-      ["Stack Checker", "#stack-checker"],
-      ["Demo", "#demo"],
-      ["Pricing", "#pricing"],
-      ["About", "#about"],
-      ["FAQ", "#faq"],
+      ["Solutions", "/#solutions"],
+      ["Interactive Demos", "/demo"],
+      ["How It Works", "/#how-it-works"],
+      ["Pricing & ROI", "/#pricing"],
+      ["Why Cogniv", "/#why-cogniv"],
+      ["Industries", "/#industries"],
     ],
   },
   {
-    h: "Start",
+    h: "Actions",
     links: [
-      ["Book Automation Audit", "#contact"],
-      ["Check Stack Compatibility", "#stack-checker"],
-      ["Try the Demo", "#demo"],
-      ["Estimate Value", "#contact"],
+      ["Book Automation Audit", "/#contact"],
+      ["Launch Demo Lab", "/demo"],
+      ["Calculate ROI", "/#pricing"],
+      ["WhatsApp Consultation", getWhatsAppUrl("Hi Cogniv, I would like to inquire about business automation.")],
     ],
   },
   {
-    h: "Legal",
+    h: "Contact",
     links: [
-      ["Privacy", "#top"],
-      ["Terms", "#top"],
-      ["Contact", "#contact"],
+      ["Direct Inquiries", "/#contact"],
+      ["Privacy Policy", "#top"],
+      ["Back to Top", "#top"],
     ],
   },
 ];
@@ -46,10 +45,10 @@ export function Footer() {
               We turn repetitive work into automated systems — audited, built and measured around your operation.
             </p>
             <a
-              href="#contact"
-              className="btn-press group mt-6 inline-flex items-center gap-2 rounded-full bg-white py-2 pl-5 pr-2 text-[14px] font-semibold text-[#0b0e0d] hover:bg-blue-100"
+              href="/#contact"
+              className="btn-press group mt-6 inline-flex w-full sm:w-auto items-center justify-between sm:justify-start gap-2 rounded-full bg-white py-2 pl-5 pr-2 text-[14px] font-semibold text-[#0b0e0d] hover:bg-blue-100"
             >
-              Book Automation Audit
+              <span>Book Automation Audit</span>
               <span className="grid h-8 w-8 place-items-center rounded-full bg-[#0b0e0d] text-white transition-transform duration-300 group-hover:translate-x-0.5">
                 <ArrowUpRight className="h-4 w-4" aria-hidden />
               </span>

@@ -48,7 +48,7 @@ function Field({
 
 const inputCls = (bad?: string) =>
   cn(
-    "w-full rounded-xl border bg-white px-4 py-3 text-[14.5px] text-[#0b0e0d] placeholder:text-[#0b0e0d]/35 transition-colors",
+    "w-full rounded-xl border bg-white px-4 py-3 text-[16px] md:text-[14.5px] text-[#0b0e0d] placeholder:text-[#0b0e0d]/35 transition-colors",
     bad ? "border-red-500" : "border-[#0b0e0d]/15 hover:border-[#0b0e0d]/30 focus:border-[#2563eb]"
   );
 
@@ -152,7 +152,7 @@ export function Contact() {
           </div>
 
           <div className="mt-5 space-y-2.5">
-            <div className="flex items-center justify-between rounded-xl border border-[#0b0e0d]/10 bg-white p-3.5">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 sm:gap-2.5 rounded-xl border border-[#0b0e0d]/10 bg-white p-3.5">
               <span className="flex items-center gap-2.5 text-[13.5px] font-medium text-[#0b0e0d]">
                 <MessageSquare className="h-4 w-4 text-[#2563eb]" aria-hidden />
                 Prefer immediate chat?
@@ -168,7 +168,7 @@ export function Contact() {
             </div>
 
             {SITE.calendarUrl ? (
-              <div className="flex items-center justify-between rounded-xl border border-[#0b0e0d]/10 bg-white p-3.5">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 sm:gap-2.5 rounded-xl border border-[#0b0e0d]/10 bg-white p-3.5">
                 <span className="flex items-center gap-2.5 text-[13.5px] font-medium text-[#0b0e0d]">
                   <Calendar className="h-4 w-4 text-[#2563eb]" aria-hidden />
                   Book directly on calendar?
@@ -183,7 +183,7 @@ export function Contact() {
                 </a>
               </div>
             ) : (
-              <div className="flex items-center justify-between rounded-xl border border-[#0b0e0d]/10 bg-white p-3.5">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 sm:gap-2.5 rounded-xl border border-[#0b0e0d]/10 bg-white p-3.5">
                 <span className="flex items-center gap-2.5 text-[13.5px] font-medium text-[#0b0e0d]">
                   <Phone className="h-4 w-4 text-[#2563eb]" aria-hidden />
                   Call us directly
@@ -197,7 +197,7 @@ export function Contact() {
               </div>
             )}
 
-            <div className="flex items-center justify-between rounded-xl border border-[#0b0e0d]/10 bg-white p-3.5">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 sm:gap-2.5 rounded-xl border border-[#0b0e0d]/10 bg-white p-3.5">
               <span className="flex items-center gap-2.5 text-[13.5px] font-medium text-[#0b0e0d]">
                 <Mail className="h-4 w-4 text-[#0b0e0d]/50" aria-hidden />
                 Direct inquiry

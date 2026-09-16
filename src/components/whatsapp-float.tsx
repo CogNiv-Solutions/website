@@ -123,11 +123,11 @@ export function WhatsAppFloat() {
         aria-label={isOpen ? "Close WhatsApp chat" : "Chat with us on WhatsApp"}
         aria-expanded={isOpen}
         className={cn(
-          "group relative flex h-14 items-center gap-2.5 rounded-full border border-white/20 bg-[#0b0e0d] px-4 text-white shadow-xl transition-all duration-300 hover:scale-105 hover:bg-[#151c19]",
+          "group relative flex h-13 w-13 items-center justify-center rounded-full border border-white/20 bg-[#0b0e0d] text-white shadow-xl transition-all duration-300 hover:scale-105 hover:bg-[#151c19] sm:h-14 sm:w-auto sm:justify-start sm:px-4 sm:gap-2.5",
           isOpen ? "bg-[#151c19]" : ""
         )}
       >
-        <span className="relative grid h-8 w-8 place-items-center rounded-full bg-[#25D366] text-white">
+        <span className="relative grid h-8 w-8 place-items-center rounded-full bg-[#25D366] text-white shrink-0">
           <MessageCircle className="h-4.5 w-4.5" strokeWidth={2.2} aria-hidden />
           <span
             className="absolute -right-0.5 -top-0.5 h-2.5 w-2.5 rounded-full border-2 border-[#0b0e0d] bg-blue-400 animate-pulse"

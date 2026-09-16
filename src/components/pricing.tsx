@@ -219,10 +219,13 @@ export function Pricing() {
                 animate={{ opacity: 1, height: "auto" }}
                 exit={reduce ? undefined : { opacity: 0, height: 0 }}
                 transition={{ duration: 0.3, ease: [0.32, 0.72, 0, 1] }}
-                className="overflow-hidden pt-5"
+                className="pt-5"
               >
-                <div className="overflow-hidden rounded-[1.4rem] border border-[#0b0e0d]/10 bg-white card-shadow">
-                  <table className="w-full text-left text-[14px]">
+                <p className="mb-2 text-right font-mono text-[11px] text-[#0b0e0d]/45 md:hidden">
+                  ← Swipe to compare all plans →
+                </p>
+                <div className="overflow-x-auto rounded-[1.4rem] border border-[#0b0e0d]/10 bg-white card-shadow scrollbar-thin">
+                  <table className="w-full min-w-[620px] text-left text-[14px]">
                     <thead>
                       <tr className="border-b border-[#0b0e0d]/10 bg-[#fafaf9]">
                         <th scope="col" className="px-6 py-3.5 font-mono text-[11px] uppercase tracking-[0.16em] text-[#0b0e0d]/45">Workflow Capability</th>
@@ -271,19 +274,19 @@ export function Pricing() {
 
                 {/* Outputs Display */}
                 <div className="mt-6 grid grid-cols-2 gap-3" role="status" aria-live="polite">
-                  <div className="rounded-2xl bg-[#0b0e0d] p-5 text-white">
-                    <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-white/50">Hours freed</p>
-                    <p className="mt-1.5 font-mono text-3xl font-bold">{savedHours}<span className="text-base font-normal text-white/60">/mo</span></p>
+                  <div className="rounded-2xl bg-[#0b0e0d] p-4 text-white sm:p-5">
+                    <p className="font-mono text-[10.5px] uppercase tracking-[0.18em] text-white/50 sm:text-[11px]">Hours freed</p>
+                    <p className="mt-1.5 font-mono text-2xl font-bold sm:text-3xl">{savedHours}<span className="text-sm font-normal text-white/60 sm:text-base">/mo</span></p>
                   </div>
-                  <div className="rounded-2xl bg-[#eff6ff] p-5 border border-[#2563eb]/20">
-                    <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-[#1d4ed8]/70">Capacity value</p>
-                    <p className="mt-1.5 font-mono text-2xl font-bold text-[#1d4ed8] md:text-3xl">₹{capacityValue.toLocaleString("en-IN")}</p>
+                  <div className="rounded-2xl bg-[#eff6ff] p-4 border border-[#2563eb]/20 sm:p-5">
+                    <p className="font-mono text-[10.5px] uppercase tracking-[0.18em] text-[#1d4ed8]/70 sm:text-[11px]">Capacity value</p>
+                    <p className="mt-1.5 font-mono text-xl font-bold text-[#1d4ed8] sm:text-2xl md:text-3xl">₹{capacityValue.toLocaleString("en-IN")}</p>
                   </div>
                 </div>
 
                 <a
                   href="#contact"
-                  className="btn-press group mt-6 inline-flex items-center gap-2 rounded-full bg-[#2563eb] px-6 py-3 text-[14px] font-semibold text-white hover:bg-[#1d4ed8]"
+                  className="btn-press group mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#2563eb] px-6 py-3.5 text-[14px] font-semibold text-white hover:bg-[#1d4ed8] sm:w-auto"
                 >
                   Verify These Savings in Free Audit
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden />

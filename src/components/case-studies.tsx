@@ -132,7 +132,7 @@ export function CaseStudies() {
     <section
       id="case-studies"
       aria-labelledby="case-studies-h"
-      className="scroll-mt-20 border-t border-[#0b0e0d]/8 bg-[#fafaf9] py-20 md:py-28"
+      className="scroll-mt-20 border-t border-[#0b0e0d]/8 bg-[#fafaf9] py-10 md:py-14"
     >
       <div className="mx-auto max-w-7xl px-4 md:px-8">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
@@ -168,7 +168,7 @@ export function CaseStudies() {
         </div>
 
         {/* Comparison Board */}
-        <Reveal delay={0.12} className="mt-12">
+        <Reveal delay={0.12} className="mt-7">
           <div className="overflow-hidden rounded-[1.75rem] border border-[#0b0e0d]/10 bg-white card-shadow">
             {/* Context Header */}
             <div className="border-b border-[#0b0e0d]/8 bg-white px-6 py-5 md:px-8">
