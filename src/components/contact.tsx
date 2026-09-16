@@ -8,7 +8,7 @@ import { Loader2, TriangleAlert, ArrowRight } from "lucide-react";
 import { contactSchema, submitAuditRequest, type ContactInput } from "@/lib/validation";
 import { SectionHeading } from "./section-heading";
 import { Reveal } from "./reveal";
-import { cn } from "@/lib/utils";
+import { cn, SITE } from "@/lib/utils";
 
 const LottieAnimation = dynamic(() => import("./lottie-animation"), { ssr: false });
 
@@ -47,6 +47,8 @@ const inputCls = (bad?: string) =>
 
 export function Contact() {
   const [status, setStatus] = useState<"idle" | "sending" | "ok" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState<string>("");
+
   const {
     register,
     handleSubmit,
@@ -56,12 +58,25 @@ export function Contact() {
 
   const onSubmit = async (data: ContactInput) => {
     setStatus("sending");
+    setErrorMessage("");
     try {
-      await submitAuditRequest(data);
-      setStatus("ok");
-      reset();
+      const res = await submitAuditRequest(data);
+      if (res.ok) {
+        setStatus("ok");
+        reset();
+      } else {
+        setStatus("error");
+        if (res.status === 429) {
+          setErrorMessage("Too many requests. Please wait a few minutes and try again.");
+        } else if (res.status === 400) {
+          setErrorMessage("Please check your information and try again.");
+        } else {
+          setErrorMessage("Something went wrong. Please try again or email us directly.");
+        }
+      }
     } catch {
       setStatus("error");
+      setErrorMessage("Something went wrong. Please try again or email us directly.");
     }
   };
 
@@ -87,7 +102,7 @@ export function Contact() {
             ))}
           </ul>
           <p className="mt-4 font-mono text-[12.5px] text-[#0b0e0d]/50">
-            Prefer email? <a className="underline underline-offset-4" href="mailto:hello@cognivsolutions.com">hello@cognivsolutions.com</a>
+            Prefer email? <a className="underline underline-offset-4" href={`mailto:${SITE.email}`}>{SITE.email}</a>
           </p>
         </div>
 
@@ -101,13 +116,32 @@ export function Contact() {
                   <p className="mx-auto mt-2 max-w-[42ch] text-[14.5px] text-[#0b0e0d]/60">
                     Thanks — we’ll reply within one business day to schedule your automation audit.
                   </p>
-                  <button onClick={() => setStatus("idle")} className="btn-press mt-6 rounded-full border border-[#0b0e0d]/15 px-6 py-3 text-[14px] font-medium hover:border-[#0b0e0d]/35">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setStatus("idle");
+                      setErrorMessage("");
+                    }}
+                    className="btn-press mt-6 rounded-full border border-[#0b0e0d]/15 px-6 py-3 text-[14px] font-medium hover:border-[#0b0e0d]/35"
+                  >
                     Send another request
                   </button>
                 </div>
               </div>
             ) : (
               <form onSubmit={handleSubmit(onSubmit)} noValidate className="grid gap-4 sm:grid-cols-2">
+                {/* Honeypot anti-spam field */}
+                <div style={{ position: "absolute", left: "-9999px", opacity: 0, pointerEvents: "none" }} aria-hidden="true">
+                  <label htmlFor="f-hp">Leave this field blank</label>
+                  <input
+                    id="f-hp"
+                    type="text"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    {...register("_hp")}
+                  />
+                </div>
+
                 <Field label="Name" error={errors.name?.message} htmlFor="f-name">
                   <input id="f-name" autoComplete="name" placeholder="Aarav Sharma" className={inputCls(errors.name?.message)} {...register("name")} />
                 </Field>
@@ -149,7 +183,8 @@ export function Contact() {
                 </div>
                 {status === "error" && (
                   <p className="flex items-center gap-2 rounded-xl bg-red-50 px-4 py-3 text-[13.5px] font-medium text-red-800 sm:col-span-2" role="alert">
-                    <TriangleAlert className="h-4 w-4" aria-hidden /> Something went wrong. Please try again or email us directly.
+                    <TriangleAlert className="h-4 w-4 shrink-0" aria-hidden />
+                    {errorMessage || "Something went wrong. Please try again or email us directly."}
                   </p>
                 )}
                 <button

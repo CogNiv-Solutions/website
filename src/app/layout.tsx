@@ -59,6 +59,9 @@ const orgJsonLd = {
   email: SITE.email,
 };
 
+// Escape '<' to prevent HTML parser breakout in embedded JSON-LD scripts
+const safeOrgJsonLd = JSON.stringify(orgJsonLd).replace(/</g, "\\u003c");
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
@@ -68,7 +71,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </a>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
+          dangerouslySetInnerHTML={{ __html: safeOrgJsonLd }}
         />
         <SmoothScroll>{children}</SmoothScroll>
       </body>

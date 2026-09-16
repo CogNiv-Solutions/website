@@ -19,10 +19,14 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
       if (!a) return;
       const id = a.getAttribute("href");
       if (!id || id.length < 2) return;
-      const el = document.querySelector(id);
-      if (el) {
-        e.preventDefault();
-        lenis.scrollTo(el as HTMLElement, { offset: -72 });
+      try {
+        const el = document.querySelector(id);
+        if (el) {
+          e.preventDefault();
+          lenis.scrollTo(el as HTMLElement, { offset: -72 });
+        }
+      } catch {
+        // Guard against invalid selector strings without throwing DOMException
       }
     };
     document.addEventListener("click", onAnchor);

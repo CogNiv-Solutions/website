@@ -10,7 +10,7 @@ export const SITE = {
   short: "Cogniv",
   tagline: "Business, Automated.",
   url: "https://cognivsolutions.in",
-  email: "hello@cognivsolutions.com",
+  email: "cognivsolutions@gmail.com",
   description:
     "Cogniv Solutions helps businesses identify operational bottlenecks and turn repetitive work into intelligent, scalable automation.",
 } as const;
