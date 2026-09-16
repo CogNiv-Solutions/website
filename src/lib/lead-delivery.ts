@@ -67,10 +67,16 @@ ${lead.message || "None"}
 
       if (res.ok) {
         deliveredAny = true;
+      } else {
+        const errText = await res.text();
+        console.error(`[LeadDelivery] Resend failed with HTTP ${res.status}: ${errText}`);
       }
-    } catch {
-      // Error handling without logging sensitive lead contents
+    } catch (e) {
+      console.error("[LeadDelivery] Resend fetch network error:", e instanceof Error ? e.message : e);
     }
+  } else {
+    if (!resendApiKey) console.error("[LeadDelivery] Missing process.env.RESEND_API_KEY");
+    if (!auditEmail) console.error("[LeadDelivery] Missing process.env.AUDIT_EMAIL");
   }
 
   // 2. Webhook / CRM Dispatch
