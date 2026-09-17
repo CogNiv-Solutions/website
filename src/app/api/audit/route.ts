@@ -11,11 +11,14 @@ const MAX_PAYLOAD_BYTES = 16 * 1024; // 16 KB
 const ALLOWED_ORIGINS = new Set([
   "https://cognivsolutions.in",
   "https://www.cognivsolutions.in",
+  "http://cognivsolutions.in",
+  "http://www.cognivsolutions.in",
 ]);
 
 function isAllowedOrigin(origin: string | null): boolean {
   if (!origin) return true; // Direct/same-origin navigation or tools
   if (ALLOWED_ORIGINS.has(origin)) return true;
+  if (origin.endsWith(".vercel.app")) return true;
 
   if (process.env.NODE_ENV !== "production") {
     try {
@@ -62,11 +65,11 @@ export async function POST(req: NextRequest) {
 
     // 4. Rate Limiting Check
     const clientIp = getClientIp(req.headers);
-    const rateLimit = await checkRateLimit(clientIp, 5, 10 * 60 * 1000);
+    const rateLimit = await checkRateLimit(clientIp, 8, 10 * 60 * 1000);
 
     if (!rateLimit.success) {
       return NextResponse.json(
-        { ok: false, error: "Too many requests" },
+        { ok: false, error: "Too many requests. Please wait a few minutes or connect on WhatsApp." },
         {
           status: 429,
           headers: {
@@ -104,7 +107,7 @@ export async function POST(req: NextRequest) {
     const parseResult = serverAuditSchema.safeParse(rawBody);
     if (!parseResult.success) {
       return NextResponse.json(
-        { ok: false, error: "Invalid request" },
+        { ok: false, error: "Invalid form information. Please verify your details." },
         { status: 400 }
       );
     }
@@ -120,21 +123,29 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // 8. Lead Delivery Layer
+    // 8. Lead Delivery & Structured Preservation Layer
     const leadData = { ...data };
     delete (leadData as Record<string, unknown>)._hp;
+
+    // Guaranteed runtime log capture (visible in Vercel Function logs)
+    console.info("[AUDIT_LEAD_RECORDED]", JSON.stringify({
+      lead: leadData,
+      ip: clientIp,
+      receivedAt: new Date().toISOString(),
+    }));
+
     const delivery = await deliverAuditLead(leadData);
 
-    if (!delivery.configured || !delivery.delivered) {
-      return NextResponse.json(
-        { ok: false, error: "Unable to process request" },
-        { status: 500 }
-      );
-    }
-
-    return NextResponse.json({ ok: true }, { status: 200 });
-  } catch {
-    // Obfuscate all internal server errors
+    // Return success to the legitimate user who submitted their request
+    return NextResponse.json(
+      {
+        ok: true,
+        delivered: delivery.delivered,
+      },
+      { status: 200 }
+    );
+  } catch (err) {
+    console.error("[AuditAPI] Unexpected error:", err);
     return NextResponse.json(
       { ok: false, error: "Unable to process request" },
       { status: 500 }

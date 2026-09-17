@@ -64,6 +64,7 @@ export function Contact() {
     handleSubmit,
     reset,
     setValue,
+    watch,
     formState: { errors },
   } = useForm<ContactInput>({
     resolver: zodResolver(contactSchema),
@@ -71,6 +72,8 @@ export function Contact() {
       automationType: ["Lead Management"],
     },
   });
+
+  const formValues = watch();
 
   useEffect(() => {
     const handleCustomAudit = (e: Event) => {
@@ -388,10 +391,29 @@ export function Contact() {
                 </div>
 
                 {status === "error" && (
-                  <p className="flex items-center gap-2 rounded-xl bg-red-50 px-4 py-3 text-[13.5px] font-medium text-red-800" role="alert">
-                    <TriangleAlert className="h-4 w-4 shrink-0" aria-hidden />
-                    {errorMessage || "Something went wrong. Please try again or message us on WhatsApp."}
-                  </p>
+                  <div className="rounded-2xl border border-red-200 bg-red-50/90 p-4 text-red-900" role="alert">
+                    <div className="flex items-start gap-2.5">
+                      <TriangleAlert className="h-5 w-5 shrink-0 mt-0.5 text-red-600" aria-hidden />
+                      <div className="flex-1">
+                        <p className="text-[13.5px] font-semibold text-red-950">
+                          {errorMessage || "Unable to submit form directly."}
+                        </p>
+                        <p className="mt-1 text-[12.5px] text-red-800/80 leading-relaxed">
+                          Your request is important to us. Send your details directly to our automation team on WhatsApp:
+                        </p>
+                        <a
+                          href={getWhatsAppUrl(
+                            `Hi Cogniv, I'd like to book an Automation Audit for my business:\n• Name: ${formValues.name || "Not entered"}\n• Business: ${formValues.businessName || "Not entered"}\n• Phone: ${formValues.phone || "Not entered"}\n• Email: ${formValues.email || "Not entered"}\n• Areas: ${selectedTypes.join(", ")}`
+                          )}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="btn-press mt-2.5 inline-flex items-center gap-2 rounded-xl bg-[#25D366] px-4 py-2 text-[13px] font-semibold text-white shadow-xs hover:bg-[#20bd5a]"
+                        >
+                          <MessageSquare className="h-4 w-4" /> Message on WhatsApp Instead
+                        </a>
+                      </div>
+                    </div>
+                  </div>
                 )}
 
                 <button

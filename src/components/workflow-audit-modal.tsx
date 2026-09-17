@@ -42,6 +42,7 @@ export function WorkflowAuditModal({
     handleSubmit,
     reset,
     setValue,
+    watch,
     formState: { errors },
   } = useForm<ContactInput>({
     resolver: zodResolver(contactSchema),
@@ -50,6 +51,8 @@ export function WorkflowAuditModal({
       industry: industry?.name || "",
     },
   });
+
+  const modalFormValues = watch();
 
   // Keep form values in sync when industry changes
   useEffect(() => {
@@ -303,9 +306,21 @@ export function WorkflowAuditModal({
                   </div>
 
                   {status === "error" && (
-                    <p className="rounded-lg bg-red-50 p-2.5 text-[12.5px] font-medium text-red-800">
-                      {errorMessage}
-                    </p>
+                    <div className="rounded-xl bg-red-50 p-3.5 border border-red-200">
+                      <p className="text-[12.5px] font-medium text-red-900">
+                        {errorMessage || "Could not submit directly from website."}
+                      </p>
+                      <a
+                        href={getWhatsAppUrl(
+                          `Hi Cogniv, I would like to audit our ${industry.name} workflow:\n• Workflow: ${industry.example}\n• Name: ${modalFormValues.name || "Not entered"}\n• Business: ${modalFormValues.businessName || "Not entered"}\n• Phone: ${modalFormValues.phone || "Not entered"}\n• Email: ${modalFormValues.email || "Not entered"}`
+                        )}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn-press mt-2 inline-flex items-center gap-1.5 rounded-lg bg-[#25D366] px-3.5 py-1.5 text-[12.5px] font-semibold text-white hover:bg-[#20bd5a]"
+                      >
+                        <MessageSquare className="h-3.5 w-3.5" /> Send Directly via WhatsApp
+                      </a>
+                    </div>
                   )}
 
                   <button

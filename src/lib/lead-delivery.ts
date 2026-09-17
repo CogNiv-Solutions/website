@@ -20,7 +20,7 @@ export type DeliveryResult = {
  */
 export async function deliverAuditLead(lead: Omit<ContactInput, "_hp">): Promise<DeliveryResult> {
   const resendApiKey = process.env.RESEND_API_KEY;
-  const auditEmail = process.env.AUDIT_EMAIL || process.env.AUDIT_DESTINATION_EMAIL;
+  const auditEmail = process.env.AUDIT_EMAIL || process.env.AUDIT_DESTINATION_EMAIL || "cognivsolutions@gmail.com";
   const webhookUrl = process.env.AUDIT_DESTINATION_URL || process.env.AUDIT_WEBHOOK_URL;
 
   let deliveredAny = false;
