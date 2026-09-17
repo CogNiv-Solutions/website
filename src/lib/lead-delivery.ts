@@ -4,27 +4,43 @@ export type DeliveryResult = {
   delivered: boolean;
   configured: boolean;
   error?: string;
+  debug?: {
+    hasKey: boolean;
+    keyLength: number;
+    resendStatus?: number;
+    resendError?: string;
+    hasAuditEmail: boolean;
+  };
 };
 
 /**
  * Isolated Lead Delivery Layer.
  *
  * Dispatches verified lead data to configured destinations:
- * - Resend: RESEND_API_KEY + AUDIT_EMAIL
- * - Webhook / CRM: AUDIT_DESTINATION_URL (or AUDIT_WEBHOOK_URL) + optional AUDIT_WEBHOOK_SECRET
- *
- * Security & Integrity Rule:
- * Never fakes delivery. If no destination is configured, returns configured: false
- * so the API returns HTTP 500 and the user is guided to direct email.
- * Never logs sensitive PII.
+ * - Resend: RESEND_API_KEY (or aliases) + AUDIT_EMAIL
+ * - Webhook / CRM: AUDIT_DESTINATION_URL + optional AUDIT_WEBHOOK_SECRET
  */
 export async function deliverAuditLead(lead: Omit<ContactInput, "_hp">): Promise<DeliveryResult> {
-  const resendApiKey = process.env.RESEND_API_KEY;
-  const auditEmail = process.env.AUDIT_EMAIL || process.env.AUDIT_DESTINATION_EMAIL || "cognivsolutions@gmail.com";
+  const rawResendKey =
+    process.env.RESEND_API_KEY ||
+    process.env.RESEND_KEY ||
+    process.env.resend_api_key ||
+    process.env.NEXT_PUBLIC_RESEND_API_KEY;
+
+  const resendApiKey = rawResendKey ? rawResendKey.trim().replace(/^["']|["']$/g, "") : undefined;
+
+  const rawAuditEmail =
+    process.env.AUDIT_EMAIL ||
+    process.env.AUDIT_DESTINATION_EMAIL ||
+    process.env.audit_email;
+
+  const auditEmail = (rawAuditEmail ? rawAuditEmail.trim().replace(/^["']|["']$/g, "") : undefined) || "cognivsolutions@gmail.com";
   const webhookUrl = process.env.AUDIT_DESTINATION_URL || process.env.AUDIT_WEBHOOK_URL;
 
   let deliveredAny = false;
   let hasConfiguration = false;
+  let resendStatus: number | undefined;
+  let resendError: string | undefined;
 
   // 1. Resend Dispatch
   if (resendApiKey && auditEmail) {
@@ -66,18 +82,20 @@ ${lead.message || "None"}
         }),
       });
 
+      resendStatus = res.status;
       if (res.ok) {
         deliveredAny = true;
       } else {
         const errText = await res.text();
-        console.error(`[LeadDelivery] Resend failed with HTTP ${res.status}: ${errText}`);
+        resendError = `Resend ${res.status}: ${errText}`;
+        console.error(`[LeadDelivery] ${resendError}`);
       }
     } catch (e) {
-      console.error("[LeadDelivery] Resend fetch network error:", e instanceof Error ? e.message : e);
+      resendError = e instanceof Error ? e.message : String(e);
+      console.error("[LeadDelivery] Resend fetch network error:", resendError);
     }
   } else {
-    if (!resendApiKey) console.error("[LeadDelivery] Missing process.env.RESEND_API_KEY");
-    if (!auditEmail) console.error("[LeadDelivery] Missing process.env.AUDIT_EMAIL");
+    if (!resendApiKey) console.error("[LeadDelivery] Missing RESEND_API_KEY in environment variables");
   }
 
   // 2. Webhook / CRM Dispatch
@@ -112,17 +130,27 @@ ${lead.message || "None"}
     }
   }
 
+  const debug = {
+    hasKey: !!resendApiKey,
+    keyLength: resendApiKey?.length ?? 0,
+    resendStatus,
+    resendError,
+    hasAuditEmail: !!auditEmail,
+  };
+
   if (!hasConfiguration) {
-    // Explicitly unconfigured - do not simulate or pretend success
     return {
       delivered: false,
       configured: false,
       error: "No lead destination configured",
+      debug,
     };
   }
 
   return {
     delivered: deliveredAny,
     configured: true,
+    error: resendError,
+    debug,
   };
 }

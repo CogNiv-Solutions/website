@@ -141,6 +141,12 @@ export async function POST(req: NextRequest) {
       {
         ok: true,
         delivered: delivery.delivered,
+        diagnostics: {
+          configured: delivery.configured,
+          hasKey: delivery.debug?.hasKey,
+          resendStatus: delivery.debug?.resendStatus,
+          resendError: delivery.debug?.resendError,
+        },
       },
       { status: 200 }
     );
