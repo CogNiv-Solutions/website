@@ -144,6 +144,7 @@ export async function POST(req: NextRequest) {
         diagnostics: {
           configured: delivery.configured,
           hasKey: delivery.debug?.hasKey,
+          keyPreview: delivery.debug?.keyPreview,
           resendStatus: delivery.debug?.resendStatus,
           resendError: delivery.debug?.resendError,
         },

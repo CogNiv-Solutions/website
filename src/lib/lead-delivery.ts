@@ -7,6 +7,7 @@ export type DeliveryResult = {
   debug?: {
     hasKey: boolean;
     keyLength: number;
+    keyPreview?: string;
     resendStatus?: number;
     resendError?: string;
     hasAuditEmail: boolean;
@@ -27,14 +28,28 @@ export async function deliverAuditLead(lead: Omit<ContactInput, "_hp">): Promise
     process.env.resend_api_key ||
     process.env.NEXT_PUBLIC_RESEND_API_KEY;
 
-  const resendApiKey = rawResendKey ? rawResendKey.trim().replace(/^["']|["']$/g, "") : undefined;
+  let resendApiKey = rawResendKey ? rawResendKey.trim().replace(/^["']|["']$/g, "") : undefined;
+
+  // Auto-clean common copy-paste accidents (e.g. pasting 'RESEND_API_KEY=re_...' or 'Bearer re_...')
+  if (resendApiKey) {
+    if (resendApiKey.includes("=")) {
+      resendApiKey = resendApiKey.split("=").pop()?.trim() ?? resendApiKey;
+    }
+    if (resendApiKey.startsWith("Bearer ")) {
+      resendApiKey = resendApiKey.replace("Bearer ", "").trim();
+    }
+    resendApiKey = resendApiKey.replace(/^["']|["']$/g, "").trim();
+  }
 
   const rawAuditEmail =
     process.env.AUDIT_EMAIL ||
     process.env.AUDIT_DESTINATION_EMAIL ||
     process.env.audit_email;
 
-  const auditEmail = (rawAuditEmail ? rawAuditEmail.trim().replace(/^["']|["']$/g, "") : undefined) || "cognivsolutions@gmail.com";
+  let auditEmail = (rawAuditEmail ? rawAuditEmail.trim().replace(/^["']|["']$/g, "") : undefined) || "cognivsolutions@gmail.com";
+  if (auditEmail.includes("=")) {
+    auditEmail = auditEmail.split("=").pop()?.trim() ?? auditEmail;
+  }
   const webhookUrl = process.env.AUDIT_DESTINATION_URL || process.env.AUDIT_WEBHOOK_URL;
 
   let deliveredAny = false;
@@ -133,6 +148,7 @@ ${lead.message || "None"}
   const debug = {
     hasKey: !!resendApiKey,
     keyLength: resendApiKey?.length ?? 0,
+    keyPreview: resendApiKey ? `${resendApiKey.slice(0, 7)}...${resendApiKey.slice(-4)}` : undefined,
     resendStatus,
     resendError,
     hasAuditEmail: !!auditEmail,
