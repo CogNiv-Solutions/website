@@ -173,11 +173,10 @@ export const engagementSteps = [
 ];
 
 export const navLinks = [
-  { label: "Solutions", href: "/#solutions" },
+  { label: "AI Solutions", href: "/ai-solutions" },
   { label: "Interactive Demos", href: "/demo" },
-  { label: "How It Works", href: "/#how-it-works" },
+  { label: "About Us", href: "/about" },
   { label: "Pricing & ROI", href: "/#pricing" },
-  { label: "Why Cogniv", href: "/#why-cogniv" },
   { label: "Industries", href: "/#industries" },
   { label: "FAQ", href: "/#faq" },
 ];

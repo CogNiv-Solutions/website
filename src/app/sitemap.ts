@@ -12,6 +12,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1.0,
     },
     {
+      url: `${SITE.url}/ai-solutions`,
+      lastModified,
+      changeFrequency: "daily",
+      priority: 0.9,
+    },
+    {
+      url: `${SITE.url}/about`,
+      lastModified,
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    {
+      url: `${SITE.url}/audit`,
+      lastModified,
+      changeFrequency: "daily",
+      priority: 0.9,
+    },
+    {
       url: `${SITE.url}/demo`,
       lastModified,
       changeFrequency: "weekly",
@@ -19,4 +37,3 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 }
-

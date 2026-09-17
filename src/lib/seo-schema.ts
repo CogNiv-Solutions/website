@@ -183,20 +183,62 @@ export function generateSeoJsonLd() {
       {
         "@type": "ListItem",
         position: 2,
-        name: "Solutions",
-        item: `${SITE.url}/#solutions`,
+        name: "AI Solutions",
+        item: `${SITE.url}/ai-solutions`,
       },
       {
         "@type": "ListItem",
         position: 3,
-        name: "Pricing & ROI",
-        item: `${SITE.url}/#pricing`,
+        name: "Interactive Demos",
+        item: `${SITE.url}/demo`,
       },
       {
         "@type": "ListItem",
         position: 4,
-        name: "Automation Audit",
-        item: `${SITE.url}/#contact`,
+        name: "About Us",
+        item: `${SITE.url}/about`,
+      },
+      {
+        "@type": "ListItem",
+        position: 5,
+        name: "Free Automation Audit",
+        item: `${SITE.url}/audit`,
+      },
+    ],
+  };
+
+  const siteNavigationSchema = {
+    "@type": "ItemList",
+    "@id": `${SITE.url}/#navigation`,
+    name: "Primary Site Navigation",
+    itemListElement: [
+      {
+        "@type": "SiteNavigationElement",
+        position: 1,
+        name: "AI Solutions",
+        description: "Bespoke AI solutions and workflow automation systems",
+        url: `${SITE.url}/ai-solutions`,
+      },
+      {
+        "@type": "SiteNavigationElement",
+        position: 2,
+        name: "Interactive Demos",
+        description: "Live interactive simulations of WhatsApp bots, CRM routing, and invoice OCR",
+        url: `${SITE.url}/demo`,
+      },
+      {
+        "@type": "SiteNavigationElement",
+        position: 3,
+        name: "About Us",
+        description: "Learn about Cogniv Solutions, our workflow-first philosophy and team",
+        url: `${SITE.url}/about`,
+      },
+      {
+        "@type": "SiteNavigationElement",
+        position: 4,
+        name: "Free Automation Audit",
+        description: "Book a free 30-minute operational automation review and 14-day ROI blueprint",
+        url: `${SITE.url}/audit`,
       },
     ],
   };
@@ -209,6 +251,8 @@ export function generateSeoJsonLd() {
       serviceCatalogSchema,
       faqSchema,
       breadcrumbSchema,
+      siteNavigationSchema,
     ],
   };
 }
+
