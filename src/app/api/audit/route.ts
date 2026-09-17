@@ -106,6 +106,7 @@ export async function POST(req: NextRequest) {
     // 6. Server-Side Schema Validation
     const parseResult = serverAuditSchema.safeParse(rawBody);
     if (!parseResult.success) {
+      console.warn("[AuditAPI] Validation failure:", parseResult.error.flatten());
       return NextResponse.json(
         { ok: false, error: "Invalid form information. Please verify your details." },
         { status: 400 }

@@ -28,7 +28,7 @@ export async function deliverAuditLead(lead: Omit<ContactInput, "_hp">): Promise
     process.env.resend_api_key ||
     process.env.NEXT_PUBLIC_RESEND_API_KEY;
 
-  let resendApiKey = rawResendKey ? rawResendKey.trim().replace(/^["']|["']$/g, "") : undefined;
+  let resendApiKey = rawResendKey ? rawResendKey.replace(/[\r\n\t]/g, "").trim().replace(/^["']|["']$/g, "") : undefined;
 
   // Auto-clean common copy-paste accidents (e.g. pasting 'RESEND_API_KEY=re_...' or 'Bearer re_...')
   if (resendApiKey) {
