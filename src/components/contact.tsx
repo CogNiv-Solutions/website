@@ -58,6 +58,11 @@ export function Contact() {
   const [selectedTypes, setSelectedTypes] = useState<string[]>(["Lead Management"]);
   const [activeWorkflow, setActiveWorkflow] = useState<{ name: string; example: string } | null>(null);
   const [highlighted, setHighlighted] = useState(false);
+  const [formLoadedAt, setFormLoadedAt] = useState<number>(() => Date.now());
+
+  useEffect(() => {
+    setFormLoadedAt(Date.now());
+  }, []);
 
   const {
     register,
@@ -117,6 +122,7 @@ export function Contact() {
         process: activeWorkflow
           ? `[${activeWorkflow.name} Workflow Audit] ${activeWorkflow.example} (Automate: ${selectedTypes.join(", ")})`
           : `Automate: ${selectedTypes.join(", ")}`,
+        _formLoadedAt: formLoadedAt,
       };
       const res = await submitAuditRequest(payload);
       if (res.ok) {
@@ -273,8 +279,16 @@ export function Contact() {
               </div>
             ) : (
               <form onSubmit={handleSubmit(onSubmit)} noValidate className="space-y-5">
-                {/* Honeypot anti-spam field */}
-                <div style={{ position: "absolute", left: "-9999px", opacity: 0, pointerEvents: "none" }} aria-hidden="true">
+                {/* Honeypot anti-spam fields (b_website & legacy _hp) */}
+                <div style={{ display: "none" }} aria-hidden="true">
+                  <label htmlFor="b_website">Leave this field blank</label>
+                  <input
+                    id="b_website"
+                    type="text"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    {...register("b_website")}
+                  />
                   <label htmlFor="f-hp">Leave this field blank</label>
                   <input
                     id="f-hp"

@@ -52,7 +52,7 @@ export type RateLimitResult = {
  */
 export async function checkRateLimit(
   identifier: string,
-  limit = 5,
+  limit = 3,
   windowMs = 10 * 60 * 1000
 ): Promise<RateLimitResult> {
   const upstashUrl = process.env.UPSTASH_REDIS_REST_URL;

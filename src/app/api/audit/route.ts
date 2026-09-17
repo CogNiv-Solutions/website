@@ -2,6 +2,13 @@ import { NextRequest, NextResponse } from "next/server";
 import { serverAuditSchema } from "@/lib/validation";
 import { checkRateLimit, getClientIp } from "@/lib/rate-limit";
 import { deliverAuditLead } from "@/lib/lead-delivery";
+import { sanitizeFormInput } from "@/lib/sanitization";
+import {
+  checkHoneypot,
+  checkSubmissionTime,
+  verifyTurnstileToken,
+  verifyRecaptchaToken,
+} from "@/lib/bot-protection";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -16,7 +23,7 @@ const ALLOWED_ORIGINS = new Set([
 ]);
 
 function isAllowedOrigin(origin: string | null): boolean {
-  if (!origin) return true; // Direct/same-origin navigation or tools
+  if (!origin) return true; // Same-origin navigation or tools
   if (ALLOWED_ORIGINS.has(origin)) return true;
   if (origin.endsWith(".vercel.app")) return true;
 
@@ -36,7 +43,7 @@ function isAllowedOrigin(origin: string | null): boolean {
 
 export async function POST(req: NextRequest) {
   try {
-    // 1. Origin / Cross-Site Check
+    // 1. Origin / Cross-Site Check (CSRF defense)
     const origin = req.headers.get("origin");
     if (origin && !isAllowedOrigin(origin)) {
       return NextResponse.json(
@@ -54,7 +61,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // 3. Payload Size Guard (Content-Length Header)
+    // 3. Payload Size Guard (Header validation)
     const contentLength = req.headers.get("content-length");
     if (contentLength && parseInt(contentLength, 10) > MAX_PAYLOAD_BYTES) {
       return NextResponse.json(
@@ -63,9 +70,9 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // 4. Rate Limiting Check
+    // 4. Rate Limiting Check (Max 3 submissions per IP per 10 minutes)
     const clientIp = getClientIp(req.headers);
-    const rateLimit = await checkRateLimit(clientIp, 8, 10 * 60 * 1000);
+    const rateLimit = await checkRateLimit(clientIp, 3, 10 * 60 * 1000);
 
     if (!rateLimit.success) {
       return NextResponse.json(
@@ -103,10 +110,9 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // 6. Server-Side Schema Validation
+    // 6. Strict Server-Side Schema Validation
     const parseResult = serverAuditSchema.safeParse(rawBody);
     if (!parseResult.success) {
-      console.warn("[AuditAPI] Validation failure:", parseResult.error.flatten());
       return NextResponse.json(
         { ok: false, error: "Invalid form information. Please verify your details." },
         { status: 400 }
@@ -115,45 +121,81 @@ export async function POST(req: NextRequest) {
 
     const data = parseResult.data;
 
-    // 7. Anti-Spam Honeypot Verification
-    if (data._hp && data._hp.trim().length > 0) {
-      // Reject bot submission without leaking internal reason
+    // 7. Anti-Spam Honeypot Verification (b_website & _hp)
+    const honeypotResult = checkHoneypot(data);
+    if (honeypotResult.isBot) {
       return NextResponse.json(
         { ok: false, error: "Invalid request" },
         { status: 400 }
       );
     }
 
-    // 8. Lead Delivery & Structured Preservation Layer
-    const leadData = { ...data };
+    // 8. Time-Analysis Validation (Rejects submissions under 2 seconds)
+    if (data._formLoadedAt !== undefined) {
+      const timeCheck = checkSubmissionTime(data._formLoadedAt, 2000);
+      if (timeCheck.isBot) {
+        return NextResponse.json(
+          { ok: false, error: "Form submitted too quickly. Please take a moment to review." },
+          { status: 400 }
+        );
+      }
+    }
+
+    // 9. Cloudflare Turnstile & Google reCAPTCHA v3 Server Verification
+    if (process.env.TURNSTILE_SECRET_KEY) {
+      const turnstileCheck = await verifyTurnstileToken(data.turnstileToken, clientIp);
+      if (!turnstileCheck.success) {
+        return NextResponse.json(
+          { ok: false, error: "Bot verification failed. Please refresh and try again." },
+          { status: 400 }
+        );
+      }
+    }
+
+    if (process.env.RECAPTCHA_SECRET_KEY) {
+      const recaptchaCheck = await verifyRecaptchaToken(data.recaptchaToken, clientIp);
+      if (!recaptchaCheck.success) {
+        return NextResponse.json(
+          { ok: false, error: "Bot verification failed. Please refresh and try again." },
+          { status: 400 }
+        );
+      }
+    }
+
+    // 10. Deep Input Sanitization & Parameterization Layer
+    const sanitizedData = sanitizeFormInput(data);
+
+    // Strip internal bot verification meta-properties before delivery
+    const leadData = { ...sanitizedData };
+    delete (leadData as Record<string, unknown>).b_website;
     delete (leadData as Record<string, unknown>)._hp;
+    delete (leadData as Record<string, unknown>)._formLoadedAt;
+    delete (leadData as Record<string, unknown>).turnstileToken;
+    delete (leadData as Record<string, unknown>).recaptchaToken;
 
-    // Guaranteed runtime log capture (visible in Vercel Function logs)
-    console.info("[AUDIT_LEAD_RECORDED]", JSON.stringify({
-      lead: leadData,
-      ip: clientIp,
-      receivedAt: new Date().toISOString(),
-    }));
-
+    // 11. Secure Dispatch
     const delivery = await deliverAuditLead(leadData);
 
-    // Return success to the legitimate user who submitted their request
+    if (!delivery.delivered && !delivery.configured) {
+      console.warn("[AuditAPI] Delivery destination unconfigured in environment");
+      return NextResponse.json(
+        { ok: false, error: "Unable to process request" },
+        { status: 500 }
+      );
+    }
+
+    // 12. Generic, Sanitized Client Response
+    // ZERO internal database errors or credential previews leaked to client
     return NextResponse.json(
       {
         ok: true,
-        delivered: delivery.delivered,
-        diagnostics: {
-          configured: delivery.configured,
-          hasKey: delivery.debug?.hasKey,
-          keyPreview: delivery.debug?.keyPreview,
-          resendStatus: delivery.debug?.resendStatus,
-          resendError: delivery.debug?.resendError,
-        },
+        message: "Your audit request has been received. Our team will review your workflow.",
       },
       { status: 200 }
     );
   } catch (err) {
-    console.error("[AuditAPI] Unexpected error:", err);
+    // Log detailed error privately to server console only (never to client)
+    console.error("[AuditAPI] Internal processing error:", err);
     return NextResponse.json(
       { ok: false, error: "Unable to process request" },
       { status: 500 }
@@ -161,7 +203,7 @@ export async function POST(req: NextRequest) {
   }
 }
 
-// Phase 8: Explicit HTTP Method Protection
+// Explicit HTTP Method Protection (Only POST allowed)
 const methodNotAllowed = () =>
   NextResponse.json(
     { ok: false, error: "Method not allowed" },
