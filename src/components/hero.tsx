@@ -19,7 +19,7 @@ export function Hero() {
           </Reveal>
           <Reveal delay={0.16}>
             <p className="mt-3.5 max-w-[58ch] text-[14.5px] leading-relaxed text-[#0b0e0d]/70 sm:text-[15px] md:text-base">
-              Cogniv finds the repetitive work slowing your business down and builds automated workflows around the tools you already use.
+              Cogniv Solutions finds the repetitive work slowing your business down and builds automated workflows around the tools you already use.
             </p>
           </Reveal>
           <Reveal delay={0.24}>

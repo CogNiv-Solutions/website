@@ -55,7 +55,7 @@ export const contactSchema = z.object({
     .optional(),
 });
 
-export const serverAuditSchema = contactSchema;
+export const serverAuditSchema = contactSchema.strict();
 
 export type ContactInput = z.infer<typeof contactSchema>;
 
