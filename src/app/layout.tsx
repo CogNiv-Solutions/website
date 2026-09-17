@@ -12,11 +12,11 @@ const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"]
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
   title: {
-    default: "Cogniv Solutions | Business Automation & AI Systems",
-    template: "%s | Cogniv Solutions",
+    default: "Cogniv Solutions | AI & Business Automation Services India",
+    template: "%s | Cogniv Solutions — Automation Services",
   },
   description:
-    "Cogniv Solutions builds bespoke AI and workflow automation systems for businesses. We eliminate operational bottlenecks across WhatsApp, CRMs, ERPs, and spreadsheets to save 20+ hours weekly.",
+    "Cogniv Solutions delivers bespoke AI and business automation services in India. We eliminate operational bottlenecks across WhatsApp, CRMs, ERPs, and spreadsheets to save 20+ hours weekly.",
   applicationName: "Cogniv Solutions",
   icons: {
     icon: [
@@ -38,19 +38,26 @@ export const metadata: Metadata = {
     statusBarStyle: "black-translucent",
   },
   keywords: [
+    "automation services",
+    "business automation services",
+    "AI automation services",
+    "automation services India",
+    "workflow automation services",
+    "process automation services",
     "Cogniv Solutions",
     "Cogniv",
     "business automation",
     "AI automation agency",
     "business process automation India",
     "workflow automation agency",
+    "WhatsApp automation services",
     "WhatsApp business automation",
     "WhatsApp CRM integration",
     "lead qualification automation",
     "lead automation CRM",
     "AI agents for business",
     "custom business software",
-    "Tally automation",
+    "Tally automation services",
     "Tally invoice automation",
     "document data extraction OCR",
     "invoice OCR AI",

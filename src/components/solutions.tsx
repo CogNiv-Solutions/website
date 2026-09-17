@@ -11,9 +11,9 @@ export function Solutions() {
       <div className="mx-auto max-w-7xl px-4 py-10 md:px-8 md:py-14">
         <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
           <SectionHeading
-            eyebrow="Solutions"
-            title={<span id="solutions-h">What could your business stop doing manually?</span>}
-            copy="Practical, real-world workflows built around the tools you already use — removing repetitive friction so your team can focus on growth."
+            eyebrow="Automation Services"
+            title={<span id="solutions-h">Core Business Automation Services</span>}
+            copy="End-to-end AI and workflow automation services engineered around your existing tools — removing repetitive friction so your team can focus on revenue."
           />
           <a
             href="#contact"

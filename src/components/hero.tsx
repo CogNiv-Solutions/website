@@ -10,7 +10,7 @@ export function Hero() {
       <div className="relative mx-auto grid max-w-7xl gap-8 px-4 pb-10 pt-6 md:px-8 md:pt-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-10 lg:pb-14">
         <div>
           <Reveal>
-            <Eyebrow>Business, Automated.</Eyebrow>
+            <Eyebrow>AI & Business Automation Services</Eyebrow>
           </Reveal>
           <Reveal delay={0.08}>
             <h1 className="mt-3.5 text-[2.15rem] font-semibold leading-[1.06] tracking-tight text-[#0b0e0d] sm:text-[2.6rem] md:text-5xl lg:text-[3.8rem]">
@@ -19,7 +19,7 @@ export function Hero() {
           </Reveal>
           <Reveal delay={0.16}>
             <p className="mt-3.5 max-w-[58ch] text-[14.5px] leading-relaxed text-[#0b0e0d]/70 sm:text-[15px] md:text-base">
-              Cogniv Solutions finds the repetitive work slowing your business down and builds automated workflows around the tools you already use.
+              Cogniv Solutions delivers bespoke AI and business automation services in India. We find the repetitive friction slowing your company down and engineer automated workflows around the tools you already use.
             </p>
           </Reveal>
           <Reveal delay={0.24}>

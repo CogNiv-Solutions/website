@@ -173,11 +173,11 @@ export const engagementSteps = [
 ];
 
 export const navLinks = [
+  { label: "Services", href: "/automation-services" },
   { label: "AI Solutions", href: "/ai-solutions" },
   { label: "Interactive Demos", href: "/demo" },
   { label: "About Us", href: "/about" },
   { label: "Pricing & ROI", href: "/#pricing" },
-  { label: "Industries", href: "/#industries" },
   { label: "FAQ", href: "/#faq" },
 ];
 
