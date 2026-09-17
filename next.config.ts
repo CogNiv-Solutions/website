@@ -4,11 +4,11 @@ const isDev = process.env.NODE_ENV !== "production";
 
 const cspHeader = `
   default-src 'self';
-  script-src 'self' 'unsafe-inline' ${isDev ? "'unsafe-eval'" : ""};
+  script-src 'self' 'unsafe-inline' ${isDev ? "'unsafe-eval' https://va.vercel-scripts.com" : ""};
   style-src 'self' 'unsafe-inline';
   img-src 'self' data: blob:;
   font-src 'self';
-  connect-src 'self';
+  connect-src 'self' https://vitals.vercel-insights.com;
   frame-ancestors 'none';
   form-action 'self';
   base-uri 'self';
