@@ -179,5 +179,6 @@ export const navLinks = [
   { label: "Pricing & ROI", href: "/#pricing" },
   { label: "Why Cogniv", href: "/#why-cogniv" },
   { label: "Industries", href: "/#industries" },
+  { label: "FAQ", href: "/#faq" },
 ];
 

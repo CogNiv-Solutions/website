@@ -4,30 +4,40 @@ import { getWhatsAppUrl } from "@/lib/utils";
 
 const cols = [
   {
-    h: "Explore",
+    h: "Automation Systems",
     links: [
-      ["Solutions", "/#solutions"],
+      ["WhatsApp Automation", "/#solutions"],
+      ["Lead & CRM Pipelines", "/#solutions"],
+      ["Document & Invoice AI", "/#solutions"],
+      ["Operations & ERP Sync", "/#solutions"],
       ["Interactive Demos", "/demo"],
+    ],
+  },
+  {
+    h: "Industries",
+    links: [
+      ["Distributors & Wholesale", "/#industries"],
+      ["Real Estate Pipelines", "/#industries"],
+      ["Education & Coaching", "/#industries"],
+      ["Manufacturing & QC", "/#industries"],
+      ["Logistics & Dispatch", "/#industries"],
+    ],
+  },
+  {
+    h: "Company",
+    links: [
       ["How It Works", "/#how-it-works"],
-      ["Pricing & ROI", "/#pricing"],
+      ["Pricing & ROI Calculator", "/#pricing"],
       ["Why Cogniv", "/#why-cogniv"],
-      ["Industries", "/#industries"],
+      ["Frequently Asked Questions", "/#faq"],
     ],
   },
   {
-    h: "Actions",
+    h: "Get in Touch",
     links: [
-      ["Book Automation Audit", "/#contact"],
-      ["Launch Demo Lab", "/demo"],
-      ["Calculate ROI", "/#pricing"],
+      ["Book Free Audit", "/#contact"],
       ["WhatsApp Consultation", getWhatsAppUrl("Hi Cogniv, I would like to inquire about business automation.")],
-    ],
-  },
-  {
-    h: "Contact",
-    links: [
-      ["Direct Inquiries", "/#contact"],
-      ["Privacy Policy", "#top"],
+      ["Email Us", "mailto:cognivsolutions@gmail.com"],
       ["Back to Top", "#top"],
     ],
   },
@@ -54,7 +64,7 @@ export function Footer() {
               </span>
             </a>
           </div>
-          <nav aria-label="Footer" className="grid grid-cols-2 gap-8 sm:grid-cols-3">
+          <nav aria-label="Footer" className="grid grid-cols-2 gap-6 sm:grid-cols-4">
             {cols.map((c) => (
               <div key={c.h}>
                 <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-white/40">{c.h}</p>

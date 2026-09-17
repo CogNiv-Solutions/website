@@ -33,9 +33,19 @@ export const FAQS: FaqItem[] = [
       "Security and privacy are core engineering priorities. We implement role-based access control, end-to-end data encryption in transit and at rest, and strict non-disclosure safeguards. Your proprietary business data is never used to train public AI models.",
   },
   {
+    question: "How much does custom business automation typically cost in India?",
+    answer:
+      "Engagements start with a Free Automation Audit. Ongoing workflow automation systems typically begin from ₹25,000 to ₹60,000 per month or fixed project milestones depending on complexity and scale. We focus strictly on measurable ROI — if a workflow doesn't save at least 3x to 5x its cost in manual hours or recovered revenue, we won't recommend building it.",
+  },
+  {
     question: "What kind of return on investment (ROI) can our business expect?",
     answer:
       "Our clients typically reclaim 15 to 30+ hours of repetitive manual work per week per department, eliminate order-entry and data-transfer mistakes, and accelerate response times from hours to under two minutes, unlocking faster sales conversions and lower overhead.",
+  },
+  {
+    question: "Which industries benefit the most from Cogniv's automation systems?",
+    answer:
+      "Distributors & Wholesalers (automated WhatsApp orders & Tally sync), Real Estate (instant lead qualification & site-visit pipelines), Education & EdTech (counselling triage & fee reminders), Manufacturing (shop-floor job cards & QC summaries), and Logistics (POD collection & dispatch updates).",
   },
 ];
 

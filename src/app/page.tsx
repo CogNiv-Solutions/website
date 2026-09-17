@@ -6,11 +6,12 @@ import { ProcessTimeline } from "@/components/process-timeline";
 import { Pricing } from "@/components/pricing";
 import { WhyCogniv } from "@/components/why-cogniv";
 import { Industries } from "@/components/industries";
+import { FaqSection } from "@/components/faq";
 import { Contact } from "@/components/contact";
 import { Footer } from "@/components/footer";
 
 /**
- * Cogniv Solutions Homepage Architecture (9 Sections):
+ * Cogniv Solutions Homepage Architecture (10 Sections):
  * 1. HERO - Understand Cogniv & Primary CTA
  * 2. PROBLEM / PAIN POINTS - Relate to manual friction
  * 3. SOLUTIONS / USE CASES - Explore 4 practical workflows
@@ -19,7 +20,8 @@ import { Footer } from "@/components/footer";
  * 6. PRICING + ROI - Evaluate investment & capacity return
  * 7. WHY COGNIV - Build trust with workflow-first principles
  * 8. INDUSTRIES - Recognize relevance to their business
- * 9. FINAL CTA & AUDIT FORM - Low-friction conversion
+ * 9. FAQ - Overcome objections, clarify pricing, boost SEO & rich snippets
+ * 10. FINAL CTA & AUDIT FORM - Low-friction conversion
  */
 export default function Home() {
   return (
@@ -47,7 +49,10 @@ export default function Home() {
         {/* 8. INDUSTRIES */}
         <Industries />
 
-        {/* 9. FINAL CTA & AUDIT FORM */}
+        {/* 9. FAQ */}
+        <FaqSection />
+
+        {/* 10. FINAL CTA & AUDIT FORM */}
         <Contact />
       </main>
       <Footer />
