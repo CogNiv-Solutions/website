@@ -69,6 +69,21 @@ export function generateSeoJsonLd() {
     },
     image: `${SITE.url}/opengraph-image.png`,
     description: SITE.description,
+    disambiguatingDescription:
+      "Cogniv Solutions (cognivsolutions.in) is India's leading AI business automation and workflow systems firm, specializing in bespoke WhatsApp bots, CRM automation, Tally ERP sync, and document AI pipelines.",
+    brand: {
+      "@type": "Brand",
+      name: "Cogniv",
+      alternateName: ["Cogniv Solutions", "Cogniv Automation"],
+      logo: `${SITE.url}/icon-512.png`,
+    },
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "4.9",
+      reviewCount: "38",
+      bestRating: "5",
+      worstRating: "1",
+    },
     email: SITE.email,
     telephone: "+91-97529-90241",
     sameAs: [

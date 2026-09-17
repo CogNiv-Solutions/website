@@ -59,6 +59,41 @@ export function WhyCogniv() {
             </StaggerItem>
           ))}
         </Stagger>
+
+        {/* Integration Ecosystem & SEO Keywords */}
+        <div className="mt-8 rounded-2xl border border-[#0b0e0d]/10 bg-white p-5 md:p-6">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 border-b border-[#0b0e0d]/8 pb-4">
+            <div>
+              <h4 className="text-[14.5px] font-semibold text-[#0b0e0d]">Zero Tech Debt — Integrates Directly With Your Existing Stack</h4>
+              <p className="text-[12.5px] text-[#0b0e0d]/60">We connect and orchestrate workflows without forcing your team onto unfamiliar software.</p>
+            </div>
+            <span className="font-mono text-[11px] font-semibold text-[#2563eb] bg-[#2563eb]/10 px-3 py-1 rounded-full shrink-0 w-fit">
+              100% Native Compatibility
+            </span>
+          </div>
+          <div className="mt-4 flex flex-wrap items-center gap-2">
+            {[
+              "WhatsApp Business API",
+              "Tally Prime & ERP9",
+              "Zoho CRM & Books",
+              "HubSpot",
+              "LeadSquared",
+              "Google Sheets / Excel",
+              "Make & n8n Enterprise",
+              "Intelligent Invoice OCR",
+              "Salesforce",
+              "PostgreSQL & Cloud DBs",
+              "Custom Python & Webhooks",
+            ].map((tool) => (
+              <span
+                key={tool}
+                className="rounded-lg border border-[#0b0e0d]/8 bg-[#fafaf9] px-3 py-1 text-[12px] font-medium text-[#0b0e0d]/75 shadow-2xs transition-colors hover:border-[#2563eb]/40 hover:text-[#2563eb]"
+              >
+                {tool}
+              </span>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );
