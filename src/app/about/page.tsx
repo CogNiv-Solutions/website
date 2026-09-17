@@ -92,7 +92,7 @@ export default function AboutPage() {
         {/* Hero Section */}
         <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-20 md:mb-28">
           <Reveal>
-            <div className="inline-flex items-center gap-2 rounded-full border border-[#2563eb]/20 bg-[#eff6ff] px-3.5 py-1 text-[12px] font-mono uppercase tracking-wider text-[#2563eb]">
+            <div className="inline-flex items-center gap-2 rounded-full border border-[#ea580c]/20 bg-[#fff7ed] px-3.5 py-1 text-[12px] font-mono uppercase tracking-wider text-[#ea580c]">
               <Sparkles className="h-3.5 w-3.5" />
               About Cogniv Solutions
             </div>
@@ -110,7 +110,7 @@ export default function AboutPage() {
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 items-center">
               <Reveal>
-                <span className="font-mono text-[12px] font-semibold uppercase tracking-[0.2em] text-[#2563eb]">
+                <span className="font-mono text-[12px] font-semibold uppercase tracking-[0.2em] text-[#ea580c]">
                   Our Purpose
                 </span>
                 <h2 className="mt-3 text-2xl sm:text-4xl font-semibold tracking-tight text-[#0b0e0d]">
@@ -141,7 +141,7 @@ export default function AboutPage() {
                 </Reveal>
                 <Reveal delay={0.2}>
                   <div className="rounded-2xl border border-[#0b0e0d]/10 bg-[#fafaf9] p-6 text-center">
-                    <p className="font-mono text-3xl sm:text-4xl font-bold text-[#2563eb]">&lt; 2 min</p>
+                    <p className="font-mono text-3xl sm:text-4xl font-bold text-[#ea580c]">&lt; 2 min</p>
                     <p className="mt-2 text-[13px] sm:text-[14px] font-medium text-[#0b0e0d]/65">
                       Average Inbound Lead Response Speed
                     </p>
@@ -156,8 +156,8 @@ export default function AboutPage() {
                   </div>
                 </Reveal>
                 <Reveal delay={0.4}>
-                  <div className="rounded-2xl border border-[#0b0e0d]/10 bg-[#eff6ff] p-6 text-center">
-                    <p className="font-mono text-3xl sm:text-4xl font-bold text-[#2563eb]">14 Days</p>
+                  <div className="rounded-2xl border border-[#0b0e0d]/10 bg-[#fff7ed] p-6 text-center">
+                    <p className="font-mono text-3xl sm:text-4xl font-bold text-[#ea580c]">14 Days</p>
                     <p className="mt-2 text-[13px] sm:text-[14px] font-medium text-[#0b0e0d]/65">
                       Rapid Working Prototype with Real Data
                     </p>
@@ -172,7 +172,7 @@ export default function AboutPage() {
         <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-20 md:mb-28">
           <Reveal>
             <div className="text-center max-w-3xl mx-auto mb-14">
-              <span className="font-mono text-[12px] font-semibold uppercase tracking-[0.2em] text-[#2563eb]">
+              <span className="font-mono text-[12px] font-semibold uppercase tracking-[0.2em] text-[#ea580c]">
                 Engineering Philosophy
               </span>
               <h2 className="mt-3 text-2xl sm:text-4xl font-semibold tracking-tight text-[#0b0e0d]">
@@ -189,13 +189,13 @@ export default function AboutPage() {
               const Icon = p.icon;
               return (
                 <Reveal key={p.number} delay={0.1 * idx}>
-                  <div className="flex h-full flex-col justify-between rounded-2xl border border-[#0b0e0d]/10 bg-white p-7 transition-all duration-300 hover:border-[#2563eb]/40 hover:shadow-lg hover:shadow-[#2563eb]/5">
+                  <div className="flex h-full flex-col justify-between rounded-2xl border border-[#0b0e0d]/10 bg-white p-7 transition-all duration-300 hover:border-[#ea580c]/40 hover:shadow-lg hover:shadow-[#ea580c]/5">
                     <div>
                       <div className="flex items-center justify-between mb-6">
-                        <span className="font-mono text-sm font-semibold text-[#2563eb]">
+                        <span className="font-mono text-sm font-semibold text-[#ea580c]">
                           {p.number}
                         </span>
-                        <div className="grid h-10 w-10 place-items-center rounded-xl bg-[#eff6ff] text-[#2563eb]">
+                        <div className="grid h-10 w-10 place-items-center rounded-xl bg-[#fff7ed] text-[#ea580c]">
                           <Icon className="h-5 w-5" />
                         </div>
                       </div>
@@ -213,7 +213,7 @@ export default function AboutPage() {
         <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-20 md:mb-28">
           <Reveal>
             <div className="text-center max-w-3xl mx-auto mb-14">
-              <span className="font-mono text-[12px] font-semibold uppercase tracking-[0.2em] text-[#2563eb]">
+              <span className="font-mono text-[12px] font-semibold uppercase tracking-[0.2em] text-[#ea580c]">
                 The Difference
               </span>
               <h2 className="mt-3 text-2xl sm:text-4xl font-semibold tracking-tight text-[#0b0e0d]">
@@ -233,7 +233,7 @@ export default function AboutPage() {
                     <th className="p-4 sm:p-5">Dimension</th>
                     <th className="p-4 sm:p-5">Off-The-Shelf SaaS</th>
                     <th className="p-4 sm:p-5">Generic Dev Agencies</th>
-                    <th className="p-4 sm:p-5 bg-[#eff6ff] text-[#2563eb] font-semibold">Cogniv Solutions</th>
+                    <th className="p-4 sm:p-5 bg-[#fff7ed] text-[#ea580c] font-semibold">Cogniv Solutions</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-[#0b0e0d]/10">
@@ -242,9 +242,9 @@ export default function AboutPage() {
                       <td className="p-4 sm:p-5 font-medium text-[#0b0e0d]">{row.aspect}</td>
                       <td className="p-4 sm:p-5 text-[#0b0e0d]/65">{row.saas}</td>
                       <td className="p-4 sm:p-5 text-[#0b0e0d]/65">{row.agencies}</td>
-                      <td className="p-4 sm:p-5 bg-[#eff6ff]/50 font-medium text-[#2563eb]">
+                      <td className="p-4 sm:p-5 bg-[#fff7ed]/50 font-medium text-[#ea580c]">
                         <div className="flex items-start gap-2">
-                          <CheckCircle2 className="h-4 w-4 mt-0.5 shrink-0 text-[#2563eb]" />
+                          <CheckCircle2 className="h-4 w-4 mt-0.5 shrink-0 text-[#ea580c]" />
                           <span>{row.cogniv}</span>
                         </div>
                       </td>
@@ -274,7 +274,7 @@ export default function AboutPage() {
                 <div className="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
                   <Link
                     href="/audit"
-                    className="btn-press group inline-flex items-center justify-center gap-2 rounded-full bg-white px-7 py-3.5 text-[15px] font-semibold text-[#0b0e0d] hover:bg-blue-50"
+                    className="btn-press group inline-flex items-center justify-center gap-2 rounded-full bg-white px-7 py-3.5 text-[15px] font-semibold text-[#0b0e0d] hover:bg-orange-50"
                   >
                     Book Free Automation Audit
                     <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />

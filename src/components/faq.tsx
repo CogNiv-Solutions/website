@@ -37,7 +37,7 @@ export function FaqSection() {
               <StaggerItem key={faq.question}>
                 <div
                   className={`rounded-2xl border transition-all duration-200 bg-white ${
-                    isOpen ? "border-[#2563eb]/40 shadow-sm" : "border-[#0b0e0d]/10 hover:border-[#0b0e0d]/20"
+                    isOpen ? "border-[#ea580c]/40 shadow-sm" : "border-[#0b0e0d]/10 hover:border-[#0b0e0d]/20"
                   }`}
                 >
                   <button
@@ -49,14 +49,14 @@ export function FaqSection() {
                     className="flex w-full items-center justify-between gap-4 p-5 sm:p-6 text-left transition-colors"
                   >
                     <span className="flex items-start gap-3.5">
-                      <HelpCircle className={`h-5 w-5 mt-0.5 shrink-0 transition-colors ${isOpen ? "text-[#2563eb]" : "text-[#0b0e0d]/40"}`} />
+                      <HelpCircle className={`h-5 w-5 mt-0.5 shrink-0 transition-colors ${isOpen ? "text-[#ea580c]" : "text-[#0b0e0d]/40"}`} />
                       <span className="text-[15.5px] sm:text-[16.5px] font-semibold text-[#0b0e0d] leading-snug">
                         {faq.question}
                       </span>
                     </span>
                     <span
                       className={`grid h-8 w-8 shrink-0 place-items-center rounded-full transition-transform duration-300 ${
-                        isOpen ? "rotate-180 bg-[#2563eb]/10 text-[#2563eb]" : "bg-[#0b0e0d]/5 text-[#0b0e0d]/60"
+                        isOpen ? "rotate-180 bg-[#ea580c]/10 text-[#ea580c]" : "bg-[#0b0e0d]/5 text-[#0b0e0d]/60"
                       }`}
                       aria-hidden="true"
                     >

@@ -150,13 +150,6 @@ const safeJsonLd = JSON.stringify(generateSeoJsonLd()).replace(/</g, "\\u003c");
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
-      <head>
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
-        <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
-        <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-      </head>
       <body className="min-h-full flex flex-col bg-[#fafaf9] text-[#0b0e0d]">
         <a href="#main" className="skip-link">
           Skip to content

@@ -41,7 +41,7 @@ export function FinalCta() {
         <div className="texture-dots pointer-events-none absolute inset-0 opacity-20" aria-hidden />
         <div className="relative mx-auto max-w-3xl text-center">
           <Reveal>
-            <p className="font-mono text-[12px] uppercase tracking-[0.24em] text-blue-300">Final question</p>
+            <p className="font-mono text-[12px] uppercase tracking-[0.24em] text-orange-300">Final question</p>
             <h2 id="final-h" className="mt-4 text-4xl font-semibold tracking-tight md:text-6xl">
               What’s slowing your business down?
             </h2>
@@ -51,7 +51,7 @@ export function FinalCta() {
             <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
               <a
                 href="#contact"
-                className="btn-press group inline-flex items-center justify-center gap-2 rounded-full bg-white py-2.5 pl-6 pr-2.5 text-[15px] font-semibold text-[#0b0e0d] hover:bg-blue-100"
+                className="btn-press group inline-flex items-center justify-center gap-2 rounded-full bg-white py-2.5 pl-6 pr-2.5 text-[15px] font-semibold text-[#0b0e0d] hover:bg-orange-100"
               >
                 Book a Free Automation Audit
                 <span className="grid h-9 w-9 place-items-center rounded-full bg-[#0b0e0d] text-white transition-transform duration-300 group-hover:translate-x-1">

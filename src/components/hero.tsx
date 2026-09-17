@@ -26,7 +26,7 @@ export function Hero() {
             <div className="mt-6 flex flex-col gap-2.5 sm:flex-row sm:items-center sm:gap-3">
               <a
                 href="#contact"
-                className="btn-press group inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#2563eb] px-4 py-3 pl-5 text-[14.5px] font-semibold text-white shadow-sm hover:bg-[#1d4ed8] sm:w-auto sm:px-2.5 sm:py-2"
+                className="btn-press group inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#ea580c] px-4 py-3 pl-5 text-[14.5px] font-semibold text-white shadow-sm hover:bg-[#c2410c] sm:w-auto sm:px-2.5 sm:py-2"
               >
                 Book a Free Automation Audit
                 <span className="grid h-8 w-8 place-items-center rounded-lg bg-white/20 transition-transform duration-300 group-hover:translate-x-1">

@@ -62,7 +62,7 @@ const engines = [
     ],
     demoLink: "/demo?workflow=lead-crm",
     icon: Users,
-    color: "from-blue-500/10 to-indigo-500/10",
+    color: "from-orange-500/10 to-amber-500/10",
   },
   {
     id: "documents",
@@ -140,7 +140,7 @@ export default function AiSolutionsPage() {
         {/* Hero Section */}
         <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-20 md:mb-28">
           <Reveal>
-            <div className="inline-flex items-center gap-2 rounded-full border border-[#2563eb]/20 bg-[#eff6ff] px-3.5 py-1 text-[12px] font-mono uppercase tracking-wider text-[#2563eb]">
+            <div className="inline-flex items-center gap-2 rounded-full border border-[#ea580c]/20 bg-[#fff7ed] px-3.5 py-1 text-[12px] font-mono uppercase tracking-wider text-[#ea580c]">
               <Bot className="h-3.5 w-3.5" />
               Intelligent Automation Architecture
             </div>
@@ -163,7 +163,7 @@ export default function AiSolutionsPage() {
                 href="/demo"
                 className="btn-press inline-flex items-center gap-2 rounded-full border border-[#0b0e0d]/15 bg-white px-6 py-3.5 text-[14.5px] font-medium text-[#0b0e0d] hover:bg-slate-50"
               >
-                <Play className="h-3.5 w-3.5 fill-[#2563eb] text-[#2563eb]" />
+                <Play className="h-3.5 w-3.5 fill-[#ea580c] text-[#ea580c]" />
                 Test Live Interactive Demos
               </Link>
             </div>
@@ -181,13 +181,13 @@ export default function AiSolutionsPage() {
                 <div
                   key={engine.id}
                   id={engine.id}
-                  className="rounded-3xl border border-[#0b0e0d]/10 bg-white p-6 sm:p-10 md:p-14 shadow-sm transition-all duration-300 hover:border-[#2563eb]/30"
+                  className="rounded-3xl border border-[#0b0e0d]/10 bg-white p-6 sm:p-10 md:p-14 shadow-sm transition-all duration-300 hover:border-[#ea580c]/30"
                 >
                   <div className={cn("grid gap-10 lg:grid-cols-12 items-center", isEven && "lg:grid-flow-dense")}>
                     {/* Left Column (Content) */}
                     <div className={cn("lg:col-span-7", isEven && "lg:col-start-6")}>
                       <div className="flex items-center gap-3">
-                        <span className="font-mono text-sm font-semibold text-[#2563eb]">
+                        <span className="font-mono text-sm font-semibold text-[#ea580c]">
                           {engine.number}
                         </span>
                         <span className="inline-block h-1 w-1 rounded-full bg-[#0b0e0d]/25" />
@@ -208,7 +208,7 @@ export default function AiSolutionsPage() {
                       <div className="mt-6 space-y-2.5">
                         {engine.capabilities.map((cap) => (
                           <div key={cap} className="flex items-start gap-2.5">
-                            <CheckCircle2 className="h-4 w-4 mt-1 shrink-0 text-[#2563eb]" />
+                            <CheckCircle2 className="h-4 w-4 mt-1 shrink-0 text-[#ea580c]" />
                             <span className="text-[14px] text-[#0b0e0d]/80">{cap}</span>
                           </div>
                         ))}
@@ -218,7 +218,7 @@ export default function AiSolutionsPage() {
                       <div className="mt-8 flex flex-wrap items-center gap-3">
                         <Link
                           href={engine.demoLink}
-                          className="btn-press inline-flex items-center gap-2 rounded-full bg-[#eff6ff] px-5 py-2.5 text-[13.5px] font-semibold text-[#2563eb] hover:bg-[#dbeafe]"
+                          className="btn-press inline-flex items-center gap-2 rounded-full bg-[#fff7ed] px-5 py-2.5 text-[13.5px] font-semibold text-[#ea580c] hover:bg-[#ffedd5]"
                         >
                           <Play className="h-3 w-3 fill-current" />
                           Launch Simulation
@@ -238,7 +238,7 @@ export default function AiSolutionsPage() {
                       <div className="rounded-2xl border border-[#0b0e0d]/10 bg-[#fafaf9] p-6 sm:p-8">
                         <div className="flex items-center justify-between border-b border-[#0b0e0d]/10 pb-4 mb-5">
                           <div className="flex items-center gap-2.5">
-                            <div className="grid h-9 w-9 place-items-center rounded-lg bg-white border border-[#0b0e0d]/10 text-[#2563eb]">
+                            <div className="grid h-9 w-9 place-items-center rounded-lg bg-white border border-[#0b0e0d]/10 text-[#ea580c]">
                               <Icon className="h-4 w-4" />
                             </div>
                             <span className="font-mono text-xs font-semibold text-[#0b0e0d]">
@@ -277,7 +277,7 @@ export default function AiSolutionsPage() {
         <section className="border-y border-[#0b0e0d]/10 bg-white py-16 md:py-24 mb-20 md:mb-28">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
             <Reveal>
-              <span className="font-mono text-[12px] font-semibold uppercase tracking-[0.2em] text-[#2563eb]">
+              <span className="font-mono text-[12px] font-semibold uppercase tracking-[0.2em] text-[#ea580c]">
                 Seamless Compatibility
               </span>
               <h2 className="mt-3 text-2xl sm:text-4xl font-semibold tracking-tight text-[#0b0e0d]">
@@ -318,7 +318,7 @@ export default function AiSolutionsPage() {
               <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
                 <Link
                   href="/audit"
-                  className="btn-press group inline-flex items-center gap-2 rounded-full bg-white px-7 py-3.5 text-[15px] font-semibold text-[#0b0e0d] hover:bg-blue-50"
+                  className="btn-press group inline-flex items-center gap-2 rounded-full bg-white px-7 py-3.5 text-[15px] font-semibold text-[#0b0e0d] hover:bg-orange-50"
                 >
                   Book Free Automation Audit
                   <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />

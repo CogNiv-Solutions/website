@@ -77,7 +77,7 @@ export function Dashboard() {
                 <span className="flex gap-1.5" aria-hidden>
                   <span className="h-2.5 w-2.5 rounded-full bg-white/20" />
                   <span className="h-2.5 w-2.5 rounded-full bg-white/20" />
-                  <span className="h-2.5 w-2.5 rounded-full bg-blue-400" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-orange-400" />
                 </span>
                 <p className="font-mono text-[12px] text-white/55">cogniv · operations · <span className="rounded bg-amber-400/15 px-1.5 py-0.5 text-amber-300">DEMO DATA</span></p>
               </div>
@@ -138,7 +138,7 @@ export function Dashboard() {
                           whileInView={{ width: "100%" }}
                           viewport={{ once: true }}
                           transition={{ duration: 0.9, ease: [0.32, 0.72, 0, 1] }}
-                          className={cn("h-full rounded-full bg-[#2563eb]", w)}
+                          className={cn("h-full rounded-full bg-[#ea580c]", w)}
                           style={{ maxWidth: "100%" }}
                         />
                       </div>

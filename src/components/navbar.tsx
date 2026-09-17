@@ -142,7 +142,7 @@ export function Navbar() {
                   <Link
                     href={l.href}
                     onClick={() => setOpen(false)}
-                    className="flex min-h-[48px] items-center border-b border-white/10 py-3 text-2xl sm:text-3xl font-semibold tracking-tight text-white active:text-blue-400"
+                    className="flex min-h-[48px] items-center border-b border-white/10 py-3 text-2xl sm:text-3xl font-semibold tracking-tight text-white active:text-orange-400"
                   >
                     {l.label}
                   </Link>
@@ -156,7 +156,7 @@ export function Navbar() {
                 <Link
                   href="/audit"
                   onClick={() => setOpen(false)}
-                  className="mt-5 inline-flex min-h-[48px] w-full items-center justify-center gap-2 rounded-full bg-white px-6 py-3.5 text-base font-semibold text-[#0b0e0d] active:bg-blue-50"
+                  className="mt-5 inline-flex min-h-[48px] w-full items-center justify-center gap-2 rounded-full bg-white px-6 py-3.5 text-base font-semibold text-[#0b0e0d] active:bg-orange-50"
                 >
                   Book Automation Audit <ArrowRight className="h-4 w-4" aria-hidden />
                 </Link>

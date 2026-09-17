@@ -94,8 +94,8 @@ const compareRows: { label: string; values: string[] }[] = [
 function CompareCell({ value, dark = false }: { value: string; dark?: boolean }) {
   if (value === "yes") {
     return (
-      <span className="inline-grid h-6 w-6 place-items-center rounded-full bg-[#eff6ff]">
-        <Check className="h-3.5 w-3.5 text-[#1d4ed8]" aria-label="Included" />
+      <span className="inline-grid h-6 w-6 place-items-center rounded-full bg-[#fff7ed]">
+        <Check className="h-3.5 w-3.5 text-[#c2410c]" aria-label="Included" />
       </span>
     );
   }
@@ -103,7 +103,7 @@ function CompareCell({ value, dark = false }: { value: string; dark?: boolean })
     return <Minus className={cn("mx-auto h-4 w-4", dark ? "text-white/30" : "text-[#0b0e0d]/25")} aria-label="Not included" />;
   }
   return (
-    <span className={cn("text-[13px] font-semibold", dark ? "text-blue-300" : "text-[#1d4ed8]")}>{value}</span>
+    <span className={cn("text-[13px] font-semibold", dark ? "text-orange-300" : "text-[#c2410c]")}>{value}</span>
   );
 }
 
@@ -141,19 +141,19 @@ export function Pricing() {
                       "relative flex h-full flex-col justify-between rounded-[1.3rem] border p-5 transition-all duration-300 hover:-translate-y-1 md:p-6",
                       dark && "border-white/10 bg-[#0b0e0d] text-white card-shadow-dark hover:border-white/25",
                       !dark && !p.featured && "border-[#0b0e0d]/10 bg-white hover:border-[#0b0e0d]/25 hover:card-shadow",
-                      p.featured && "border-[#2563eb] bg-white card-shadow lg:scale-[1.01]"
+                      p.featured && "border-[#ea580c] bg-white card-shadow lg:scale-[1.01]"
                     )}
                   >
                     <div>
                       {p.featured && (
-                        <p className="absolute -top-3 left-1/2 inline-flex -translate-x-1/2 items-center gap-1.5 whitespace-nowrap rounded-full bg-[#2563eb] px-3 py-0.5 font-mono text-[10px] font-bold uppercase tracking-[0.16em] text-white">
+                        <p className="absolute -top-3 left-1/2 inline-flex -translate-x-1/2 items-center gap-1.5 whitespace-nowrap rounded-full bg-[#ea580c] px-3 py-0.5 font-mono text-[10px] font-bold uppercase tracking-[0.16em] text-white">
                           <span className="h-1.5 w-1.5 rounded-full bg-white animate-pulse-dot" aria-hidden />
                           Recommended
                         </p>
                       )}
                       <div className="flex items-baseline justify-between">
                         <h3 className="text-[18px] font-semibold tracking-tight">{p.name}</h3>
-                        <span className={cn("font-mono text-[11px] uppercase tracking-[0.16em]", dark ? "text-blue-300" : "text-[#2563eb]")}>
+                        <span className={cn("font-mono text-[11px] uppercase tracking-[0.16em]", dark ? "text-orange-300" : "text-[#ea580c]")}>
                           {p.label}
                         </span>
                       </div>
@@ -170,7 +170,7 @@ export function Pricing() {
                       <ul className="mt-4 space-y-2">
                         {p.features.map((f) => (
                           <li key={f} className={cn("flex items-start gap-2.5 text-[13.5px]", dark ? "text-white/80" : "text-[#0b0e0d]/75")}>
-                            <span className={cn("mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full", dark ? "bg-blue-400/15 text-blue-300" : "bg-[#eff6ff] text-[#1d4ed8]")}>
+                            <span className={cn("mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full", dark ? "bg-orange-400/15 text-orange-300" : "bg-[#fff7ed] text-[#c2410c]")}>
                               <Check className="h-3 w-3" aria-hidden />
                             </span>
                             {f}
@@ -184,7 +184,7 @@ export function Pricing() {
                       className={cn(
                         "btn-press group mt-7 inline-flex items-center justify-center gap-2 rounded-full py-3 px-5 text-[14px] font-semibold transition-all",
                         p.featured
-                          ? "bg-[#2563eb] text-white hover:bg-[#1d4ed8]"
+                          ? "bg-[#ea580c] text-white hover:bg-[#c2410c]"
                           : dark
                           ? "bg-white text-[#0b0e0d] hover:bg-neutral-100"
                           : "border border-[#0b0e0d]/15 text-[#0b0e0d] hover:border-[#0b0e0d] hover:bg-[#0b0e0d] hover:text-white"
@@ -232,7 +232,7 @@ export function Pricing() {
                         {plans.map((p) => (
                           <th key={p.id} scope="col" className="px-4 py-3.5 text-center">
                             <span className="block text-[13.5px] font-semibold">{p.name}</span>
-                            <span className="font-mono text-[11.5px] text-[#2563eb]">{p.price}</span>
+                            <span className="font-mono text-[11.5px] text-[#ea580c]">{p.price}</span>
                           </th>
                         ))}
                       </tr>
@@ -261,7 +261,7 @@ export function Pricing() {
           <div className="rounded-[1.5rem] border border-[#0b0e0d]/10 bg-white p-5 card-shadow md:p-8">
             <div className="grid gap-6 lg:grid-cols-[1fr_1.1fr] lg:items-center">
               <div>
-                <span className="inline-flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-[0.18em] text-[#2563eb]">
+                <span className="inline-flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-[0.18em] text-[#ea580c]">
                   <CalcIcon className="h-3.5 w-3.5" aria-hidden />
                   ROI Calculator
                 </span>
@@ -278,15 +278,15 @@ export function Pricing() {
                     <p className="font-mono text-[10.5px] uppercase tracking-[0.18em] text-white/50 sm:text-[11px]">Hours freed</p>
                     <p className="mt-1.5 font-mono text-2xl font-bold sm:text-3xl">{savedHours}<span className="text-sm font-normal text-white/60 sm:text-base">/mo</span></p>
                   </div>
-                  <div className="rounded-2xl bg-[#eff6ff] p-4 border border-[#2563eb]/20 sm:p-5">
-                    <p className="font-mono text-[10.5px] uppercase tracking-[0.18em] text-[#1d4ed8]/70 sm:text-[11px]">Capacity value</p>
-                    <p className="mt-1.5 font-mono text-xl font-bold text-[#1d4ed8] sm:text-2xl md:text-3xl">₹{capacityValue.toLocaleString("en-IN")}</p>
+                  <div className="rounded-2xl bg-[#fff7ed] p-4 border border-[#ea580c]/20 sm:p-5">
+                    <p className="font-mono text-[10.5px] uppercase tracking-[0.18em] text-[#c2410c]/70 sm:text-[11px]">Capacity value</p>
+                    <p className="mt-1.5 font-mono text-xl font-bold text-[#c2410c] sm:text-2xl md:text-3xl">₹{capacityValue.toLocaleString("en-IN")}</p>
                   </div>
                 </div>
 
                 <a
                   href="#contact"
-                  className="btn-press group mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#2563eb] px-6 py-3.5 text-[14px] font-semibold text-white hover:bg-[#1d4ed8] sm:w-auto"
+                  className="btn-press group mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#ea580c] px-6 py-3.5 text-[14px] font-semibold text-white hover:bg-[#c2410c] sm:w-auto"
                 >
                   Verify These Savings in Free Audit
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden />
@@ -298,36 +298,36 @@ export function Pricing() {
                 <label className="block">
                   <span className="flex items-baseline justify-between text-[14px] font-medium text-[#0b0e0d]">
                     Repetitive hours per month
-                    <span className="font-mono text-[15px] font-semibold text-[#2563eb]">{hours} hrs</span>
+                    <span className="font-mono text-[15px] font-semibold text-[#ea580c]">{hours} hrs</span>
                   </span>
                   <input
                     type="range" min={20} max={600} step={10} value={hours}
                     onChange={(e) => setHours(Number(e.target.value))}
-                    className="mt-2.5 w-full accent-[#2563eb]" aria-label="Monthly repetitive hours"
+                    className="mt-2.5 w-full accent-[#ea580c]" aria-label="Monthly repetitive hours"
                   />
                 </label>
 
                 <label className="mt-5 block">
                   <span className="flex items-baseline justify-between text-[14px] font-medium text-[#0b0e0d]">
                     Percentage of work that could be automated
-                    <span className="font-mono text-[15px] font-semibold text-[#2563eb]">{auto}%</span>
+                    <span className="font-mono text-[15px] font-semibold text-[#ea580c]">{auto}%</span>
                   </span>
                   <input
                     type="range" min={10} max={90} step={5} value={auto}
                     onChange={(e) => setAuto(Number(e.target.value))}
-                    className="mt-2.5 w-full accent-[#2563eb]" aria-label="Share automatable"
+                    className="mt-2.5 w-full accent-[#ea580c]" aria-label="Share automatable"
                   />
                 </label>
 
                 <label className="mt-5 block">
                   <span className="flex items-baseline justify-between text-[14px] font-medium text-[#0b0e0d]">
                     Estimated cost per employee hour
-                    <span className="font-mono text-[15px] font-semibold text-[#2563eb]">₹{cost}</span>
+                    <span className="font-mono text-[15px] font-semibold text-[#ea580c]">₹{cost}</span>
                   </span>
                   <input
                     type="range" min={150} max={1500} step={50} value={cost}
                     onChange={(e) => setCost(Number(e.target.value))}
-                    className="mt-2.5 w-full accent-[#2563eb]" aria-label="Cost per hour"
+                    className="mt-2.5 w-full accent-[#ea580c]" aria-label="Cost per hour"
                   />
                 </label>
 

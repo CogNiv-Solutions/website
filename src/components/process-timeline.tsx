@@ -19,9 +19,9 @@ export function ProcessTimeline() {
               <li className="relative flex items-start gap-3.5 md:gap-5">
                 <span className="relative z-10 grid h-12 w-12 shrink-0 place-items-center rounded-2xl border border-[#0b0e0d]/10 bg-[#fafaf9] font-mono text-[12.5px] font-bold md:h-13 md:w-13">
                   {s.n}
-                  <span className="absolute -right-px -top-px h-2 w-2 rounded-full bg-[#2563eb]" aria-hidden />
+                  <span className="absolute -right-px -top-px h-2 w-2 rounded-full bg-[#ea580c]" aria-hidden />
                 </span>
-                <div className="flex-1 rounded-[1.25rem] border border-[#0b0e0d]/10 bg-[#fafaf9] p-4 transition-all duration-200 hover:border-[#2563eb]/30 hover:bg-white hover:card-shadow md:p-4.5">
+                <div className="flex-1 rounded-[1.25rem] border border-[#0b0e0d]/10 bg-[#fafaf9] p-4 transition-all duration-200 hover:border-[#ea580c]/30 hover:bg-white hover:card-shadow md:p-4.5">
                   <div className="flex flex-wrap items-center justify-between gap-2">
                     <h3 className="text-[16px] font-semibold tracking-tight text-[#0b0e0d]">{s.title}</h3>
                     <span className="rounded-full bg-[#0b0e0d]/[0.06] px-2.5 py-0.5 font-mono text-[11px] font-medium text-[#0b0e0d]/60">{s.time}</span>

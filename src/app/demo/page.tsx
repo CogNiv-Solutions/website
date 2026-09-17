@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef, Suspense } from "react";
+import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
@@ -91,23 +92,23 @@ const tasks: Record<string, WorkflowTask> = {
         )}
 
         {step >= 1 && (
-          <div className="rounded-2xl border border-[#2563eb]/20 bg-[#eff6ff] p-4 transition-all animate-fadeIn">
-            <div className="flex items-center justify-between text-[11px] font-mono text-[#1d4ed8]">
+          <div className="rounded-2xl border border-[#ea580c]/20 bg-[#fff7ed] p-4 transition-all animate-fadeIn">
+            <div className="flex items-center justify-between text-[11px] font-mono text-[#c2410c]">
               <span className="flex items-center gap-1.5">
                 <Sparkles className="h-3.5 w-3.5" /> COGNIV AI EXTRACTOR
               </span>
               <span className="font-semibold text-emerald-600">Qualified (Score: 92/100)</span>
             </div>
             <div className="mt-2.5 grid grid-cols-2 gap-2 text-[13px] sm:grid-cols-3">
-              <div className="rounded-lg bg-white p-2 border border-[#2563eb]/10">
+              <div className="rounded-lg bg-white p-2 border border-[#ea580c]/10">
                 <span className="block text-[11px] text-[#0b0e0d]/50">Requirement</span>
                 <span className="font-semibold text-[#0b0e0d]">2 BHK Apartment</span>
               </div>
-              <div className="rounded-lg bg-white p-2 border border-[#2563eb]/10">
+              <div className="rounded-lg bg-white p-2 border border-[#ea580c]/10">
                 <span className="block text-[11px] text-[#0b0e0d]/50">Budget</span>
                 <span className="font-semibold text-[#0b0e0d]">₹60 L – ₹65 L</span>
               </div>
-              <div className="rounded-lg bg-white p-2 border border-[#2563eb]/10">
+              <div className="rounded-lg bg-white p-2 border border-[#ea580c]/10">
                 <span className="block text-[11px] text-[#0b0e0d]/50">Locations</span>
                 <span className="font-semibold text-[#0b0e0d]">Baner, Wakad</span>
               </div>
@@ -119,14 +120,14 @@ const tasks: Record<string, WorkflowTask> = {
           <div className="rounded-2xl border border-[#0b0e0d]/10 bg-white p-4 card-shadow transition-all animate-fadeIn">
             <div className="flex items-center justify-between text-[11px] font-mono text-[#0b0e0d]/45">
               <span>CRM RECORD · DEAL #1042</span>
-              <span className="text-blue-600 font-semibold">Synced to HubSpot</span>
+              <span className="text-orange-600 font-semibold">Synced to HubSpot</span>
             </div>
             <div className="mt-2 flex items-center justify-between">
               <div>
                 <p className="text-[15px] font-semibold text-[#0b0e0d]">Rajesh Malhotra</p>
                 <p className="text-[12.5px] text-[#0b0e0d]/60">+91 98230 •••• · Stage: Qualified Buyer</p>
               </div>
-              <span className="rounded-full bg-blue-50 px-3 py-1 text-[12px] font-semibold text-[#2563eb] border border-[#2563eb]/20">
+              <span className="rounded-full bg-orange-50 px-3 py-1 text-[12px] font-semibold text-[#ea580c] border border-[#ea580c]/20">
                 Deal Size: ₹62.5 L
               </span>
             </div>
@@ -218,7 +219,7 @@ const tasks: Record<string, WorkflowTask> = {
           )}
 
           {step >= 1 && (
-            <div className="rounded-xl border border-blue-200 bg-blue-50/80 p-2 text-center text-[12px] font-mono text-[#1d4ed8]">
+            <div className="rounded-xl border border-orange-200 bg-orange-50/80 p-2 text-center text-[12px] font-mono text-[#c2410c]">
               ⚡ Language: Hinglish · Intent: Bulk Wholesale Catalog · Quantity: 500 units
             </div>
           )}
@@ -302,7 +303,7 @@ const tasks: Record<string, WorkflowTask> = {
         {step >= 0 && (
           <div className="flex items-center justify-between rounded-2xl border border-[#0b0e0d]/10 bg-white p-4 card-shadow">
             <div className="flex items-center gap-3">
-              <div className="grid h-10 w-10 place-items-center rounded-xl bg-blue-50 text-[#2563eb]">
+              <div className="grid h-10 w-10 place-items-center rounded-xl bg-orange-50 text-[#ea580c]">
                 <FileText className="h-5 w-5" />
               </div>
               <div>
@@ -310,7 +311,7 @@ const tasks: Record<string, WorkflowTask> = {
                 <p className="font-mono text-[11px] text-[#0b0e0d]/50">340 KB · Received 11:20 AM</p>
               </div>
             </div>
-            <span className="rounded-full bg-blue-100 text-[#1d4ed8] px-3 py-1 font-mono text-[11px] font-semibold">
+            <span className="rounded-full bg-orange-100 text-[#c2410c] px-3 py-1 font-mono text-[11px] font-semibold">
               Scanned
             </span>
           </div>
@@ -328,7 +329,7 @@ const tasks: Record<string, WorkflowTask> = {
               </div>
               <div className="flex justify-between px-4 py-2">
                 <span className="text-[#0b0e0d]/60">GSTIN</span>
-                <span className="font-mono font-medium text-[#2563eb]">27AAACA9876Q1ZB</span>
+                <span className="font-mono font-medium text-[#ea580c]">27AAACA9876Q1ZB</span>
               </div>
               <div className="flex justify-between px-4 py-2">
                 <span className="text-[#0b0e0d]/60">Total Amount</span>
@@ -351,7 +352,7 @@ const tasks: Record<string, WorkflowTask> = {
           <div className="rounded-2xl bg-[#0b0e0d] p-4 text-white">
             <div className="flex items-center justify-between text-[11px] font-mono text-white/50">
               <span>ERP CONNECTOR</span>
-              <span className="text-blue-300 font-semibold">Tally Prime XML Export</span>
+              <span className="text-orange-300 font-semibold">Tally Prime XML Export</span>
             </div>
             <p className="mt-2 text-[13.5px] text-white/85">
               ✅ Voucher entry auto-created under Purchase Ledger #204. Zero manual data entry required.
@@ -402,7 +403,7 @@ const tasks: Record<string, WorkflowTask> = {
           <div className="rounded-2xl border border-[#0b0e0d]/10 bg-white p-4 card-shadow">
             <div className="flex items-center justify-between text-[11px] font-mono text-[#0b0e0d]/45">
               <span>JOB DISPATCH #8910</span>
-              <span className="font-semibold text-[#2563eb]">Priority: Standard</span>
+              <span className="font-semibold text-[#ea580c]">Priority: Standard</span>
             </div>
             <p className="mt-1 text-[15px] font-semibold text-[#0b0e0d]">Warehouse Dispatch — Batch 40A</p>
             <p className="text-[13px] text-[#0b0e0d]/60">Destination: Thane Hub · Deadline: 4:00 PM</p>
@@ -410,8 +411,8 @@ const tasks: Record<string, WorkflowTask> = {
         )}
 
         {step >= 1 && (
-          <div className="rounded-2xl border border-[#2563eb]/20 bg-[#eff6ff] p-4">
-            <div className="flex items-center justify-between text-[11px] font-mono text-[#1d4ed8]">
+          <div className="rounded-2xl border border-[#ea580c]/20 bg-[#fff7ed] p-4">
+            <div className="flex items-center justify-between text-[11px] font-mono text-[#c2410c]">
               <span>AUTO-ASSIGNMENT</span>
               <span className="font-semibold">Shift Match</span>
             </div>
@@ -451,7 +452,7 @@ const tasks: Record<string, WorkflowTask> = {
           <div className="rounded-2xl border border-[#0b0e0d]/10 bg-white p-4 card-shadow">
             <div className="flex items-center justify-between text-[11px] font-mono text-[#0b0e0d]/45">
               <span>DAILY 6:00 PM EXECUTIVE DIGEST</span>
-              <span className="text-blue-600 font-semibold">Sent to Management</span>
+              <span className="text-orange-600 font-semibold">Sent to Management</span>
             </div>
             <p className="mt-1 text-[13.5px] text-[#0b0e0d]">
               📊 <strong>Today’s Operations:</strong> 18 of 18 jobs finished on time (100% SLA). Average turnaround: 3.2 hrs.
@@ -519,8 +520,8 @@ function DemoContent() {
       <main className="min-h-screen pt-20 pb-12 bg-[#fafaf9]">
         {/* Header Hero */}
         <section className="mx-auto max-w-7xl px-4 pt-6 pb-4 md:px-8 text-center">
-          <span className="inline-flex items-center gap-1.5 rounded-full border border-[#2563eb]/20 bg-[#eff6ff] px-3.5 py-1 font-mono text-[11px] font-bold uppercase tracking-[0.18em] text-[#1d4ed8]">
-            <Zap className="h-3.5 w-3.5 text-[#2563eb]" /> Interactive Workflow Lab
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-[#ea580c]/20 bg-[#fff7ed] px-3.5 py-1 font-mono text-[11px] font-bold uppercase tracking-[0.18em] text-[#c2410c]">
+            <Zap className="h-3.5 w-3.5 text-[#ea580c]" /> Interactive Workflow Lab
           </span>
           <h1 className="mt-2.5 text-2xl font-semibold tracking-tight text-[#0b0e0d] sm:text-3xl md:text-4xl">
             See Workflows Execute in Real Time
@@ -542,11 +543,11 @@ function DemoContent() {
                   className={cn(
                     "btn-press flex flex-col items-start rounded-2xl border p-3 sm:p-3.5 text-left transition-all",
                     selected
-                      ? "border-[#2563eb] bg-white shadow-md ring-1 ring-[#2563eb]"
+                      ? "border-[#ea580c] bg-white shadow-md ring-1 ring-[#ea580c]"
                       : "border-[#0b0e0d]/10 bg-white/70 hover:bg-white hover:border-[#0b0e0d]/25 card-shadow"
                   )}
                 >
-                  <span className={cn("font-mono text-[10px] sm:text-[10.5px] font-bold uppercase tracking-[0.14em]", selected ? "text-[#2563eb]" : "text-[#0b0e0d]/45")}>
+                  <span className={cn("font-mono text-[10px] sm:text-[10.5px] font-bold uppercase tracking-[0.14em]", selected ? "text-[#ea580c]" : "text-[#0b0e0d]/45")}>
                     {t.badge}
                   </span>
                   <span className="mt-1 text-[13.5px] sm:text-[14.5px] font-semibold text-[#0b0e0d]">
@@ -567,7 +568,7 @@ function DemoContent() {
             {/* Task Banner */}
             <div className="flex flex-col gap-3 border-b border-[#0b0e0d]/8 pb-4 md:flex-row md:items-center md:justify-between">
               <div>
-                <span className="font-mono text-[10.5px] uppercase tracking-[0.16em] text-[#2563eb] font-semibold">
+                <span className="font-mono text-[10.5px] uppercase tracking-[0.16em] text-[#ea580c] font-semibold">
                   Active Workflow Simulation
                 </span>
                 <h2 className="mt-0.5 text-xl font-bold tracking-tight text-[#0b0e0d] md:text-2xl">
@@ -577,7 +578,7 @@ function DemoContent() {
               </div>
 
               <div className="flex flex-wrap items-center gap-2">
-                <span className="rounded-full bg-[#eff6ff] border border-[#2563eb]/20 px-3 py-1 font-mono text-[11.5px] font-semibold text-[#1d4ed8]">
+                <span className="rounded-full bg-[#fff7ed] border border-[#ea580c]/20 px-3 py-1 font-mono text-[11.5px] font-semibold text-[#c2410c]">
                   {activeTask.metric}
                 </span>
               </div>
@@ -601,7 +602,7 @@ function DemoContent() {
                           className={cn(
                             "flex items-start gap-3 rounded-xl border p-3.5 transition-all",
                             isCurrent
-                              ? "border-[#2563eb] bg-[#eff6ff]/60 shadow-xs"
+                              ? "border-[#ea580c] bg-[#fff7ed]/60 shadow-xs"
                               : isPast
                               ? "border-emerald-500/20 bg-emerald-50/30"
                               : "border-[#0b0e0d]/6 bg-[#fafaf9] opacity-70"
@@ -611,7 +612,7 @@ function DemoContent() {
                             className={cn(
                               "grid h-6 w-6 shrink-0 place-items-center rounded-full font-mono text-[11px] font-bold",
                               isCurrent
-                                ? "bg-[#2563eb] text-white animate-pulse"
+                                ? "bg-[#ea580c] text-white animate-pulse"
                                 : isPast
                                 ? "bg-emerald-600 text-white"
                                 : "bg-[#0b0e0d]/10 text-[#0b0e0d]/60"
@@ -643,7 +644,7 @@ function DemoContent() {
                   <button
                     onClick={startSimulation}
                     disabled={isRunning}
-                    className="btn-press inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-[#2563eb] px-6 py-3.5 text-[14px] font-semibold text-white hover:bg-[#1d4ed8] disabled:opacity-60 shadow-sm sm:py-3"
+                    className="btn-press inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-[#ea580c] px-6 py-3.5 text-[14px] font-semibold text-white hover:bg-[#c2410c] disabled:opacity-60 shadow-sm sm:py-3"
                   >
                     <Play className="h-4 w-4" />
                     {isRunning ? "Simulating Workflow…" : currentStep > 0 ? "Replay Simulation" : "Run Workflow Demo"}
@@ -680,7 +681,7 @@ function DemoContent() {
                   <span className="font-mono text-[12px] text-[#0b0e0d]/50 uppercase tracking-[0.16em]">
                     Live Visual Output
                   </span>
-                  <span className="font-mono text-[11.5px] text-[#2563eb]">
+                  <span className="font-mono text-[11.5px] text-[#ea580c]">
                     Stage {currentStep + 1} of {activeTask.steps.length}
                   </span>
                 </div>
@@ -697,7 +698,7 @@ function DemoContent() {
           <div className="overflow-hidden rounded-[1.75rem] bg-[#0b0e0d] p-6 text-white card-shadow-dark sm:p-8 md:p-12">
             <div className="flex flex-col items-start justify-between gap-6 lg:flex-row lg:items-center">
               <div>
-                <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-blue-300">
+                <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-orange-300">
                   Custom Build For Your Operations
                 </span>
                 <h3 className="mt-2 text-2xl font-semibold tracking-tight md:text-4xl">
@@ -709,13 +710,13 @@ function DemoContent() {
               </div>
 
               <div className="flex flex-col gap-2.5 w-full sm:w-auto sm:flex-row shrink-0">
-                <a
+                <Link
                   href="/#contact"
-                  className="btn-press group inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-[#2563eb] px-6 py-3.5 text-[14.5px] font-semibold text-white hover:bg-[#1d4ed8] sm:py-3"
+                  className="btn-press group inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-[#ea580c] px-6 py-3.5 text-[14.5px] font-semibold text-white hover:bg-[#c2410c] sm:py-3"
                 >
                   Book Free Automation Audit
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </a>
+                </Link>
                 <a
                   href={getWhatsAppUrl("Hi Cogniv, I explored your demo lab and want to automate my workflows.")}
                   target="_blank"

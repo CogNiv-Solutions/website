@@ -6,10 +6,10 @@ export function Eyebrow({ children, dark = false }: { children: React.ReactNode;
     <p
       className={cn(
         "inline-flex items-center gap-2 rounded-full border px-3 py-1 text-[11px] font-medium uppercase tracking-[0.18em]",
-        dark ? "border-white/15 bg-white/5 text-blue-200" : "border-[#0b0e0d]/10 bg-white text-[#2563eb]"
+        dark ? "border-white/15 bg-white/5 text-orange-200" : "border-[#0b0e0d]/10 bg-white text-[#ea580c]"
       )}
     >
-      <span className={cn("h-1.5 w-1.5 rounded-full", dark ? "bg-blue-300 animate-pulse-dot" : "bg-[#2563eb] animate-pulse-dot")} aria-hidden />
+      <span className={cn("h-1.5 w-1.5 rounded-full", dark ? "bg-orange-300 animate-pulse-dot" : "bg-[#ea580c] animate-pulse-dot")} aria-hidden />
       {children}
     </p>
   );

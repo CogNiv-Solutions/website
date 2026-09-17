@@ -78,7 +78,7 @@ export function Problem() {
           <StaggerItem className="sm:col-span-2 lg:col-span-1">
             <div className="flex h-full flex-col justify-between rounded-2xl bg-[#0b0e0d] p-5 text-white card-shadow-dark">
               <div>
-                <span className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-3 py-1 font-mono text-[11px] text-blue-300">
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-3 py-1 font-mono text-[11px] text-orange-300">
                   <AlertCircle className="h-3.5 w-3.5" /> Sound familiar?
                 </span>
                 <p className="mt-3.5 text-[16px] font-medium leading-snug">
@@ -87,7 +87,7 @@ export function Problem() {
               </div>
               <a
                 href="#solutions"
-                className="btn-press mt-5 inline-flex w-fit items-center gap-2 text-[13.5px] font-semibold text-blue-400 hover:text-blue-300"
+                className="btn-press mt-5 inline-flex w-fit items-center gap-2 text-[13.5px] font-semibold text-orange-400 hover:text-orange-300"
               >
                 See what Cogniv can automate →
               </a>

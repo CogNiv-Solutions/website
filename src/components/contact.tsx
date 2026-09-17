@@ -49,7 +49,7 @@ function Field({
 const inputCls = (bad?: string) =>
   cn(
     "w-full rounded-xl border bg-white px-4 py-3 text-[16px] md:text-[14.5px] text-[#0b0e0d] placeholder:text-[#0b0e0d]/35 transition-colors",
-    bad ? "border-red-500" : "border-[#0b0e0d]/15 hover:border-[#0b0e0d]/30 focus:border-[#2563eb]"
+    bad ? "border-red-500" : "border-[#0b0e0d]/15 hover:border-[#0b0e0d]/30 focus:border-[#ea580c]"
   );
 
 export function Contact() {
@@ -155,22 +155,22 @@ export function Contact() {
             copy="Tell us what your team does manually every day. We’ll identify what can be automated — and what shouldn’t be."
           />
 
-          <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-[#2563eb]/20 bg-[#eff6ff] px-3.5 py-1 text-[12.5px] font-medium text-[#1d4ed8]">
-            <CheckCircle2 className="h-3.5 w-3.5 text-[#2563eb]" aria-hidden />
+          <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-[#ea580c]/20 bg-[#fff7ed] px-3.5 py-1 text-[12.5px] font-medium text-[#c2410c]">
+            <CheckCircle2 className="h-3.5 w-3.5 text-[#ea580c]" aria-hidden />
             30-minute workflow review • No obligation
           </div>
 
           <div className="mt-5 space-y-2.5">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 sm:gap-2.5 rounded-xl border border-[#0b0e0d]/10 bg-white p-3.5">
               <span className="flex items-center gap-2.5 text-[13.5px] font-medium text-[#0b0e0d]">
-                <MessageSquare className="h-4 w-4 text-[#2563eb]" aria-hidden />
+                <MessageSquare className="h-4 w-4 text-[#ea580c]" aria-hidden />
                 Prefer immediate chat?
               </span>
               <a
                 href={getWhatsAppUrl("Hi Cogniv, I'd like to book a free Automation Audit for my business.")}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-semibold text-[#2563eb] underline underline-offset-4 hover:text-[#1d4ed8] text-[13.5px]"
+                className="font-semibold text-[#ea580c] underline underline-offset-4 hover:text-[#c2410c] text-[13.5px]"
               >
                 Chat on WhatsApp
               </a>
@@ -179,14 +179,14 @@ export function Contact() {
             {SITE.calendarUrl ? (
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 sm:gap-2.5 rounded-xl border border-[#0b0e0d]/10 bg-white p-3.5">
                 <span className="flex items-center gap-2.5 text-[13.5px] font-medium text-[#0b0e0d]">
-                  <Calendar className="h-4 w-4 text-[#2563eb]" aria-hidden />
+                  <Calendar className="h-4 w-4 text-[#ea580c]" aria-hidden />
                   Book directly on calendar?
                 </span>
                 <a
                   href={SITE.calendarUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-semibold text-[#0b0e0d] underline underline-offset-4 hover:text-[#2563eb] text-[13.5px]"
+                  className="font-semibold text-[#0b0e0d] underline underline-offset-4 hover:text-[#ea580c] text-[13.5px]"
                 >
                   Book 20-min Slot
                 </a>
@@ -194,12 +194,12 @@ export function Contact() {
             ) : (
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 sm:gap-2.5 rounded-xl border border-[#0b0e0d]/10 bg-white p-3.5">
                 <span className="flex items-center gap-2.5 text-[13.5px] font-medium text-[#0b0e0d]">
-                  <Phone className="h-4 w-4 text-[#2563eb]" aria-hidden />
+                  <Phone className="h-4 w-4 text-[#ea580c]" aria-hidden />
                   Call us directly
                 </span>
                 <a
                   href={`tel:${SITE.phone.replace(/\s+/g, "")}`}
-                  className="font-mono text-[13px] font-semibold text-[#0b0e0d] hover:text-[#2563eb]"
+                  className="font-mono text-[13px] font-semibold text-[#0b0e0d] hover:text-[#ea580c]"
                 >
                   {SITE.phone}
                 </a>
@@ -213,7 +213,7 @@ export function Contact() {
               </span>
               <a
                 href={`mailto:${SITE.email}`}
-                className="font-mono text-[12.5px] text-[#0b0e0d]/70 underline underline-offset-4 hover:text-[#2563eb]"
+                className="font-mono text-[12.5px] text-[#0b0e0d]/70 underline underline-offset-4 hover:text-[#ea580c]"
               >
                 {SITE.email}
               </a>
@@ -222,7 +222,7 @@ export function Contact() {
 
           <p className="mt-5 text-[13.5px] text-[#0b0e0d]/60">
             Want to see real workflows first?{" "}
-            <a href="/demo" className="font-semibold text-[#2563eb] underline underline-offset-4 hover:text-[#1d4ed8]">
+            <a href="/demo" className="font-semibold text-[#ea580c] underline underline-offset-4 hover:text-[#c2410c]">
               See Live Workflow Demos
             </a>
           </p>
@@ -233,7 +233,7 @@ export function Contact() {
           <div
             className={cn(
               "rounded-[1.5rem] border bg-white p-5 card-shadow md:p-7 transition-all duration-500",
-              highlighted ? "border-[#2563eb] ring-4 ring-[#2563eb]/20 shadow-xl" : "border-[#0b0e0d]/10"
+              highlighted ? "border-[#ea580c] ring-4 ring-[#ea580c]/20 shadow-xl" : "border-[#0b0e0d]/10"
             )}
           >
             {status === "ok" ? (
@@ -250,7 +250,7 @@ export function Contact() {
                         href={SITE.calendarUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="btn-press rounded-full bg-[#2563eb] px-6 py-3 text-[14px] font-semibold text-white hover:bg-[#1d4ed8]"
+                        className="btn-press rounded-full bg-[#ea580c] px-6 py-3 text-[14px] font-semibold text-white hover:bg-[#c2410c]"
                       >
                         Book immediate calendar slot
                       </a>
@@ -259,7 +259,7 @@ export function Contact() {
                         href={getWhatsAppUrl("Hi Cogniv, I just submitted an Automation Audit request on your website and would like to confirm.")}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="btn-press rounded-full bg-[#2563eb] px-6 py-3 text-[14px] font-semibold text-white hover:bg-[#1d4ed8]"
+                        className="btn-press rounded-full bg-[#ea580c] px-6 py-3 text-[14px] font-semibold text-white hover:bg-[#c2410c]"
                       >
                         💬 Confirm on WhatsApp
                       </a>
@@ -301,16 +301,16 @@ export function Contact() {
 
                 {/* Active Workflow Banner */}
                 {activeWorkflow && (
-                  <div className="flex items-center justify-between rounded-2xl border border-[#2563eb]/30 bg-[#eff6ff] p-3.5 text-[13px] text-[#1d4ed8]">
+                  <div className="flex items-center justify-between rounded-2xl border border-[#ea580c]/30 bg-[#fff7ed] p-3.5 text-[13px] text-[#c2410c]">
                     <div className="flex items-center gap-2.5">
-                      <span className="grid h-7 w-7 shrink-0 place-items-center rounded-xl bg-white text-[#2563eb] shadow-2xs font-bold text-[13px]">
+                      <span className="grid h-7 w-7 shrink-0 place-items-center rounded-xl bg-white text-[#ea580c] shadow-2xs font-bold text-[13px]">
                         🎯
                       </span>
                       <div>
-                        <p className="font-semibold text-[#1d4ed8]">
+                        <p className="font-semibold text-[#c2410c]">
                           Auditing: {activeWorkflow.name} Workflow
                         </p>
-                        <p className="font-mono text-[11px] text-[#2563eb]/80 leading-snug">
+                        <p className="font-mono text-[11px] text-[#ea580c]/80 leading-snug">
                           {activeWorkflow.example}
                         </p>
                       </div>
@@ -322,7 +322,7 @@ export function Contact() {
                         setValue("industry", "");
                         setValue("process", "");
                       }}
-                      className="btn-press ml-2 shrink-0 rounded-lg px-2.5 py-1 text-[11.5px] font-semibold text-[#1d4ed8] hover:bg-white transition-colors"
+                      className="btn-press ml-2 shrink-0 rounded-lg px-2.5 py-1 text-[11.5px] font-semibold text-[#c2410c] hover:bg-white transition-colors"
                     >
                       Reset
                     </button>
@@ -348,7 +348,7 @@ export function Contact() {
                           className={cn(
                             "btn-press rounded-full px-3.5 py-2 text-[13px] font-medium transition-all",
                             active
-                              ? "border border-[#2563eb] bg-[#eff6ff] text-[#1d4ed8] shadow-xs"
+                              ? "border border-[#ea580c] bg-[#fff7ed] text-[#c2410c] shadow-xs"
                               : "border border-[#0b0e0d]/12 bg-white text-[#0b0e0d]/70 hover:border-[#0b0e0d]/30 hover:text-[#0b0e0d]"
                           )}
                         >
@@ -433,7 +433,7 @@ export function Contact() {
                 <button
                   type="submit"
                   disabled={status === "sending"}
-                  className="btn-press group inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#2563eb] py-3.5 px-6 text-[15px] font-semibold text-white hover:bg-[#1d4ed8] disabled:opacity-70 shadow-sm"
+                  className="btn-press group inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#ea580c] py-3.5 px-6 text-[15px] font-semibold text-white hover:bg-[#c2410c] disabled:opacity-70 shadow-sm"
                 >
                   {status === "sending" ? (
                     <><Loader2 className="h-4 w-4 animate-spin" aria-hidden /> Booking audit…</>

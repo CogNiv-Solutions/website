@@ -29,10 +29,10 @@ export function Solutions() {
               <article className="group flex h-full flex-col justify-between rounded-2xl border border-[#0b0e0d]/10 bg-white p-5 transition-all duration-300 hover:border-[#0b0e0d]/25 hover:card-shadow md:p-6">
                 <div>
                   <div className="flex items-center justify-between">
-                    <span className="grid h-10 w-10 place-items-center rounded-xl bg-[#0b0e0d] text-white transition-colors duration-300 group-hover:bg-[#2563eb]">
+                    <span className="grid h-10 w-10 place-items-center rounded-xl bg-[#0b0e0d] text-white transition-colors duration-300 group-hover:bg-[#ea580c]">
                       <s.icon className="h-5 w-5" strokeWidth={1.75} aria-hidden />
                     </span>
-                    <span className="font-mono text-[12px] font-semibold text-[#2563eb]">
+                    <span className="font-mono text-[12px] font-semibold text-[#ea580c]">
                       {s.number}
                     </span>
                   </div>
@@ -56,7 +56,7 @@ export function Solutions() {
                             {step}
                           </span>
                           {idx < s.flow.length - 1 && (
-                            <span className="text-[#2563eb] font-bold" aria-hidden>→</span>
+                            <span className="text-[#ea580c] font-bold" aria-hidden>→</span>
                           )}
                         </div>
                       ))}
@@ -74,7 +74,7 @@ export function Solutions() {
                 </div>
 
                 <div className="mt-4 border-t border-[#0b0e0d]/8 pt-3">
-                  <a href={`/demo?workflow=${s.id}`} className="inline-flex items-center gap-1.5 text-[13px] font-semibold text-[#2563eb] hover:text-[#1d4ed8]">
+                  <a href={`/demo?workflow=${s.id}`} className="inline-flex items-center gap-1.5 text-[13px] font-semibold text-[#ea580c] hover:text-[#c2410c]">
                     <span>Run interactive demo</span>
                     <ArrowRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-1" aria-hidden />
                   </a>

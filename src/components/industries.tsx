@@ -97,10 +97,10 @@ export function Industries() {
         <Stagger className="mt-7 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {industryList.map((ind) => (
             <StaggerItem key={ind.id} className="h-full">
-              <article className="flex h-full flex-col justify-between rounded-[1.3rem] border border-[#0b0e0d]/10 bg-white p-5 transition-all duration-300 hover:-translate-y-1 hover:border-[#2563eb]/40 hover:card-shadow">
+              <article className="flex h-full flex-col justify-between rounded-[1.3rem] border border-[#0b0e0d]/10 bg-white p-5 transition-all duration-300 hover:-translate-y-1 hover:border-[#ea580c]/40 hover:card-shadow">
                 <div>
                   <div className="flex items-center gap-3">
-                    <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-[#eff6ff] text-[#2563eb]">
+                    <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-[#fff7ed] text-[#ea580c]">
                       <ind.icon className="h-4.5 w-4.5" aria-hidden />
                     </span>
                     <h3 className="text-[16.5px] font-semibold tracking-tight text-[#0b0e0d]">
@@ -112,7 +112,7 @@ export function Industries() {
                     <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-[#0b0e0d]/45">
                       Example Workflow
                     </p>
-                    <p className="mt-1 font-mono text-[11.5px] font-medium text-[#2563eb] leading-relaxed">
+                    <p className="mt-1 font-mono text-[11.5px] font-medium text-[#ea580c] leading-relaxed">
                       {ind.example}
                     </p>
                   </div>
@@ -126,7 +126,7 @@ export function Industries() {
                   <button
                     type="button"
                     onClick={() => handleAuditClick(ind)}
-                    className="btn-press group inline-flex w-full items-center justify-between rounded-xl border border-[#2563eb]/20 bg-[#eff6ff] px-3.5 py-2 text-[12.5px] font-semibold text-[#1d4ed8] transition-all hover:border-[#2563eb] hover:bg-[#2563eb] hover:text-white"
+                    className="btn-press group inline-flex w-full items-center justify-between rounded-xl border border-[#ea580c]/20 bg-[#fff7ed] px-3.5 py-2 text-[12.5px] font-semibold text-[#c2410c] transition-all hover:border-[#ea580c] hover:bg-[#ea580c] hover:text-white"
                   >
                     <span>Audit this workflow</span>
                     <ArrowRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-1" aria-hidden />
@@ -138,7 +138,7 @@ export function Industries() {
                       href={getWhatsAppUrl(`Hi Cogniv, I want to audit our ${ind.name} workflow: "${ind.example}".`)}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 font-medium text-[#2563eb] hover:underline"
+                      className="inline-flex items-center gap-1 font-medium text-[#ea580c] hover:underline"
                     >
                       <MessageSquare className="h-3 w-3" />
                       Chat on WhatsApp

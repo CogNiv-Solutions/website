@@ -14,13 +14,13 @@ export function WhatWeDo() {
         <Stagger className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-5 lg:gap-3">
           {discoverSteps.map((s) => (
             <StaggerItem key={s.n}>
-              <article className="group flex h-full flex-col rounded-[1.4rem] border border-[#0b0e0d]/10 bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-[#2563eb]/30 hover:card-shadow">
-                <p className="font-mono text-[12px] font-semibold tracking-[0.18em] text-[#2563eb]">{s.n}</p>
+              <article className="group flex h-full flex-col rounded-[1.4rem] border border-[#0b0e0d]/10 bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-[#ea580c]/30 hover:card-shadow">
+                <p className="font-mono text-[12px] font-semibold tracking-[0.18em] text-[#ea580c]">{s.n}</p>
                 <h3 className="mt-3 text-[17px] font-semibold uppercase tracking-tight text-[#0b0e0d]">{s.title}</h3>
                 <p className="mt-2 text-[14px] leading-relaxed text-[#0b0e0d]/60">{s.text}</p>
                 <span className="mt-auto block pt-5" aria-hidden>
                   <span className="block h-1 overflow-hidden rounded-full bg-[#0b0e0d]/8">
-                    <span className="block h-full w-0 rounded-full bg-[#2563eb] transition-all duration-500 group-hover:w-full" />
+                    <span className="block h-full w-0 rounded-full bg-[#ea580c] transition-all duration-500 group-hover:w-full" />
                   </span>
                 </span>
               </article>

@@ -149,7 +149,7 @@ export default function AutomationServicesPage() {
         {/* Hero Section */}
         <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-20 md:mb-28">
           <Reveal>
-            <div className="inline-flex items-center gap-2 rounded-full border border-[#2563eb]/20 bg-[#eff6ff] px-3.5 py-1 text-[12px] font-mono uppercase tracking-wider text-[#2563eb]">
+            <div className="inline-flex items-center gap-2 rounded-full border border-[#ea580c]/20 bg-[#fff7ed] px-3.5 py-1 text-[12px] font-mono uppercase tracking-wider text-[#ea580c]">
               <Cpu className="h-3.5 w-3.5" />
               Full-Cycle Automation Agency India
             </div>
@@ -172,7 +172,7 @@ export default function AutomationServicesPage() {
                 href="/demo"
                 className="btn-press inline-flex items-center gap-2 rounded-full border border-[#0b0e0d]/15 bg-white px-6 py-3.5 text-[14.5px] font-medium text-[#0b0e0d] hover:bg-slate-50"
               >
-                <Play className="h-3.5 w-3.5 fill-[#2563eb] text-[#2563eb]" />
+                <Play className="h-3.5 w-3.5 fill-[#ea580c] text-[#ea580c]" />
                 See Live Demos
               </Link>
             </div>
@@ -183,7 +183,7 @@ export default function AutomationServicesPage() {
         <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-24 md:mb-32">
           <Reveal>
             <div className="text-center max-w-3xl mx-auto mb-14">
-              <span className="font-mono text-[12px] font-semibold uppercase tracking-[0.2em] text-[#2563eb]">
+              <span className="font-mono text-[12px] font-semibold uppercase tracking-[0.2em] text-[#ea580c]">
                 Capabilities Catalog
               </span>
               <h2 className="mt-3 text-2xl sm:text-4xl font-semibold tracking-tight text-[#0b0e0d]">
@@ -198,19 +198,19 @@ export default function AutomationServicesPage() {
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {servicesList.map((srv, idx) => (
               <Reveal key={srv.id} delay={0.08 * idx}>
-                <div className="flex h-full flex-col justify-between rounded-2xl border border-[#0b0e0d]/10 bg-white p-7 transition-all duration-300 hover:border-[#2563eb]/40 hover:shadow-lg hover:shadow-[#2563eb]/5">
+                <div className="flex h-full flex-col justify-between rounded-2xl border border-[#0b0e0d]/10 bg-white p-7 transition-all duration-300 hover:border-[#ea580c]/40 hover:shadow-lg hover:shadow-[#ea580c]/5">
                   <div>
                     <div className="flex items-center justify-between mb-4">
-                      <span className="font-mono text-sm font-semibold text-[#2563eb]">
+                      <span className="font-mono text-sm font-semibold text-[#ea580c]">
                         {srv.number}
                       </span>
-                      <span className="rounded-full bg-[#eff6ff] px-2.5 py-0.5 text-[11px] font-mono font-medium text-[#2563eb]">
+                      <span className="rounded-full bg-[#fff7ed] px-2.5 py-0.5 text-[11px] font-mono font-medium text-[#ea580c]">
                         Ready to Deploy
                       </span>
                     </div>
 
                     <h3 className="text-xl font-semibold text-[#0b0e0d]">{srv.name}</h3>
-                    <p className="mt-1 text-[12.5px] font-medium text-[#2563eb]">{srv.subtitle}</p>
+                    <p className="mt-1 text-[12.5px] font-medium text-[#ea580c]">{srv.subtitle}</p>
                     <p className="mt-3 text-[14px] leading-relaxed text-[#0b0e0d]/70">{srv.desc}</p>
 
                     <div className="mt-5 space-y-2 border-t border-[#0b0e0d]/8 pt-4">
@@ -219,7 +219,7 @@ export default function AutomationServicesPage() {
                       </p>
                       {srv.deliverables.map((d) => (
                         <div key={d} className="flex items-start gap-2 text-[13px] text-[#0b0e0d]/80">
-                          <CheckCircle2 className="h-3.5 w-3.5 mt-0.5 shrink-0 text-[#2563eb]" />
+                          <CheckCircle2 className="h-3.5 w-3.5 mt-0.5 shrink-0 text-[#ea580c]" />
                           <span>{d}</span>
                         </div>
                       ))}
@@ -239,7 +239,7 @@ export default function AutomationServicesPage() {
                     </div>
                     <Link
                       href="/audit"
-                      className="inline-flex items-center gap-1.5 text-[13.5px] font-semibold text-[#2563eb] hover:underline"
+                      className="inline-flex items-center gap-1.5 text-[13.5px] font-semibold text-[#ea580c] hover:underline"
                     >
                       Request Consultation <ArrowRight className="h-3.5 w-3.5" />
                     </Link>
@@ -255,7 +255,7 @@ export default function AutomationServicesPage() {
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 items-center">
               <Reveal>
-                <span className="font-mono text-[12px] font-semibold uppercase tracking-[0.2em] text-[#2563eb]">
+                <span className="font-mono text-[12px] font-semibold uppercase tracking-[0.2em] text-[#ea580c]">
                   Strategic Advantage
                 </span>
                 <h2 className="mt-3 text-2xl sm:text-4xl font-semibold tracking-tight text-[#0b0e0d]">
@@ -278,7 +278,7 @@ export default function AutomationServicesPage() {
                 <Reveal delay={0.1}>
                   <div className="rounded-2xl border border-[#0b0e0d]/10 bg-[#fafaf9] p-6">
                     <div className="flex items-center gap-3 mb-2">
-                      <Zap className="h-5 w-5 text-[#2563eb]" />
+                      <Zap className="h-5 w-5 text-[#ea580c]" />
                       <h3 className="font-semibold text-[#0b0e0d]">Speed to Production</h3>
                     </div>
                     <p className="text-[14px] text-[#0b0e0d]/70">
@@ -289,7 +289,7 @@ export default function AutomationServicesPage() {
                 <Reveal delay={0.2}>
                   <div className="rounded-2xl border border-[#0b0e0d]/10 bg-[#fafaf9] p-6">
                     <div className="flex items-center gap-3 mb-2">
-                      <TrendingUp className="h-5 w-5 text-[#2563eb]" />
+                      <TrendingUp className="h-5 w-5 text-[#ea580c]" />
                       <h3 className="font-semibold text-[#0b0e0d]">Strict ROI Guarantees</h3>
                     </div>
                     <p className="text-[14px] text-[#0b0e0d]/70">
@@ -300,7 +300,7 @@ export default function AutomationServicesPage() {
                 <Reveal delay={0.3}>
                   <div className="rounded-2xl border border-[#0b0e0d]/10 bg-[#fafaf9] p-6">
                     <div className="flex items-center gap-3 mb-2">
-                      <ShieldCheck className="h-5 w-5 text-[#2563eb]" />
+                      <ShieldCheck className="h-5 w-5 text-[#ea580c]" />
                       <h3 className="font-semibold text-[#0b0e0d]">Enterprise Data Privacy</h3>
                     </div>
                     <p className="text-[14px] text-[#0b0e0d]/70">
@@ -317,7 +317,7 @@ export default function AutomationServicesPage() {
         <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-20 md:mb-28">
           <Reveal>
             <div className="text-center max-w-3xl mx-auto mb-14">
-              <span className="font-mono text-[12px] font-semibold uppercase tracking-[0.2em] text-[#2563eb]">
+              <span className="font-mono text-[12px] font-semibold uppercase tracking-[0.2em] text-[#ea580c]">
                 Answers
               </span>
               <h2 className="mt-3 text-2xl sm:text-4xl font-semibold tracking-tight text-[#0b0e0d]">
@@ -355,7 +355,7 @@ export default function AutomationServicesPage() {
               <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
                 <Link
                   href="/audit"
-                  className="btn-press group inline-flex items-center gap-2 rounded-full bg-white px-7 py-3.5 text-[15px] font-semibold text-[#0b0e0d] hover:bg-blue-50"
+                  className="btn-press group inline-flex items-center gap-2 rounded-full bg-white px-7 py-3.5 text-[15px] font-semibold text-[#0b0e0d] hover:bg-orange-50"
                 >
                   Book Free Automation Audit
                   <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />

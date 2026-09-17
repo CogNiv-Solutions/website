@@ -59,7 +59,7 @@ export function Footer() {
             </p>
             <Link
               href="/audit"
-              className="btn-press group mt-6 inline-flex w-full sm:w-auto items-center justify-between sm:justify-start gap-2 rounded-full bg-white py-2 pl-5 pr-2 text-[14px] font-semibold text-[#0b0e0d] hover:bg-blue-100"
+              className="btn-press group mt-6 inline-flex w-full sm:w-auto items-center justify-between sm:justify-start gap-2 rounded-full bg-white py-2 pl-5 pr-2 text-[14px] font-semibold text-[#0b0e0d] hover:bg-orange-100"
             >
               <span>Book Automation Audit</span>
               <span className="grid h-8 w-8 place-items-center rounded-full bg-[#0b0e0d] text-white transition-transform duration-300 group-hover:translate-x-0.5">

@@ -42,10 +42,10 @@ export function WhyCogniv() {
         <Stagger className="mt-7 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {points.map((p) => (
             <StaggerItem key={p.title} className="h-full">
-              <article className="flex h-full flex-col justify-between rounded-[1.3rem] border border-[#0b0e0d]/10 bg-white p-5 transition-all duration-300 hover:-translate-y-1 hover:border-[#2563eb]/40 hover:card-shadow">
+              <article className="flex h-full flex-col justify-between rounded-[1.3rem] border border-[#0b0e0d]/10 bg-white p-5 transition-all duration-300 hover:-translate-y-1 hover:border-[#ea580c]/40 hover:card-shadow">
                 <div>
                   <div className="flex items-center justify-between">
-                    <span className="grid h-10 w-10 place-items-center rounded-xl bg-[#eff6ff] text-[#2563eb]">
+                    <span className="grid h-10 w-10 place-items-center rounded-xl bg-[#fff7ed] text-[#ea580c]">
                       <p.icon className="h-4.5 w-4.5" strokeWidth={1.75} aria-hidden />
                     </span>
                     <span className="font-mono text-[10.5px] uppercase tracking-[0.16em] text-[#0b0e0d]/40">
@@ -67,7 +67,7 @@ export function WhyCogniv() {
               <h4 className="text-[14.5px] font-semibold text-[#0b0e0d]">Zero Tech Debt — Integrates Directly With Your Existing Stack</h4>
               <p className="text-[12.5px] text-[#0b0e0d]/60">We connect and orchestrate workflows without forcing your team onto unfamiliar software.</p>
             </div>
-            <span className="font-mono text-[11px] font-semibold text-[#2563eb] bg-[#2563eb]/10 px-3 py-1 rounded-full shrink-0 w-fit">
+            <span className="font-mono text-[11px] font-semibold text-[#ea580c] bg-[#ea580c]/10 px-3 py-1 rounded-full shrink-0 w-fit">
               100% Native Compatibility
             </span>
           </div>
@@ -87,7 +87,7 @@ export function WhyCogniv() {
             ].map((tool) => (
               <span
                 key={tool}
-                className="rounded-lg border border-[#0b0e0d]/8 bg-[#fafaf9] px-3 py-1 text-[12px] font-medium text-[#0b0e0d]/75 shadow-2xs transition-colors hover:border-[#2563eb]/40 hover:text-[#2563eb]"
+                className="rounded-lg border border-[#0b0e0d]/8 bg-[#fafaf9] px-3 py-1 text-[12px] font-medium text-[#0b0e0d]/75 shadow-2xs transition-colors hover:border-[#ea580c]/40 hover:text-[#ea580c]"
               >
                 {tool}
               </span>

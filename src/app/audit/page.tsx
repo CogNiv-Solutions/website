@@ -59,7 +59,7 @@ export default function AuditPage() {
         {/* Audit Hero */}
         <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-16 md:mb-20">
           <Reveal>
-            <div className="inline-flex items-center gap-2 rounded-full border border-[#2563eb]/20 bg-[#eff6ff] px-3.5 py-1 text-[12px] font-mono uppercase tracking-wider text-[#2563eb]">
+            <div className="inline-flex items-center gap-2 rounded-full border border-[#ea580c]/20 bg-[#fff7ed] px-3.5 py-1 text-[12px] font-mono uppercase tracking-wider text-[#ea580c]">
               <Sparkles className="h-3.5 w-3.5" />
               Operational Review
             </div>
@@ -76,7 +76,7 @@ export default function AuditPage() {
         <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-16 md:mb-24">
           <Reveal>
             <div className="mb-8">
-              <span className="font-mono text-[12px] font-semibold uppercase tracking-[0.2em] text-[#2563eb]">
+              <span className="font-mono text-[12px] font-semibold uppercase tracking-[0.2em] text-[#ea580c]">
                 The Deliverables
               </span>
               <h2 className="mt-2 text-2xl sm:text-3xl font-semibold tracking-tight text-[#0b0e0d]">
@@ -91,7 +91,7 @@ export default function AuditPage() {
               return (
                 <Reveal key={item.title} delay={0.1 * i}>
                   <div className="rounded-2xl border border-[#0b0e0d]/10 bg-white p-6 shadow-2xs">
-                    <div className="grid h-10 w-10 place-items-center rounded-xl bg-[#eff6ff] text-[#2563eb] mb-4">
+                    <div className="grid h-10 w-10 place-items-center rounded-xl bg-[#fff7ed] text-[#ea580c] mb-4">
                       <Icon className="h-5 w-5" />
                     </div>
                     <h3 className="text-base font-semibold text-[#0b0e0d]">{item.title}</h3>

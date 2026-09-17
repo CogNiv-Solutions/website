@@ -163,7 +163,7 @@ export function WorkflowAuditModal({
                     href={getWhatsAppUrl(`Hi Cogniv, I just submitted an audit for our ${industry.name} workflow.`)}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn-press inline-flex items-center justify-center gap-2 rounded-full bg-[#2563eb] px-5 py-2.5 text-[13.5px] font-semibold text-white hover:bg-[#1d4ed8]"
+                    className="btn-press inline-flex items-center justify-center gap-2 rounded-full bg-[#ea580c] px-5 py-2.5 text-[13.5px] font-semibold text-white hover:bg-[#c2410c]"
                   >
                     <MessageSquare className="h-4 w-4" />
                     Confirm on WhatsApp
@@ -180,9 +180,9 @@ export function WorkflowAuditModal({
             ) : (
               <div>
                 {/* Header Badge */}
-                <div className="flex items-center gap-2 text-[12px] font-semibold text-[#2563eb]">
-                  <span className="grid h-5 w-5 place-items-center rounded-full bg-[#eff6ff]">
-                    <Clock className="h-3 w-3 text-[#2563eb]" />
+                <div className="flex items-center gap-2 text-[12px] font-semibold text-[#ea580c]">
+                  <span className="grid h-5 w-5 place-items-center rounded-full bg-[#fff7ed]">
+                    <Clock className="h-3 w-3 text-[#ea580c]" />
                   </span>
                   <span>30-Minute Targeted Workflow Audit</span>
                 </div>
@@ -192,8 +192,8 @@ export function WorkflowAuditModal({
                 </h2>
 
                 {/* Workflow Preview Pill */}
-                <div className="mt-3 rounded-xl border border-[#2563eb]/20 bg-[#eff6ff]/70 p-3">
-                  <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-[#1d4ed8]">
+                <div className="mt-3 rounded-xl border border-[#ea580c]/20 bg-[#fff7ed]/70 p-3">
+                  <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-[#c2410c]">
                     Workflow Under Review
                   </p>
                   <p className="mt-1 font-mono text-[12.5px] font-medium text-[#0b0e0d] leading-relaxed">
@@ -206,15 +206,15 @@ export function WorkflowAuditModal({
                   <p className="text-[12.5px] font-semibold text-[#0b0e0d]">What you get in this audit:</p>
                   <ul className="mt-2 space-y-1.5 text-[12.5px] text-[#0b0e0d]/70">
                     <li className="flex items-center gap-2">
-                      <CheckCircle2 className="h-3.5 w-3.5 shrink-0 text-[#2563eb]" />
+                      <CheckCircle2 className="h-3.5 w-3.5 shrink-0 text-[#ea580c]" />
                       <span>Bottleneck identification (where staff hours are being lost)</span>
                     </li>
                     <li className="flex items-center gap-2">
-                      <CheckCircle2 className="h-3.5 w-3.5 shrink-0 text-[#2563eb]" />
+                      <CheckCircle2 className="h-3.5 w-3.5 shrink-0 text-[#ea580c]" />
                       <span>Compatibility check with your existing stack (Tally, WhatsApp, CRM, Sheets)</span>
                     </li>
                     <li className="flex items-center gap-2">
-                      <CheckCircle2 className="h-3.5 w-3.5 shrink-0 text-[#2563eb]" />
+                      <CheckCircle2 className="h-3.5 w-3.5 shrink-0 text-[#ea580c]" />
                       <span>Actionable blueprint with fixed delivery timeline & ROI model</span>
                     </li>
                   </ul>
@@ -237,7 +237,7 @@ export function WorkflowAuditModal({
                         placeholder="Rahul Mehta"
                         className={cn(
                           "mt-1 w-full rounded-xl border bg-white px-3.5 py-2.5 text-[16px] md:text-[13.5px] text-[#0b0e0d] placeholder:text-[#0b0e0d]/35 transition-colors",
-                          errors.name ? "border-red-500" : "border-[#0b0e0d]/15 focus:border-[#2563eb]"
+                          errors.name ? "border-red-500" : "border-[#0b0e0d]/15 focus:border-[#ea580c]"
                         )}
                         {...register("name")}
                       />
@@ -255,7 +255,7 @@ export function WorkflowAuditModal({
                         placeholder="e.g. Apex Enterprises"
                         className={cn(
                           "mt-1 w-full rounded-xl border bg-white px-3.5 py-2.5 text-[16px] md:text-[13.5px] text-[#0b0e0d] placeholder:text-[#0b0e0d]/35 transition-colors",
-                          errors.businessName ? "border-red-500" : "border-[#0b0e0d]/15 focus:border-[#2563eb]"
+                          errors.businessName ? "border-red-500" : "border-[#0b0e0d]/15 focus:border-[#ea580c]"
                         )}
                         {...register("businessName")}
                       />
@@ -276,7 +276,7 @@ export function WorkflowAuditModal({
                         placeholder="+91 98765 43210"
                         className={cn(
                           "mt-1 w-full rounded-xl border bg-white px-3.5 py-2.5 text-[16px] md:text-[13.5px] text-[#0b0e0d] placeholder:text-[#0b0e0d]/35 transition-colors",
-                          errors.phone ? "border-red-500" : "border-[#0b0e0d]/15 focus:border-[#2563eb]"
+                          errors.phone ? "border-red-500" : "border-[#0b0e0d]/15 focus:border-[#ea580c]"
                         )}
                         {...register("phone")}
                       />
@@ -295,7 +295,7 @@ export function WorkflowAuditModal({
                         placeholder="rahul@apex.com"
                         className={cn(
                           "mt-1 w-full rounded-xl border bg-white px-3.5 py-2.5 text-[16px] md:text-[13.5px] text-[#0b0e0d] placeholder:text-[#0b0e0d]/35 transition-colors",
-                          errors.email ? "border-red-500" : "border-[#0b0e0d]/15 focus:border-[#2563eb]"
+                          errors.email ? "border-red-500" : "border-[#0b0e0d]/15 focus:border-[#ea580c]"
                         )}
                         {...register("email")}
                       />
@@ -326,7 +326,7 @@ export function WorkflowAuditModal({
                   <button
                     type="submit"
                     disabled={status === "sending"}
-                    className="btn-press inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#2563eb] py-3 px-5 text-[14px] font-semibold text-white hover:bg-[#1d4ed8] disabled:opacity-60 shadow-sm"
+                    className="btn-press inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#ea580c] py-3 px-5 text-[14px] font-semibold text-white hover:bg-[#c2410c] disabled:opacity-60 shadow-sm"
                   >
                     {status === "sending" ? (
                       <>
@@ -348,9 +348,9 @@ export function WorkflowAuditModal({
                     href={getWhatsAppUrl(whatsappMessage)}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 font-semibold text-[#2563eb] hover:underline"
+                    className="inline-flex items-center gap-1.5 font-semibold text-[#ea580c] hover:underline"
                   >
-                    <MessageSquare className="h-3.5 w-3.5 text-[#2563eb]" />
+                    <MessageSquare className="h-3.5 w-3.5 text-[#ea580c]" />
                     Instant WhatsApp Discussion →
                   </a>
 
@@ -369,7 +369,7 @@ export function WorkflowAuditModal({
                 </div>
 
                 <div className="mt-3 flex items-center justify-center gap-1.5 text-[11px] text-[#0b0e0d]/50">
-                  <Shield className="h-3 w-3 text-[#2563eb]" />
+                  <Shield className="h-3 w-3 text-[#ea580c]" />
                   <span>Strict NDA • Zero sales spam • 100% free workflow review</span>
                 </div>
               </div>
