@@ -13,7 +13,7 @@ import { cn } from "@/lib/utils";
 export const metadata: Metadata = {
   title: "Pricing",
   description:
-    "Starting prices: website development from ₹2,000–₹3,000, business automation tiers, and website + automation from ₹7,999+. Final pricing scoped after audit.",
+    "Starting prices: website development from ₹3,000–₹5,000, business automation tiers, and website + automation from ₹7,999+. Final pricing scoped after audit.",
   alternates: { canonical: "/pricing" },
 };
 

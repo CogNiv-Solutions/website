@@ -12,7 +12,7 @@ import { solutionCategories, websiteService, websiteAutomationCombo } from "@/li
 export const metadata: Metadata = {
   title: "Solutions",
   description:
-    "Two connected capabilities: website development starting from ₹2,000–₹3,000, and business automation — capture leads, reduce data entry, automate follow-ups.",
+    "Two connected capabilities: website development starting from ₹3,000–₹5,000, and business automation — capture leads, reduce data entry, automate follow-ups.",
   alternates: { canonical: "/solutions" },
 };
 

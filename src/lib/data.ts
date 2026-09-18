@@ -364,9 +364,9 @@ export const websiteService = {
     "Custom experiences",
     "Workflow-connected sites",
   ],
-  price: "₹2,000–₹3,000",
+  price: "₹3,000–₹5,000",
   priceNote:
-    "Website projects start from ₹2,000–₹3,000. Final pricing depends on the type and scope of the website.",
+    "Website projects start from ₹3,000–₹5,000. Final pricing depends on the type and scope of the website.",
 };
 
 export const websiteAutomationCombo = {
