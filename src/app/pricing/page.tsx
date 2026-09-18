@@ -146,7 +146,7 @@ export default function PricingPage() {
               <div className="rounded-[1.25rem] border border-[#0b0b0c]/10 bg-[#f4f5f5] p-6 md:p-7">
                 <h3 className="text-[18px] font-semibold tracking-tight">Website Care</h3>
                 <p className="mt-3 flex items-baseline gap-2">
-                  <span className="font-mono text-[2rem] font-bold leading-none tracking-tight">₹499</span>
+                  <span className="font-mono text-[2rem] font-bold leading-none tracking-tight">₹999</span>
                   <span className="font-mono text-[12px] text-[#5f6368]">/month onwards</span>
                 </p>
                 <ul className="mt-4 space-y-2">
@@ -161,7 +161,7 @@ export default function PricingPage() {
               <div className="rounded-[1.25rem] border border-[#0b0b0c]/10 bg-[#f4f5f5] p-6 md:p-7">
                 <h3 className="text-[18px] font-semibold tracking-tight">Automation Care</h3>
                 <p className="mt-3 flex items-baseline gap-2">
-                  <span className="font-mono text-[2rem] font-bold leading-none tracking-tight">₹999</span>
+                  <span className="font-mono text-[2rem] font-bold leading-none tracking-tight">₹1,999</span>
                   <span className="font-mono text-[12px] text-[#5f6368]">/month onwards</span>
                 </p>
                 <ul className="mt-4 space-y-2">
