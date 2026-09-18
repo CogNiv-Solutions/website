@@ -1,6 +1,15 @@
 import { z } from "zod";
+import { automationInterests } from "./data";
 
 export const contactSchema = z.object({
+  interests: z
+    .array(z.string().trim().min(1).max(60))
+    .min(1, "Select at least one area")
+    .max(automationInterests.length, "Too many areas selected")
+    .refine(
+      (areas) => areas.every((a) => automationInterests.includes(a)),
+      "Select from the listed areas"
+    ),
   name: z
     .string()
     .trim()
@@ -21,31 +30,6 @@ export const contactSchema = z.object({
     .trim()
     .min(6, "Enter a valid phone number")
     .max(30, "Phone number is too long (max 30 characters)"),
-  industry: z
-    .string()
-    .trim()
-    .min(1, "Select an industry")
-    .max(100, "Industry is too long (max 100 characters)"),
-  companySize: z
-    .string()
-    .trim()
-    .min(1, "Select company size")
-    .max(50, "Company size is too long (max 50 characters)"),
-  process: z
-    .string()
-    .trim()
-    .min(10, "Describe the process in a few words (min 10 characters)")
-    .max(3000, "Process description is too long (max 3000 characters)"),
-  tools: z
-    .string()
-    .trim()
-    .max(500, "Tools field is too long (max 500 characters)")
-    .optional(),
-  message: z
-    .string()
-    .trim()
-    .max(3000, "Message is too long (max 3000 characters)")
-    .optional(),
   _hp: z
     .string()
     .max(100, "Invalid field")

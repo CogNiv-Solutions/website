@@ -37,17 +37,9 @@ Name: ${lead.name}
 Business: ${lead.businessName}
 Email: ${lead.email}
 Phone: ${lead.phone}
-Industry: ${lead.industry}
-Company Size: ${lead.companySize}
 
-Process to Automate:
-${lead.process}
-
-Current Tools:
-${lead.tools || "None specified"}
-
-Additional Message:
-${lead.message || "None"}
+Wants to automate:
+${lead.interests.join(", ")}
       `.trim();
 
       const res = await fetch("https://api.resend.com/emails", {

@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Newsreader } from "next/font/google";
 import "./globals.css";
 import { SmoothScroll } from "@/components/smooth-scroll";
 import { SITE } from "@/lib/utils";
@@ -8,31 +8,30 @@ import { WhatsAppFloat } from "@/components/whatsapp-float";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
+const newsreader = Newsreader({
+  variable: "--font-newsreader",
+  subsets: ["latin"],
+  style: ["italic", "normal"],
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
   title: {
-    default: "Cogniv Solutions | Business Automation & AI Systems for Growing Companies",
+    default: "Cogniv Solutions | Business Automation",
     template: "%s | Cogniv Solutions",
   },
   description:
-    "Cogniv Solutions builds bespoke AI and workflow automation systems for businesses. We eliminate operational bottlenecks across WhatsApp, CRMs, ERPs, and spreadsheets to save 20+ hours weekly.",
+    "Cogniv Solutions automates repetitive business work — WhatsApp enquiries, lead follow-ups, data entry, and reporting — around the tools you already use.",
   applicationName: "Cogniv Solutions",
   keywords: [
     "business automation",
-    "AI automation agency",
-    "business process automation India",
     "workflow automation",
     "WhatsApp business automation",
-    "lead automation CRM",
-    "AI agents for business",
-    "custom business software",
-    "Tally automation",
-    "document data extraction",
-    "automation audit",
-    "operational efficiency AI",
-    "enterprise workflow integration",
-    "small business automation tools",
+    "lead follow-up automation",
+    "data entry automation",
+    "Tally Excel automation",
+    "small business automation India",
   ],
   authors: [{ name: "Cogniv Solutions", url: SITE.url }],
   creator: "Cogniv Solutions",
@@ -46,7 +45,6 @@ export const metadata: Metadata = {
     canonical: "/",
     languages: {
       "en-IN": "https://cognivsolutions.in",
-      "en-US": "https://cognivsolutions.in",
       "x-default": "https://cognivsolutions.in",
     },
   },
@@ -55,24 +53,24 @@ export const metadata: Metadata = {
     locale: "en_IN",
     url: SITE.url,
     siteName: "Cogniv Solutions",
-    title: "Cogniv Solutions | Business Automation & AI Systems for Growing Companies",
+    title: "Cogniv Solutions | Business Automation",
     description:
-      "Turn repetitive manual work into intelligent, scalable automated systems. Streamline WhatsApp, leads, documents, and operations.",
+      "We automate the work your team repeats every day — from WhatsApp enquiries and follow-ups to data entry and reporting.",
     images: [
       {
         url: "/opengraph-image.png",
         width: 1200,
         height: 630,
-        alt: "Cogniv Solutions - Business Automation & AI Systems",
+        alt: "Cogniv Solutions - Business Automation",
         type: "image/png",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Cogniv Solutions | Business Automation & AI Systems",
+    title: "Cogniv Solutions | Business Automation",
     description:
-      "Turn repetitive manual work into intelligent, scalable automated systems. Streamline WhatsApp, leads, documents, and operations.",
+      "We automate the work your team repeats every day — from WhatsApp enquiries and follow-ups to data entry and reporting.",
     images: ["/opengraph-image.png"],
     creator: "@cognivsolutions",
   },
@@ -93,12 +91,11 @@ export const metadata: Metadata = {
     google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || undefined,
   },
   category: "technology",
-};
-
-export const viewport: Viewport = {
-  themeColor: "#0b0e0d",
-  width: "device-width",
-  initialScale: 1,
+  // Brand icons derived (resize-only) from the official bridge mark.
+  icons: {
+    icon: [{ url: "/brand/favicon.ico", type: "image/x-icon" }],
+    apple: [{ url: "/brand/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
+  },
 };
 
 // Escape '<' to prevent HTML parser breakout in embedded JSON-LD scripts
@@ -106,8 +103,8 @@ const safeJsonLd = JSON.stringify(generateSeoJsonLd()).replace(/</g, "\\u003c");
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col bg-[#fafaf9] text-[#0b0e0d]">
+    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} ${newsreader.variable} h-full antialiased`}>
+      <body className="min-h-full flex flex-col bg-[#f4f5f5] text-[#0b0b0c]">
         <a href="#main" className="skip-link">
           Skip to content
         </a>
@@ -122,3 +119,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     </html>
   );
 }
+
+export const viewport: Viewport = {
+  themeColor: "#0b0b0c",
+  width: "device-width",
+  initialScale: 1,
+};

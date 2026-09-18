@@ -6,15 +6,11 @@
 const BASE_URL = process.env.TEST_URL || "http://localhost:3002";
 
 const validPayload = {
+  interests: ["WhatsApp", "Follow-ups"],
   name: "Aarav Sharma",
   businessName: "Sharma Logistics",
   email: "aarav@sharmalogistics.com",
   phone: "+91 9876543210",
-  industry: "Logistics",
-  companySize: "11–50",
-  process: "We need automated dispatch notifications and invoice matching from WhatsApp to ERP.",
-  tools: "WhatsApp, Excel",
-  message: "Looking to deploy by next month.",
 };
 
 let passed = 0;
@@ -209,20 +205,20 @@ async function runTests() {
     assert(false, "Very Long Name", err.message);
   }
 
-  // Test 9: Very Long Message (> 3000 chars)
+  // Test 9: Very Long Phone (> 30 chars)
   try {
     const res = await fetch(`${BASE_URL}/api/audit`, {
       method: "POST",
       headers: { "Content-Type": "application/json", "x-forwarded-for": nextIp() },
-      body: JSON.stringify({ ...validPayload, message: "M".repeat(3001) }),
+      body: JSON.stringify({ ...validPayload, phone: "1".repeat(31) }),
     });
     assert(
       res.status === 400,
-      "Message > 3000 chars rejected with 400",
+      "Phone > 30 chars rejected with 400",
       `Status: ${res.status}`
     );
   } catch (err) {
-    assert(false, "Very Long Message", err.message);
+    assert(false, "Very Long Phone", err.message);
   }
 
   // Test 10: Unexpected Fields Injected (.strict() test)
@@ -281,7 +277,7 @@ async function runTests() {
       headers: { "Content-Type": "application/json", "x-forwarded-for": nextIp() },
       body: JSON.stringify({
         ...validPayload,
-        process: "<script>alert('XSS')</script> normal process explanation here",
+        name: "<script>alert('XSS')</script> Aarav",
       }),
     });
     assert(

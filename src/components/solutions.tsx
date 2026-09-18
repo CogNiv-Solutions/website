@@ -1,44 +1,59 @@
-import { ArrowUpRight } from "lucide-react";
-import { solutions } from "@/lib/data";
+import Link from "next/link";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { solutionCategories } from "@/lib/data";
 import { SectionHeading } from "./section-heading";
 import { Stagger, StaggerItem } from "./reveal";
 
+/** SECTION 4 — What we automate. 4 categories, each Problem → Automation → Outcome. */
 export function Solutions() {
   return (
-    <section id="solutions" aria-labelledby="solutions-h" className="scroll-mt-20 border-t border-[#0b0e0d]/8 bg-white">
+    <section id="solutions" aria-labelledby="solutions-h" className="scroll-mt-20 bg-[#0b0b0c] text-white">
       <div className="mx-auto max-w-7xl px-4 py-20 md:px-8 md:py-28">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <SectionHeading
-            eyebrow="Solutions"
-            title={<span id="solutions-h">Automation built around real work.</span>}
-            copy="Six capabilities, combined to fit your operation. No unnecessary software — only what removes work or prevents loss."
+            dark
+            eyebrow="What we automate"
+            title={<span id="solutions-h">Four kinds of repetitive work.</span>}
+            copy="Everything we build falls into four buckets — combined to fit your operation."
           />
-          <a href="#contact" className="btn-press inline-flex shrink-0 items-center gap-1.5 rounded-full border border-[#0b0e0d]/15 px-5 py-3 text-[14px] font-medium hover:border-[#0b0e0d]/35">
-            Discuss your workflow <ArrowUpRight className="h-4 w-4" aria-hidden />
-          </a>
+          <Link
+            href="/solutions"
+            className="btn-press inline-flex shrink-0 items-center gap-1.5 rounded-full border border-white/20 px-5 py-3 text-[14px] font-medium text-white hover:border-white/50"
+          >
+            All solutions <ArrowRight className="h-4 w-4 text-[#ff6a00]" aria-hidden />
+          </Link>
         </div>
 
-        <Stagger className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {solutions.map((s) => (
-            <StaggerItem key={s.id}>
-              <article className="group flex h-full flex-col rounded-[1.4rem] border border-[#0b0e0d]/10 bg-[#fafaf9] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-[#0b0e0d]/20 hover:bg-white hover:card-shadow md:p-7">
-                <span className="grid h-11 w-11 place-items-center rounded-2xl bg-[#0b0e0d] text-white transition-colors duration-300 group-hover:bg-[#2563eb]">
-                  <s.icon className="h-5 w-5" strokeWidth={1.75} aria-hidden />
-                </span>
-                <h3 className="mt-5 text-[18px] font-semibold tracking-tight">{s.title}</h3>
-                <p className="mt-1.5 text-[14.5px] font-medium text-[#0b0e0d]/75">{s.short}</p>
-                <p className="mt-2.5 text-[14px] leading-relaxed text-[#0b0e0d]/60">{s.detail}</p>
-                <ul className="mt-4 flex flex-wrap gap-1.5" aria-label={`${s.title} includes`}>
-                  {s.points.map((p) => (
-                    <li key={p} className="rounded-full bg-[#0b0e0d]/[0.05] px-2.5 py-1 text-[12px] font-medium text-[#0b0e0d]/65">
-                      {p}
+        <Stagger className="mt-12 grid gap-4 md:grid-cols-2">
+          {solutionCategories.map((s) => (
+            <StaggerItem key={s.id} className="h-full">
+              <article className="group flex h-full flex-col rounded-[1.25rem] border border-white/10 bg-white/[0.04] p-6 transition-colors duration-300 hover:border-[#ff6a00]/50 md:p-8">
+                <div className="flex items-baseline justify-between">
+                  <p className="font-mono text-[13px] font-bold text-[#ff8a3d]">{s.index}</p>
+                  <Link
+                    href="/solutions"
+                    aria-label={`${s.title} — details`}
+                    className="grid h-9 w-9 place-items-center rounded-full border border-white/15 text-white/60 transition-all group-hover:border-[#ff6a00] group-hover:text-[#ff8a3d]"
+                  >
+                    <ArrowUpRight className="h-4 w-4" aria-hidden />
+                  </Link>
+                </div>
+                <h3 className="mt-4 text-[22px] font-semibold tracking-tight">{s.title}</h3>
+                <p className="mt-1.5 text-[14.5px] text-white/60">{s.summary}</p>
+                <ul className="mt-5 flex flex-wrap gap-1.5" aria-label={`${s.title} includes`}>
+                  {s.items.map((item) => (
+                    <li
+                      key={item}
+                      className="rounded-full border border-white/12 px-3 py-1.5 text-[12.5px] font-medium text-white/75"
+                    >
+                      {item}
                     </li>
                   ))}
                 </ul>
-                <a href="#demo" className="mt-5 inline-flex items-center gap-1 text-[14px] font-semibold text-[#2563eb]">
-                  <span className="underline-offset-4 group-hover:underline">See it in the demo</span>
-                  <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden />
-                </a>
+                <p className="mt-5 flex items-center gap-2 border-t border-white/10 pt-4 text-[13.5px] font-medium text-white/80">
+                  <ArrowRight className="h-4 w-4 shrink-0 text-[#ff6a00]" aria-hidden />
+                  {s.outcome}
+                </p>
               </article>
             </StaggerItem>
           ))}

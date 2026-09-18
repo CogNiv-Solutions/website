@@ -1,36 +1,28 @@
 import Image from "next/image";
-import { cn } from "@/lib/utils";
 
+/**
+ * Genuine Cogniv bridge lockup (public/brand/cogniv-logo.png).
+ * Dark surfaces use a text wordmark until the reversed lockup file is supplied.
+ */
 export function Logo({ dark = false, compact = false }: { dark?: boolean; compact?: boolean }) {
-  return (
-    <span className="inline-flex items-center gap-2.5" aria-label="Cogniv Solutions home">
-      <span
-        aria-hidden
-        className={cn(
-          "relative grid shrink-0 place-items-center transition-transform duration-300 group-hover:scale-105",
-          compact ? "h-8 w-8" : "h-9 w-9"
-        )}
-      >
-        <Image
-          src={dark ? "/logo-dark.png" : "/logo.png"}
-          alt="Cogniv Solutions"
-          width={compact ? 32 : 36}
-          height={compact ? 32 : 36}
-          className="h-full w-full object-contain"
-          priority
-        />
-      </span>
-      <span className="flex flex-col leading-none">
-        <span className={cn("text-[17.5px] font-semibold tracking-tight", dark ? "text-white" : "text-[#0b0e0d]")}>
-          Cogniv
+  if (dark) {
+    return (
+      <span className="inline-flex flex-col leading-none" aria-label="Cogniv Solutions home">
+        <span className="text-[19px] font-semibold tracking-tight text-white">Cogniv</span>
+        <span className="mt-1 text-[10px] font-medium uppercase tracking-[0.3em] text-white/60">
+          Solutions
         </span>
-        {!compact && (
-          <span className={cn("text-[10px] font-medium uppercase tracking-[0.28em]", dark ? "text-white/60" : "text-[#0b0e0d]/60")}>
-            Solutions
-          </span>
-        )}
       </span>
-    </span>
+    );
+  }
+  return (
+    <Image
+      src="/brand/cogniv-logo.png"
+      alt="Cogniv Solutions"
+      width={2081}
+      height={755}
+      className={compact ? "h-9 w-auto" : "h-11 w-auto md:h-12"}
+      priority
+    />
   );
 }
-

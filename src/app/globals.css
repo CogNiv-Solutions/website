@@ -3,20 +3,29 @@
 @theme {
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, "JetBrains Mono", monospace;
+  --font-editorial: var(--font-newsreader), Georgia, "Times New Roman", serif;
 
-  --color-paper: #fafaf9;
-  --color-ink: #0b0e0d;
-  --color-ink-soft: #1a201e;
-  --color-line: #e7e5e4;
-  --color-accent: #2563eb;
-  --color-accent-deep: #1d4ed8;
-  --color-accent-soft: #eff6ff;
-  --color-amber-warm: #b45309;
+  /* Cogniv core palette — charcoal + soft white + orange */
+  --color-paper: #f4f5f5;
+  --color-paper-warm: #f4f5f5;
+  --color-white: #ffffff;
+  --color-ink: #0b0b0c;
+  --color-ink-soft: #1c1c1e;
+  --color-ink-mute: #5f6368;
+  --color-line: #d9dcdf;
+  --color-line-soft: rgb(11 11 12 / 0.08);
+  --color-accent: #ff6a00;
+  --color-accent-deep: #d65700;
+  --color-accent-soft: #fff1e6;
+  --color-accent-ink: #7a3400;
+
+  /* Radii — restrained editorial system */
+  --radius-card: 1.25rem;
+  --radius-panel: 1.75rem;
 
   --animate-pulse-dot: pulse-dot 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   --animate-flow-dash: flow-dash 1.6s linear infinite;
-  --animate-shimmer: shimmer 2.2s linear infinite;
-  --animate-marquee: marquee 28s linear infinite;
+  --animate-bridge-flow: bridge-flow 2.4s linear infinite;
 
   @keyframes pulse-dot {
     0%, 100% { opacity: 1; transform: scale(1); }
@@ -25,19 +34,14 @@
   @keyframes flow-dash {
     to { stroke-dashoffset: -16; }
   }
-  @keyframes shimmer {
-    0% { transform: translateX(-100%); }
-    100% { transform: translateX(200%); }
-  }
-  @keyframes marquee {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+  @keyframes bridge-flow {
+    to { stroke-dashoffset: -24; }
   }
 }
 
 :root {
-  --background: #fafaf9;
-  --foreground: #0b0e0d;
+  --background: #f4f5f5;
+  --foreground: #0b0b0c;
   color-scheme: light;
 }
 
@@ -62,12 +66,12 @@ body {
 }
 
 ::selection {
-  background: #2563eb;
+  background: #ff6a00;
   color: #fff;
 }
 
 :focus-visible {
-  outline: 2px solid #2563eb;
+  outline: 2px solid #ff6a00;
   outline-offset: 3px;
   border-radius: 4px;
 }
@@ -77,7 +81,7 @@ body {
   left: -9999px;
   top: 0;
   z-index: 100;
-  background: #0b0e0d;
+  background: #0b0b0c;
   color: #fff;
   padding: 0.75rem 1.25rem;
   border-radius: 0 0 12px 0;
@@ -87,31 +91,60 @@ body {
   left: 0;
 }
 
+/* Editorial display type */
+.display-tight {
+  letter-spacing: -0.035em;
+  line-height: 1.02;
+  text-wrap: balance;
+}
+.section-tight {
+  letter-spacing: -0.025em;
+  line-height: 1.08;
+  text-wrap: balance;
+}
+
+/* Subtle blueprint grid — light sections only */
 .texture-grid {
   background-image:
-    linear-gradient(to right, rgb(11 14 13 / 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgb(11 14 13 / 0.05) 1px, transparent 1px);
+    linear-gradient(to right, rgb(11 11 12 / 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(11 11 12 / 0.045) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: radial-gradient(ellipse 90% 70% at 50% 30%, black 40%, transparent 100%);
+}
+.texture-grid-dark {
+  background-image:
+    linear-gradient(to right, rgb(255 255 255 / 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(255 255 255 / 0.05) 1px, transparent 1px);
   background-size: 44px 44px;
   mask-image: radial-gradient(ellipse 90% 70% at 50% 30%, black 40%, transparent 100%);
 }
 
 .texture-dots {
-  background-image: radial-gradient(rgb(11 14 13 / 0.12) 1px, transparent 1px);
+  background-image: radial-gradient(rgb(11 11 12 / 0.12) 1px, transparent 1px);
+  background-size: 18px 18px;
+}
+.texture-dots-dark {
+  background-image: radial-gradient(rgb(255 255 255 / 0.14) 1px, transparent 1px);
   background-size: 18px 18px;
 }
 
 .card-shadow {
-  box-shadow: 0 1px 2px rgb(11 14 13 / 0.05), 0 12px 32px -16px rgb(11 14 13 / 0.18);
+  box-shadow: 0 1px 2px rgb(11 11 12 / 0.05), 0 12px 32px -16px rgb(11 11 12 / 0.18);
 }
 .card-shadow-dark {
   box-shadow: 0 1px 0 rgb(255 255 255 / 0.08) inset, 0 24px 64px -24px rgb(0 0 0 / 0.6);
 }
 
 .btn-press {
-  transition: transform 0.25s cubic-bezier(0.32, 0.72, 0, 1), background-color 0.25s, border-color 0.25s, box-shadow 0.25s;
+  transition: transform 0.25s cubic-bezier(0.32, 0.72, 0, 1), background-color 0.25s, border-color 0.25s, box-shadow 0.25s, color 0.25s;
 }
 .btn-press:active {
   transform: translateY(1px) scale(0.98);
+}
+
+/* Thin editorial rule with orange bridge tick */
+.rule-bridge {
+  position: relative;
 }
 
 .no-scrollbar::-webkit-scrollbar { display: none; }

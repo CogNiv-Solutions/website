@@ -1,80 +1,85 @@
+import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { Logo } from "./logo";
+import { SITE, getWhatsAppUrl } from "@/lib/utils";
 
-const cols = [
-  {
-    h: "Company",
-    links: [
-      ["Solutions", "#solutions"],
-      ["How It Works", "#how-it-works"],
-      ["Industries", "#industries"],
-      ["Stack Checker", "#stack-checker"],
-      ["Demo", "#demo"],
-      ["Pricing", "#pricing"],
-      ["About", "#about"],
-      ["FAQ", "#faq"],
-    ],
-  },
-  {
-    h: "Start",
-    links: [
-      ["Book Automation Audit", "#contact"],
-      ["Check Stack Compatibility", "#stack-checker"],
-      ["Try the Demo", "#demo"],
-      ["Estimate Value", "#contact"],
-    ],
-  },
-  {
-    h: "Legal",
-    links: [
-      ["Privacy", "#top"],
-      ["Terms", "#top"],
-      ["Contact", "#contact"],
-    ],
-  },
+const explore = [
+  ["Solutions", "/solutions"],
+  ["Industries", "/industries"],
+  ["Demos", "/demos"],
+  ["How It Works", "/how-it-works"],
+  ["About", "/about"],
+  ["Pricing", "/pricing"],
 ];
 
 export function Footer() {
   return (
-    <footer className="border-t border-white/10 bg-[#0b0e0d] text-white">
-      <div className="mx-auto max-w-7xl px-4 py-14 md:px-8 md:py-16">
-        <div className="grid gap-10 lg:grid-cols-[1.2fr_2fr]">
+    <footer className="bg-[#0b0b0c] text-white">
+      <div className="mx-auto max-w-7xl px-4 pb-8 pt-14 md:px-8 md:pt-20">
+        <div className="grid gap-12 lg:grid-cols-[1.3fr_1fr_1fr_1fr]">
           <div>
             <Logo dark />
-            <p className="mt-4 text-[15px] font-medium text-white/80">Business, Automated.</p>
-            <p className="mt-2 max-w-[38ch] text-[14px] leading-relaxed text-white/55">
-              We turn repetitive work into automated systems — audited, built and measured around your operation.
+            <p className="mt-5 max-w-[36ch] text-[14.5px] leading-relaxed text-white/60">
+              Turn repetitive work into automated systems — built around the tools your team already uses.
             </p>
-            <a
-              href="#contact"
-              className="btn-press group mt-6 inline-flex items-center gap-2 rounded-full bg-white py-2 pl-5 pr-2 text-[14px] font-semibold text-[#0b0e0d] hover:bg-blue-100"
-            >
-              Book Automation Audit
-              <span className="grid h-8 w-8 place-items-center rounded-full bg-[#0b0e0d] text-white transition-transform duration-300 group-hover:translate-x-0.5">
-                <ArrowUpRight className="h-4 w-4" aria-hidden />
-              </span>
-            </a>
+            <div className="mt-6 flex flex-wrap gap-2.5">
+              <Link
+                href="#contact"
+                className="btn-press group inline-flex items-center gap-2 rounded-full bg-white py-2 pl-5 pr-2 text-[14px] font-semibold text-[#0b0b0c] hover:bg-[#fff1e6]"
+              >
+                Book Free Audit
+                <span className="grid h-8 w-8 place-items-center rounded-full bg-[#ff6a00] text-white transition-transform duration-300 group-hover:translate-x-0.5">
+                  <ArrowUpRight className="h-4 w-4" aria-hidden />
+                </span>
+              </Link>
+            </div>
           </div>
-          <nav aria-label="Footer" className="grid grid-cols-2 gap-8 sm:grid-cols-3">
-            {cols.map((c) => (
-              <div key={c.h}>
-                <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-white/40">{c.h}</p>
-                <ul className="mt-4 space-y-2.5">
-                  {c.links.map(([label, href]) => (
-                    <li key={label}>
-                      <a href={href} className="text-[14.5px] text-white/70 transition-colors hover:text-white">
-                        {label}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+          <nav aria-label="Explore">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-white/40">Explore</p>
+            <ul className="mt-4 space-y-2.5">
+              {explore.map(([label, href]) => (
+                <li key={href}>
+                  <Link href={href} className="text-[14.5px] text-white/70 transition-colors hover:text-white">
+                    {label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+          <nav aria-label="Contact">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-white/40">Contact</p>
+            <ul className="mt-4 space-y-2.5 text-[14.5px] text-white/70">
+              <li>
+                <a className="transition-colors hover:text-white" href={`mailto:${SITE.email}`}>{SITE.email}</a>
+              </li>
+              <li>
+                <a className="transition-colors hover:text-white" href={getWhatsAppUrl()} target="_blank" rel="noopener noreferrer">Chat on WhatsApp</a>
+              </li>
+              <li>
+                <a className="transition-colors hover:text-white" href={SITE.calendarUrl} target="_blank" rel="noopener noreferrer">Book a call</a>
+              </li>
+            </ul>
+          </nav>
+          <nav aria-label="Legal">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-white/40">Legal</p>
+            <ul className="mt-4 space-y-2.5">
+              {[
+                ["Privacy Policy", "/privacy"],
+                ["Terms of Service", "/terms"],
+                ["Data & Security", "/security"],
+              ].map(([label, href]) => (
+                <li key={href}>
+                  <Link href={href} className="text-[14.5px] text-white/70 transition-colors hover:text-white">
+                    {label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </nav>
         </div>
-        <div className="mt-12 flex flex-col gap-2 border-t border-white/10 pt-6 font-mono text-[12px] text-white/40 md:flex-row md:items-center md:justify-between">
+        <div className="mt-12 flex flex-col gap-2 border-t border-white/10 pt-6 text-[12px] text-white/40 md:flex-row md:items-center md:justify-between">
           <p>© {new Date().getFullYear()} Cogniv Solutions. All rights reserved.</p>
-          <p>Built around real workflows — no fake clients, no invented numbers.</p>
+          <p>No fake clients, no invented numbers.</p>
         </div>
       </div>
     </footer>

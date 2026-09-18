@@ -1,21 +1,26 @@
+import type { Metadata } from "next";
 import { Navbar } from "@/components/navbar";
 import { Hero } from "@/components/hero";
-import { Problem } from "@/components/problem";
-import { WhatWeDo } from "@/components/what-we-do";
+import { Transform } from "@/components/transform";
+import { Problem } from "@/components/problem-section";
 import { Solutions } from "@/components/solutions";
+import { Websites } from "@/components/websites";
+import { DemoPreview } from "@/components/demo-preview";
+import { ProcessPreview } from "@/components/process-preview";
 import { Industries } from "@/components/industries";
-import { CaseStudies } from "@/components/case-studies";
-import { StackChecker } from "@/components/stack-checker";
-import { Demo } from "@/components/demo";
-import { Dashboard } from "@/components/dashboard";
-import { RoiCalculator } from "@/components/roi-calculator";
-import { Pricing } from "@/components/pricing";
-import { ProcessTimeline } from "@/components/process-timeline";
 import { WhyCogniv } from "@/components/why-cogniv";
-import { About, FinalCta } from "@/components/about-cta";
-import { Faq } from "@/components/faq";
+import { ToolsStrip } from "@/components/tools";
+import { FaqPreview } from "@/components/faq";
+import { FinalCta } from "@/components/about-cta";
 import { Contact } from "@/components/contact";
 import { Footer } from "@/components/footer";
+
+export const metadata: Metadata = {
+  title: { absolute: "Cogniv Solutions | Business Automation" },
+  description:
+    "Cogniv builds business websites and automates repetitive work — WhatsApp enquiries, follow-ups, data entry, and reporting — around the tools you already use.",
+  alternates: { canonical: "/" },
+};
 
 export default function Home() {
   return (
@@ -23,20 +28,16 @@ export default function Home() {
       <Navbar />
       <main id="main">
         <Hero />
+        <Transform />
         <Problem />
-        <WhatWeDo />
         <Solutions />
+        <Websites />
+        <DemoPreview />
+        <ProcessPreview />
         <Industries />
-        <CaseStudies />
-        <StackChecker />
-        <Demo />
-        <Dashboard />
-        <RoiCalculator />
-        <Pricing />
-        <ProcessTimeline />
         <WhyCogniv />
-        <About />
-        <Faq />
+        <ToolsStrip />
+        <FaqPreview />
         <FinalCta />
         <Contact />
       </main>
@@ -44,5 +45,3 @@ export default function Home() {
     </>
   );
 }
-
-
