@@ -135,6 +135,51 @@ export default function PricingPage() {
           </p>
         </section>
 
+        <section aria-labelledby="care-h" className="border-t border-[#0b0b0c]/10 bg-white">
+          <div className="mx-auto max-w-7xl px-4 py-16 md:px-8 md:py-20">
+            <SectionHeading
+              eyebrow="Care plans"
+              title={<span id="care-h">Maintenance, without surprises.</span>}
+              copy="Optional monthly care after delivery — monitoring, updates, and small fixes. Cancel anytime; you own everything either way."
+            />
+            <div className="mt-10 grid gap-4 md:grid-cols-2">
+              <div className="rounded-[1.25rem] border border-[#0b0b0c]/10 bg-[#f4f5f5] p-6 md:p-7">
+                <h3 className="text-[18px] font-semibold tracking-tight">Website Care</h3>
+                <p className="mt-3 flex items-baseline gap-2">
+                  <span className="font-mono text-[2rem] font-bold leading-none tracking-tight">₹499</span>
+                  <span className="font-mono text-[12px] text-[#5f6368]">/month onwards</span>
+                </p>
+                <ul className="mt-4 space-y-2">
+                  {["Updates, backups & security checks", "Small content edits", "Uptime monitoring"].map((f) => (
+                    <li key={f} className="flex items-start gap-2.5 text-[14px] text-[#0b0b0c]/80">
+                      <span className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#ff6a00]" aria-hidden />
+                      {f}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="rounded-[1.25rem] border border-[#0b0b0c]/10 bg-[#f4f5f5] p-6 md:p-7">
+                <h3 className="text-[18px] font-semibold tracking-tight">Automation Care</h3>
+                <p className="mt-3 flex items-baseline gap-2">
+                  <span className="font-mono text-[2rem] font-bold leading-none tracking-tight">₹999</span>
+                  <span className="font-mono text-[12px] text-[#5f6368]">/month onwards</span>
+                </p>
+                <ul className="mt-4 space-y-2">
+                  {["Workflow monitoring & failure alerts", "Fixes and small improvements", "Monthly summary of what ran"].map((f) => (
+                    <li key={f} className="flex items-start gap-2.5 text-[14px] text-[#0b0b0c]/80">
+                      <span className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#ff6a00]" aria-hidden />
+                      {f}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+            <p className="mt-5 font-mono text-[12px] leading-relaxed text-[#5f6368]">
+              Starting prices; scoped with your project. No lock-in — your site, workflows, and credentials stay yours.
+            </p>
+          </div>
+        </section>
+
         <section aria-labelledby="pricing-faq-h" className="border-t border-[#0b0b0c]/10 bg-white">
           <div className="mx-auto grid max-w-7xl gap-10 px-4 py-16 md:px-8 md:py-20 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
             <SectionHeading
