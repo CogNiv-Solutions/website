@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useForm, useWatch } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
 import dynamic from "next/dynamic";
 import { Loader2, TriangleAlert, ArrowRight, Check } from "lucide-react";
 import { contactSchema, submitAuditRequest, type ContactInput } from "@/lib/validation";
@@ -12,6 +13,22 @@ import { Reveal } from "./reveal";
 import { cn, SITE, getWhatsAppUrl } from "@/lib/utils";
 
 const LottieAnimation = dynamic(() => import("./lottie-animation"), { ssr: false });
+
+// Client-side shape: hardened server schema + required interest chips.
+// `interests` is mapped to `automationType`/`process` before submit because
+// the server schema is strict and rejects unknown keys.
+const clientSchema = contactSchema.extend({
+  interests: z
+    .array(z.string().trim().min(1).max(60))
+    .min(1, "Select at least one area")
+    .max(automationInterests.length, "Too many areas selected")
+    .refine(
+      (areas) => areas.every((a) => automationInterests.includes(a)),
+      "Select from the listed areas"
+    ),
+});
+
+type ClientInput = z.infer<typeof clientSchema>;
 
 function Field({
   label,
@@ -46,6 +63,7 @@ const inputCls = (bad?: string) =>
 export function Contact() {
   const [status, setStatus] = useState<"idle" | "sending" | "ok" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState<string>("");
+  const [formLoadedAt] = useState<number>(() => Date.now());
 
   const {
     register,
@@ -54,9 +72,9 @@ export function Contact() {
     setValue,
     control,
     formState: { errors },
-  } = useForm<ContactInput>({
-    resolver: zodResolver(contactSchema),
-    defaultValues: { interests: [] },
+  } = useForm<ClientInput>({
+    resolver: zodResolver(clientSchema),
+    defaultValues: { interests: [], b_website: "", _hp: "" },
   });
 
   const selected = useWatch({ control, name: "interests" }) ?? [];
@@ -68,11 +86,22 @@ export function Contact() {
     setValue("interests", next, { shouldValidate: true, shouldDirty: true });
   };
 
-  const onSubmit = async (data: ContactInput) => {
+  const onSubmit = async (data: ClientInput) => {
     setStatus("sending");
     setErrorMessage("");
+    const payload: ContactInput = {
+      name: data.name,
+      businessName: data.businessName,
+      email: data.email,
+      phone: data.phone,
+      automationType: data.interests,
+      process: `Interested in: ${data.interests.join(", ")}`,
+      b_website: data.b_website ?? "",
+      _hp: data._hp ?? "",
+      _formLoadedAt: formLoadedAt,
+    };
     try {
-      const res = await submitAuditRequest(data);
+      const res = await submitAuditRequest(payload);
       if (res.ok) {
         setStatus("ok");
         reset();
@@ -127,14 +156,23 @@ export function Contact() {
             </p>
             <p className="text-[13px] text-[#0b0b0c]/80 flex items-center justify-between pt-2 border-t border-[#0b0b0c]/10">
               <span>📅 Prefer a direct calendar slot?</span>
-              <a
-                href={SITE.calendarUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-semibold text-[#0b0b0c] underline underline-offset-4 hover:text-[#a84300]"
-              >
-                Book 20-min Call
-              </a>
+              {SITE.calendarUrl ? (
+                <a
+                  href={SITE.calendarUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-semibold text-[#0b0b0c] underline underline-offset-4 hover:text-[#a84300]"
+                >
+                  Book 20-min Call
+                </a>
+              ) : (
+                <a
+                  href={`tel:${SITE.phone.replace(/\s+/g, "")}`}
+                  className="font-semibold text-[#0b0b0c] underline underline-offset-4 hover:text-[#a84300]"
+                >
+                  {SITE.phone}
+                </a>
+              )}
             </p>
             <p className="font-mono text-[12px] text-[#0b0b0c]/50 pt-1">
               Prefer email? <a className="underline underline-offset-4" href={`mailto:${SITE.email}`}>{SITE.email}</a>
@@ -177,7 +215,7 @@ export function Contact() {
               </div>
             ) : (
               <form onSubmit={handleSubmit(onSubmit)} noValidate className="relative grid gap-5 sm:grid-cols-2">
-                {/* Honeypot anti-spam field */}
+                {/* Honeypot anti-spam fields */}
                 <div style={{ position: "absolute", left: "-9999px", opacity: 0, pointerEvents: "none" }} aria-hidden="true">
                   <label htmlFor="f-hp">Leave this field blank</label>
                   <input
@@ -186,6 +224,14 @@ export function Contact() {
                     tabIndex={-1}
                     autoComplete="off"
                     {...register("_hp")}
+                  />
+                  <label htmlFor="f-web">Leave this field blank</label>
+                  <input
+                    id="f-web"
+                    type="text"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    {...register("b_website")}
                   />
                 </div>
 

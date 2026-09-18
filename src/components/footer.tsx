@@ -5,11 +5,14 @@ import { SITE, getWhatsAppUrl } from "@/lib/utils";
 
 const explore = [
   ["Solutions", "/solutions"],
+  ["Automation Services", "/automation-services"],
+  ["AI Solutions", "/ai-solutions"],
   ["Industries", "/industries"],
   ["Demos", "/demos"],
   ["How It Works", "/how-it-works"],
   ["About", "/about"],
   ["Pricing", "/pricing"],
+  ["Free Audit", "/audit"],
 ];
 
 export function Footer() {
@@ -24,7 +27,7 @@ export function Footer() {
             </p>
             <div className="mt-6 flex flex-wrap gap-2.5">
               <Link
-                href="#contact"
+                href="/audit"
                 className="btn-press group inline-flex items-center gap-2 rounded-full bg-white py-2 pl-5 pr-2 text-[14px] font-semibold text-[#0b0b0c] hover:bg-[#fff1e6]"
               >
                 Book Free Audit
@@ -55,9 +58,15 @@ export function Footer() {
               <li>
                 <a className="transition-colors hover:text-white" href={getWhatsAppUrl()} target="_blank" rel="noopener noreferrer">Chat on WhatsApp</a>
               </li>
-              <li>
-                <a className="transition-colors hover:text-white" href={SITE.calendarUrl} target="_blank" rel="noopener noreferrer">Book a call</a>
-              </li>
+              {SITE.calendarUrl ? (
+                <li>
+                  <a className="transition-colors hover:text-white" href={SITE.calendarUrl} target="_blank" rel="noopener noreferrer">Book a call</a>
+                </li>
+              ) : (
+                <li>
+                  <a className="transition-colors hover:text-white" href={`tel:${SITE.phone.replace(/\s+/g, "")}`}>{SITE.phone}</a>
+                </li>
+              )}
             </ul>
           </nav>
           <nav aria-label="Legal">

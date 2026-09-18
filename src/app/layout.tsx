@@ -24,7 +24,34 @@ export const metadata: Metadata = {
   description:
     "Cogniv Solutions automates repetitive business work — WhatsApp enquiries, lead follow-ups, data entry, and reporting — around the tools you already use.",
   applicationName: "Cogniv Solutions",
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon-48x48.png", sizes: "48x48", type: "image/png" },
+      { url: "/favicon-96x96.png", sizes: "96x96", type: "image/png" },
+      { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/icon-512.png", sizes: "512x512", type: "image/png" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+  },
+  manifest: "/manifest.webmanifest",
+  appleWebApp: {
+    capable: true,
+    title: "Cogniv Solutions",
+    statusBarStyle: "black-translucent",
+  },
   keywords: [
+    "automation services",
+    "business automation services",
+    "AI automation services",
+    "automation services India",
+    "workflow automation services",
+    "process automation services",
+    "Cogniv Solutions",
+    "Cogniv",
     "business automation",
     "workflow automation",
     "WhatsApp business automation",
@@ -32,7 +59,29 @@ export const metadata: Metadata = {
     "data entry automation",
     "Tally Excel automation",
     "small business automation India",
+    "automation services",
+    "business automation services",
+    "automation services India",
+    "workflow automation services",
+    "process automation services",
+    "Cogniv Solutions",
+    "Cogniv",
+    "business process automation India",
+    "WhatsApp automation services",
+    "WhatsApp CRM integration",
+    "lead automation CRM",
+    "custom business software",
+    "Tally automation services",
+    "automation audit",
+    "small business automation tools",
+    "B2B workflow automation",
   ],
+  other: {
+    "geo.region": "IN-MP",
+    "geo.placename": "Indore, India",
+    "revisit-after": "2 days",
+    "rating": "General",
+  },
   authors: [{ name: "Cogniv Solutions", url: SITE.url }],
   creator: "Cogniv Solutions",
   publisher: "Cogniv Solutions",
@@ -91,11 +140,6 @@ export const metadata: Metadata = {
     google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || undefined,
   },
   category: "technology",
-  // Brand icons derived (resize-only) from the official bridge mark.
-  icons: {
-    icon: [{ url: "/brand/favicon.ico", type: "image/x-icon" }],
-    apple: [{ url: "/brand/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
-  },
 };
 
 // Escape '<' to prevent HTML parser breakout in embedded JSON-LD scripts

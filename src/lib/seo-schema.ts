@@ -14,7 +14,7 @@ export function generateSeoJsonLd() {
     name: SITE.name,
     alternateName: "Cogniv",
     url: SITE.url,
-    logo: `${SITE.url}/brand/cogniv-logo.png`,
+    logo: `${SITE.url}/logo.png`,
     image: `${SITE.url}/opengraph-image.png`,
     description: SITE.description,
     email: SITE.email,
@@ -110,14 +110,20 @@ export function generateSeoJsonLd() {
       {
         "@type": "ListItem",
         position: 3,
+        name: "Demo Lab",
+        item: `${SITE.url}/demos`,
+      },
+      {
+        "@type": "ListItem",
+        position: 4,
         name: "Pricing",
         item: `${SITE.url}/pricing`,
       },
       {
         "@type": "ListItem",
-        position: 4,
-        name: "Book a Free Workflow Audit",
-        item: `${SITE.url}/#contact`,
+        position: 5,
+        name: "Free Workflow Audit",
+        item: `${SITE.url}/audit`,
       },
     ],
   };
